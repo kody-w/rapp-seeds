@@ -1,0 +1,97 @@
+● skill(adversarial-review)
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read X.gpt-5.6-sol.txt
+  │ reviews/pairs/hour-pass16/X.gpt-5.6-sol.txt
+  └ 87 lines read
+
+● Read Y.gpt-5.6-sol.txt
+  │ reviews/pairs/hour-pass16/Y.gpt-5.6-sol.txt
+  └ 87 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● List public Brainstem memory and UI files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -Ei
+  │ '(^|/)(soul\.md|.*memory.*|.*agent.*|.*chat.*|.*ui.*|.*test.*)$' | head -200
+  └ 28 lines…
+
+● Read public context agent source (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py -H
+  │ 'Accept: application/vnd.github.raw+json' | sed -n '1,260p'
+  └ 181 lines…
+
+● Read public memory agent source (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py -H
+  │ 'Accept: application/vnd.github.raw+json' | sed -n '1,260p'
+  └ 91 lines…
+
+● Read public Brainstem soul (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/soul.md -H 'Accept:
+  │ application/vnd.github.raw+json' | sed -n '1,300p'
+  └ 77 lines…
+
+● List public Brainstem files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep
+  │ '^rapp_brainstem/' | head -250
+  └ 34 lines…
+
+● Check candidate wording rules (shell)
+  │ python3 tools/words.py reviews/pairs/hour-pass16/X.gpt-5.6-sol.txt
+  │ reviews/pairs/hour-pass16/Y.gpt-5.6-sol.txt
+  └ 1 line…
+
+● Inspect public tool-call behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -C 7 -Ei
+  │ 'system_context|tool_calls|ManageMemory|agents|tool' | head -300
+  └ 300 lines…
+
+● Inspect public UI feedback (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -C 6 -Ei 'tool|agent|memory|status' | head -300
+  └ 300 lines…
+
+● Inspect public memory tests (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/tests/test_local_agents.py -H
+  │ 'Accept: application/vnd.github.raw+json' | grep -n -C 5 -Ei
+  │ 'memory|remember|ManageMemory|ContextMemory' | head -240
+  └ 240 lines…
+
+● Inspect local persistence implementation (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py -H 'Accept:
+  │ application/vnd.github.raw+json' | sed -n '1,260p'
+  └ 250 lines…
+
+● Inspect visible agent activity feedback (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -C 10 -E
+  │ 'agent_start|agent_end|tool_calls|logs-label|agentLogs|agent-logs|event.*agent' | tail -320
+  └ 320 lines…
+
+● Inspect Copilot tool selection flow (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -C 14 -E 'def
+  │ call_copilot|tool_choice|finish_reason|tool_calls' | tail -320
+  └ 320 lines…
+
+{"better":"Y","margin":"slight","why":"Y adds a concise, source-backed recovery phrase for the documented case where Brainstem declines to save a memory, making the first-hour path more reliable with little added complexity."}
+
+
+
+Changes    +0 -0
+AI Credits 40.67 (1m 8s)
+Tokens     ↑ 305.8k (248.8k cached) • ↓ 4.0k (2.6k reasoning)
+Resume     copilot --resume=93cf591a-5324-4198-bf86-f1670988a2c8

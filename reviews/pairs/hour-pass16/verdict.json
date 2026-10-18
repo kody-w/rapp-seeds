@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass16",
+ "new_votes": 2,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "slight: Y adds a concise, source-backed recovery phrase for the documented case where Brainstem declines to save a memory, making the first-hour path more reliable with little added complexity."
+  ],
+  [
+   "gemini-4-argon",
+   "old",
+   "slight: Y removes a defensive fallback prompt ('If it does not save it, say: remember that, it matters to me') in Step 2 that undermines confidence in the core 'remembering' promise when the initial instruction ('Tell it one thing to remember about you') already triggers ManageMemory directly."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The versions differ only in step 2, where Y adds a plain-words fallback ('remember that, it matters to me') that the Brainstem's own public page recommends almost word for word when it chooses not to save, so it makes the key memory moment more likely to work and stays checkable against the source."
+  ]
+ ]
+}

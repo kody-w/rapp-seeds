@@ -70,3 +70,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | registry | FirstHour submitted to the registry the proper way (Issue #1460, validated, pending your approval) after a direct push was reverted | - | issue labels pending-review; live registry.json no longer lists it |
 | badge 0 | baseline badge | median 66 (66, 78, 64) | panel |
 | badge 1 | badge lines carry all three promise names and 'click OK'; same.py now checks them | side-by-side 3 of 3 prefer new | compare.sh badge-pass1 |
+| 16 | hour step 2: if it does not save it, say 'remember that, it matters to me' (the Brainstem's own tour gives the same advice, index.html 4253-4264) | side-by-side 2 of 3 prefer new (Gemini: reads as defensive) | compare.sh hour-pass16; found by Sol REFUTE pass |
