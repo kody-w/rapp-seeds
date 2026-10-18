@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass13",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X follows the live UI\u2019s actual download, confirmation, hot-load, and failure-message behavior while sparing first-time readers Y\u2019s error-prone task of manually creating a correctly named Python file."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: Y replaces error-prone manual file editing and the technical `_agent.py` filename requirement in the main flow with downloading and dragging files directly, while accurately matching the live Brainstem UI's confirmation prompt (`confirm()`) and `did not load as an agent` error handling."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: Y removes the steps a non-technical reader would most likely fail (opening a .py file, saving an AI reply as `_agent.py`), and the claims it adds match the Brainstem source: Export is served as an attachment, the drop shows an OK confirm, and the error text is 'did not load as an agent'."
+  ]
+ ]
+}

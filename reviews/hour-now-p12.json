@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/hour/index.html",
+ "tag": "hour-now-p12",
+ "reviews": [
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 6,
+    "3": 8,
+    "4": 5,
+    "5": 6,
+    "6": 8,
+    "7": 6,
+    "8": 9,
+    "9": 7,
+    "10": 8
+   },
+   "total": 73,
+   "weakest": "4: The linked software exists and many mechanics check out, but \"any computer,\" \"any AI,\" \"works the same way,\" and \"free for everyone\" outrun the supported platforms, Copilot requirement, and validation needed for generated Python agents.",
+   "fix": "Replace steps 5 and 6 with: <li><b>Make your own.</b><span>Ask an AI to adapt the exported file for one chore you repeat. Save only the Python code in a file ending in <code>_agent.py</code>, then drag it onto Brainstem. Continue only if Brainstem says it installed successfully and the new agent appears in the agent list; test it with one real request.</span></li><li><b>Hand it on.</b><span>Export the tested agent and send it to a friend who already has Brainstem. They install it and run the same request to verify it on their computer. Or submit the tested file to the <a href=\"https://github.com/kody-w/RAR\">registry</a>.</span></li>",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 8,
+    "3": 9,
+    "4": 8,
+    "5": 8,
+    "6": 7,
+    "7": 9,
+    "8": 9,
+    "9": 8,
+    "10": 10
+   },
+   "total": 85,
+   "weakest": "Line 6 (The hour): Steps 4 and 5 ask a non-technical person to open a downloaded .py file and manually save AI output with an _agent.py extension, which fails on default Mac TextEdit (.rtf) and Windows Notepad (.py.txt) and triggers Brainstem's 'Only .py agent files are supported' error.",
+   "fix": "In <ol class=\"hour\">, replace steps 4 and 5 so the user reads and creates the agent in plain text or directly through their Brainstem without fighting OS file extensions: replace `<li><b>Read an agent.</b><span>Click Export next to <em>ManageMemory</em> and open the file. It is a short program for one job: saving what you ask it to remember. Paste it into any AI and ask: <em>Explain this in plain words.</em></span></li><li><b>Make your own.</b><span>Paste that file into any AI and ask for a new agent just like it, for a chore you repeat. Save the reply as a file ending in <code>_agent.py</code> and drag it onto your Brainstem window. It uses it on your next message.</span></li>` with `<li><b>Read an agent.</b><span>Click Export next to <em>ManageMemory</em>, then drag that downloaded file into a new chat with any AI and ask: <em>Explain this in plain words.</em> It is a short file for one job: saving what you ask it to remember.</span></li><li><b>Make your own.</b><span>Ask your Brainstem: <em>Create a new agent file in my agents folder for a chore I repeat, based on ManageMemory.</em> Or click the bookmark icon at the top right to add one from the registry with one click, or drag any <code>_agent.py</code> file onto the window and click OK.</span></li>`.",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 6,
+    "3": 7,
+    "4": 5,
+    "5": 6,
+    "6": 7,
+    "7": 7,
+    "8": 7,
+    "9": 7,
+    "10": 8
+   },
+   "total": 69,
+   "weakest": "4: step 5 promises 'It uses it on your next message' and 'No coding' for an AI-written Python file, but the Brainstem's own importer asks you to confirm, rejects files that do not load and renames them (the page says none of this), and 'about ten minutes each', 'people say' and the footer's 'Wildhaven Homes LLC' (the licences name a person, not the LLC) cannot be confirmed from any linked source.",
+   "fix": "Replace steps 4 and 5 so nobody has to open, name or save a .py file (Export already downloads it and the importer adds _agent.py itself): <li><b>Read an agent.</b><span>Click Export next to <em>ManageMemory</em>. Your browser saves a small file called <code>manage_memory_agent.py</code>, usually in Downloads. Drag it into an AI chat you already use and ask: <em>Explain this in plain words.</em></span></li> <li><b>Make your own.</b><span>In the same chat, ask: <em>Write me a new agent just like this one, for a chore I repeat, as a .py file I can download.</em> Drag that file onto your Brainstem window and click OK when it asks (an agent is a small program, so accept only files you trust). It uses it on your next message. If it says the agent did not load, paste that message into the chat and ask for a fix.</span></li>",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 73,
+ "min": 69,
+ "n": 3
+}

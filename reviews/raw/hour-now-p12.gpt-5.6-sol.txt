@@ -1,0 +1,188 @@
+● skill(adversarial-review)
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ L1:400 (86 lines read)
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Inspect format repository and conformance tree (shell)
+  │ gh api repos/kody-w/rapp-1 --jq
+  │ '{default_branch,archived,disabled,license:.license.spdx_id,updated_at,pushed_at,html_url}' &&
+  │ printf '\nGRAIL TREE\n' && gh api 'repos/kody-w/rapp-1/git/trees/main?recursive=1' --jq '.tree[]
+  │ | select(.path|startswith("conformance/grail") or startswith(".github/workflows")) |
+  │ [.type,.path] | @tsv' | head -300
+  └ 25 lines…
+
+● Inspect installer repository metadata and tree (shell)
+  │ gh api repos/kody-w/rapp-installer --jq
+  │ '{default_branch,archived,disabled,license:.license.spdx_id,updated_at,pushed_at,html_url}' &&
+  │ printf '\nTREE\n' && gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq
+  │ '.tree[] | [.type,.path] | @tsv' | head -200
+  └ 93 lines…
+
+● Inspect registry repository metadata and tree (shell)
+  │ gh api repos/kody-w/RAR --jq
+  │ '{default_branch,archived,disabled,license:.license.spdx_id,updated_at,pushed_at,html_url}' &&
+  │ printf '\nTREE\n' && gh api 'repos/kody-w/RAR/git/trees/main?recursive=1' --jq '.tree[] |
+  │ [.type,.path] | @tsv' | head -200
+  └ 203 lines…
+
+● Run forbidden-word check on seed (shell)
+  │ python3 tools/words.py seeds/hour/index.html
+  └ 1 line…
+
+● Verify Brainstem UI and behavior claims (shell)
+  │ for f in rapp_brainstem/index.html rapp_brainstem/brainstem.py rapp_brainstem/local_storage.py
+  │ rapp_brainstem/README.md README.md; do printf '\n===== %s =====\n' "$f"; gh api
+  │ "repos/kody-w/rapp-installer/contents/$f" -H 'Accept: application/vnd.github.raw+json'; done |
+  │ rg -n -i -C 3 'manage installed|ManageMemory|manage_memory|drag|drop|upload|export|agent|memory|
+  │ copilot|localhost|7071|browser|one file|sign in|login' | head -500
+  └ 1 line…
+
+● Verify registry sharing claim (shell)
+  │ gh api repos/kody-w/RAR/contents/README.md -H 'Accept: application/vnd.github.raw+json' | rg -n
+  │ -i -C 3 'share|upload|submit|agent|registry|drag|install' | head -250
+  └ 1 line…
+
+● Verify conformance count and automation (shell)
+  │ printf '%s\n' '===== GRAIL README ====='; gh api
+  │ repos/kody-w/rapp-1/contents/conformance/grail/README.md -H 'Accept:
+  │ application/vnd.github.raw+json'; printf '%s\n' '===== SCENARIOS ====='; gh api
+  │ repos/kody-w/rapp-1/contents/conformance/grail/scenarios.py -H 'Accept:
+  │ application/vnd.github.raw+json'; printf '%s\n' '===== WORKFLOW ====='; gh api …
+  └ 280 lines…
+
+● Check all public links resolve (shell)
+  │ for u in https://kody-w.github.io/rapp-installer/install.sh
+  │ https://kody-w.github.io/rapp-installer/install.ps1 https://github.com/kody-w/rapp-installer
+  │ https://github.com/kody-w/rapp-1/tree/main/conformance/grail https://github.com/kody-w/RAR; do
+  │ curl -LIsS --max-time 20 -o /dev/null -w '%{http_code}\t%{url_effective}\n' "$u"; done
+  └ 5 lines…
+
+● Check current automated test runs (shell)
+  │ printf '%s\n' 'rapp-1 grail runs'; gh run list --repo kody-w/rapp-1 --workflow grail.yml --limit
+  │ 8 --json status,conclusion,event,createdAt,headBranch,displayTitle,url; printf '%s\n' 'installer
+  │ preflight runs'; gh run list --repo kody-w/rapp-installer --workflow preflight.yml --limit 8
+  │ --json status,conclusion,event,createdAt,headBranch,displayTitle,url
+  └ 4 lines…
+
+● Inspect registry submission workflow (shell)
+  │ gh api repos/kody-w/RAR/contents/README.md -H 'Accept: application/vnd.github.raw+json' | grep
+  │ -nEi -C 4 'share|upload|submit|agent|registry|drag|install' | head -350
+  └ 301 lines…
+
+● Inspect agent import and memory behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nE -C 5 'agents/import|agents/export|upload|memory|Copi
+  │ lot|token|conversation_history|soul|AGENTS_DIR|agent_file|save' | head -700
+  └ 24 lines…
+
+● Inspect current Brainstem interface labels (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nE -C 4 'Manage
+  │ installed|Export|drag|drop|agent|upload|ManageMemory|⊕|circled|title=' | head -500
+  └ 12 lines…
+
+● Inspect local memory storage implementation (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py -H 'Accept:
+  │ application/vnd.github.raw+json' | sed -n '1,260p'; printf '\n===== MANAGE MEMORY =====\n'; gh
+  │ api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py -H
+  │ 'Accept: application/vnd.github.raw+json' | sed -n '1,260p'
+  └ 343 lines…
+
+● Verify rerun and browser launch behavior (shell)
+  │ printf '%s\n' '===== install.sh launch ====='; gh api
+  │ repos/kody-w/rapp-installer/contents/install.sh -H 'Accept: application/vnd.github.raw+json' |
+  │ grep -nE -C 6 'launch|start|browser|localhost|7071|up to
+  │ date|Check-ForUpgrade|check_for_upgrade' | tail -300; printf '%s\n' '===== install.ps1 launch
+  │ ====='; gh api repos/kody-w/rapp-installer/contents/install.ps1 -H 'Accept: …
+  └ 24 lines…
+
+● Check dependencies and licensing claims (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/requirements.txt -H 'Accept:
+  │ application/vnd.github.raw+json'; printf '\n===== LICENSE FILE CHECK =====\n'; gh api
+  │ repos/kody-w/rapp-installer/contents/LICENSE -H 'Accept: application/vnd.github.raw+json' 2>&1
+  │ || true; printf '\n===== README LICENSE TEXT =====\n'; gh api
+  │ repos/kody-w/rapp-installer/contents/README.md -H 'Accept: application/vnd.github.raw+json' | …
+  └ 120 lines…
+
+● Check server-side agent import and export (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nE -C 12 "@app\.(route|post|get).*agents|def
+  │ (import|export|upload|list)_.*agent|agents/(import|export)|secure_filename|\.py'|\.py\"" | tail
+  │ -500
+  └ 157 lines…
+
+● Check prompts, memory, and Copilot transport (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nE -C 10 'def (get_copilot|chat|load_agents)|conversati
+  │ on_history|memories|memory|system_prompt|soul|GITHUB_TOKEN|copilot_internal' | head -650
+  └ 23 lines…
+
+● Check installer validation scope (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/.github/workflows/preflight.yml -H 'Accept:
+  │ application/vnd.github.raw+json'; printf '\n===== TEST MATRIX NAMES =====\n'; gh api
+  │ repos/kody-w/rapp-installer/contents/tests/test_installer.sh -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nE '^test_|PASS|FAIL|mac|linux|windows|launch|rerun' |
+  │ head -300
+  └ 285 lines…
+
+● Read installer launch paths and rerun flow (shell)
+  │ printf '%s\n' 'SH tail'; gh api repos/kody-w/rapp-installer/contents/install.sh -H 'Accept:
+  │ application/vnd.github.raw+json' | tail -180; printf '%s\n' 'PS1 tail'; gh api
+  │ repos/kody-w/rapp-installer/contents/install.ps1 -H 'Accept: application/vnd.github.raw+json' |
+  │ tail -230
+  └ 412 lines…
+
+● Check exact UI labels and drag behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nF -C 3 'Manage installed agents'; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nF -C 5 'Export'; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept: …
+  └ 316 lines…
+
+● Verify local data sent to Copilot service (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nE -C 18 'api\.githubcopilot|copilot.*chat|messages.*sy
+  │ stem|requests\.(post|get).*copilot|conversation_history' | head -520
+  └ 209 lines…
+
+● Verify browser drag-and-drop upload flow (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nE -C 8
+  │ "addEventListener\('(dragover|drop)|/agents/import|FormData\(\)" | tail -320
+  └ 111 lines…
+
+● Read complete agent import validation path (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | sed -n '3040,3145p'
+  └ 106 lines…
+
+● Verify saved memories are recalled later (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py -H
+  │ 'Accept: application/vnd.github.raw+json' | sed -n '1,320p'; printf '\n===== SOUL MEMORY RULES
+  │ =====\n'; gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/soul.md -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -nEi -C 5 'memory|remember|ManageMemory|ContextMemory' |
+  │ head -260
+  └ 210 lines…
+
+{"seed":"seeds/hour/index.html","scores":{"1":10,"2":6,"3":8,"4":5,"5":6,"6":8,"7":6,"8":9,"9":7,"10":8},"total":73,"weakest":"4: The linked software exists and many mechanics check out, but \"any computer,\" \"any AI,\" \"works the same way,\" and \"free for everyone\" outrun the supported platforms, Copilot requirement, and validation needed for generated Python agents.","fix":"Replace steps 5 and 6 with: <li><b>Make your own.</b><span>Ask an AI to adapt the exported file for one chore you repeat. Save only the Python code in a file ending in <code>_agent.py</code>, then drag it onto Brainstem. Continue only if Brainstem says it installed successfully and the new agent appears in the agent list; test it with one real request.</span></li><li><b>Hand it on.</b><span>Export the tested agent and send it to a friend who already has Brainstem. They install it and run the same request to verify it on their computer. Or submit the tested file to the <a href=\"https://github.com/kody-w/RAR\">registry</a>.</span></li>"}
+
+
+
+Changes    +0 -0
+AI Credits 70.52 (2m 50s)
+Tokens     ↑ 385.4k (311.8k cached) • ↓ 14.3k (10.7k reasoning)
+Resume     copilot --resume=5bf71bdf-ff3a-4511-840e-337d25b68283

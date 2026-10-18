@@ -1,0 +1,98 @@
+● skill(adversarial-review)
+
+I’m loading the rubric, message, and both candidates before checking every disputed claim against the live installer sources.
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read X.gpt-5.6-sol.txt
+  │ reviews/pairs/hour-pass13/X.gpt-5.6-sol.txt
+  └ 87 lines read
+
+● Read Y.gpt-5.6-sol.txt
+  │ reviews/pairs/hour-pass13/Y.gpt-5.6-sol.txt
+  └ 87 lines read
+
+The candidates differ only in the “read” and “make” steps, so I’m now verifying those exact export/import and file-creation instructions against the live repository and installer behavior.
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md · url…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● List public Brainstem UI source files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E
+  │ '(^|/)(templates|static|tests|rapp_brainstem|agents)/|\.html$|\.js$' | head -250
+  └ 43 lines…
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Inspect public agent behavior tests (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/tests/tes
+  │ t_local_agents.py | grep -n -E 'export|import|upload|agent|reload|filename' | head -260
+  └ 242 lines…
+
+● Inspect public server agent endpoints (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | grep
+  │ -n -E 'export|import|upload|agent|reload' | head -260
+  └ 213 lines…
+
+● Inspect public UI agent flows (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -n
+  │ -E 'Export|export|Import|import|drag|drop|Manage installed|agent\.py|agents' | head -220
+  └ 170 lines…
+
+● Read public export and drop UI logic (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1700,1760p;1795,1865p'
+  └ 132 lines…
+
+● Inspect exported memory agent source (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/agents/ma
+  │ nage_memory_agent.py | sed -n '1,220p'
+  └ 91 lines…
+
+● Read public agent panel and tour copy (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1100,1140p;4030,4135p'
+  └ 147 lines…
+
+● Read public agent import endpoints (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '2970,3130p'
+  └ 161 lines…
+
+● Compare candidate wording exactly (shell)
+  │ diff -u reviews/pairs/hour-pass13/Y.gpt-5.6-sol.txt reviews/pairs/hour-pass13/X.gpt-5.6-sol.txt
+  │ | sed -n '1,120p'
+  └ 12 lines…
+
+● Check both candidates for forbidden words (shell)
+  │ python3 tools/words.py reviews/pairs/hour-pass13/X.gpt-5.6-sol.txt; python3 tools/words.py
+  │ reviews/pairs/hour-pass13/Y.gpt-5.6-sol.txt
+  └ 2 lines…
+
+{"better":"X","margin":"clear","why":"X follows the live UI’s actual download, confirmation, hot-load, and failure-message behavior while sparing first-time readers Y’s error-prone task of manually creating a correctly named Python file."}
+
+
+
+Changes    +0 -0
+AI Credits 46.93 (2m 9s)
+Tokens     ↑ 357.6k (302.1k cached) • ↓ 6.3k (5.0k reasoning)
+Resume     copilot --resume=f404c0e9-396e-46dd-ac18-4f09d2da28fc
