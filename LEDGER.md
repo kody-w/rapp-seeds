@@ -63,3 +63,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 14 | hour Details: the public suite also checks the memory promise (save, restart, still there) | side-by-side 3 of 3 prefer new | compare.sh hour-pass14; kody-w/rapp-1 PR #53 merged, CI run 39097845241 printed PROMISE KEPT |
 | check | tools/same.py: every seed carries the line and three promises (9 of 9 ok; catches a one-word change, tested); CI runs words.py + same.py on every push | - | negative test on slides |
 | agent | FirstHour: the hour as one agent file you drag onto your Brainstem | new | pinned Brainstem: /agents/import said imported successfully; model calls for steps 1, 2, 6, 9 returned the right step (9 clamps to 6); words.py 0 |
+| 15 | hour step 1: offer the FirstHour agent | side-by-side 0 of 3 | REVERTED (second action before agents are explained; FirstHour stays its own seed) |

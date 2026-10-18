@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass15",
+ "new_votes": 0,
+ "counted": 3,
+ "verdict": "REVERT",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "old",
+   "slight: Y keeps the first hour linear and preserves one clear next step, while X adds an optional download-and-drag branch before a newcomer has learned what an agent is, even though the branch is technically supported."
+  ],
+  [
+   "gemini-4-argon",
+   "old",
+   "clear: Y keeps Step 1 focused on a single action without prematurely introducing agent drag-and-drop before Step 3 explains what an agent is or relying on a fragile relative path (`../agent/first_hour_agent.py`) that breaks standalone or in print."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "old",
+   "slight: Y's extra step-1 offer (download a 'FirstHour agent' by relative link, then drag it 'onto it') does work, but it is a second action that adds jargon and file-handling to the first-timer's densest step, and its source is outside the cited public repos, so X is simpler with one clear action."
+  ]
+ ]
+}
