@@ -19,6 +19,7 @@ This repository holds the seeds: the same message, in the same words, in every m
 | [Slides](https://kody-w.github.io/rapp-seeds/seeds/slides/) | presenting it to a room, notes on N |
 | [Room guide](seeds/room/README.md) | running the hour with a group |
 | [Card](seeds/card/card.pdf) | a pocket card with a QR code to the page |
+| [Handout](seeds/print/hour.pdf) | the hour on one printed sheet |
 | [Short](seeds/short/script.md) | a 60-second vertical video script |
 | [Badge](seeds/badge/README.md) | the top of every shared agent's README |
 | [llms.txt](llms.txt) | AIs that read the web |

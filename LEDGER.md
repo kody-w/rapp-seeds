@@ -55,3 +55,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | paste 3 | paste step 2 mirrors the hour page memory moment | side-by-side 3 of 3 prefer new | compare.sh paste-pass3 |
 | room 2 | room hour table mirrors the hour page (remember-tomorrow, Export ManageMemory, plain words) | side-by-side 2 of 3 prefer new (Gemini preferred plain 'the memory agent') | compare.sh room-pass2 |
 | card check | QR decoded by OpenCV from the rendered card: https://kody-w.github.io/rapp-seeds/ | - | verification only |
+| print | one-sheet handout PDF made from the hour page; hour page gains a print-only layout (screen unchanged) | new | PDF is 1 page (pdfinfo), rendered and read by eye, registry URL printed (pdftotext) |
