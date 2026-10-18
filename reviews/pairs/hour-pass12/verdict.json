@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass12",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y gives a concrete remember-now and recall-tomorrow exercise that directly demonstrates the central persistence promise supported by the public memory agents, while X never actually tests remembering."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: Y gives a concrete first prompt in step 2\u2014telling the Brainstem one thing to remember\u2014which directly exercises the ManageMemory agent inspected in step 4 and sets up the 'remembering tomorrow' payoff."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: X's step 2 has the reader tell it something to remember and ask tomorrow what it remembers, which sets up the page's closing 'tomorrow it is still there, remembering' moment and step 4's ManageMemory explanation, and it checks out against the public source (ManageMemory must save stated preferences, ContextMemory feeds stored memories into every turn, memory lives in a local folder the installer preserves, and the UI has a 'What do you remember?' button), whereas Y's 'ask something about your day' is vague, shows no agent at work, and leaves the memory claim untestable."
+  ]
+ ]
+}

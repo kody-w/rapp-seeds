@@ -1,0 +1,54 @@
+● skill(adversarial-review)
+
+I’m loading the rubric, both candidates, and the cited public sources in one pass.
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read X.gpt-5.6-sol.txt
+  │ reviews/pairs/hour-pass12/X.gpt-5.6-sol.txt
+  └ 86 lines read
+
+● Read Y.gpt-5.6-sol.txt
+  │ reviews/pairs/hour-pass12/Y.gpt-5.6-sol.txt
+  └ 86 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+The versions differ only in the first memory exercise, so I’m verifying that behavior against the public implementation before choosing.
+
+● Find public memory implementation files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -Ei
+  │ 'memory|brainstem.py|README|index.html' | head -80
+  └ 8 lines…
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+{"better":"Y","margin":"clear","why":"Y gives a concrete remember-now and recall-tomorrow exercise that directly demonstrates the central persistence promise supported by the public memory agents, while X never actually tests remembering."}
+
+
+
+Changes    +0 -0
+AI Credits 24.76 (45s)
+Tokens     ↑ 180.6k (141.8k cached) • ↓ 1.8k (1.1k reasoning)
+Resume     copilot --resume=990eeedc-ec06-4f01-ad35-835f480357fc
