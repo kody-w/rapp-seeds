@@ -1,0 +1,23 @@
+{
+ "tag": "paste-pass4",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y matches the live import, confirmation, automatic renaming, export, and error behavior while giving a first-time user a workable file-saving fallback, outweighing its modest extra length."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: Y accurately reflects the actual UI flow (the confirmation dialog, automatic `_agent.py` renaming, and load-error message) and instructs the guiding AI how to help a non-coder actually save or download the `.py` file in step 5."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: X's added facts all check out against the Brainstem source (Export downloads a .py, a drop asks to confirm and auto-renames to _agent.py, a bad file says it did not load) and give a non-technical guide a working path through Step 5, while Y over-specifies the _agent.py name, omits the confirm prompt and failure path, and leaves 'save it as a file' unsupported."
+  ]
+ ]
+}

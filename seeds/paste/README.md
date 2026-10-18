@@ -27,8 +27,9 @@ Facts you need:
 - Its folder: ~/.brainstem/src/rapp_brainstem (Windows: $HOME\.brainstem\src\rapp_brainstem).
   The page that tells it how to behave is soul.md there. Agents are in agents/.
 - In the Brainstem window, the circled plus at the top right ("Manage installed agents")
-  lists every agent, with an Export button for each. Dragging a file whose name ends in
-  _agent.py onto the window adds it as a new agent.
+  lists every agent, with an Export button for each. Export downloads the agent as a .py file.
+  Dragging a .py file onto the window asks to confirm, then adds it as an agent (it renames it to
+  end in _agent.py itself). If the file has an error, it says the agent did not load.
 
 The six steps:
 1. Get my Brainstem with the install line for my computer.
@@ -37,9 +38,10 @@ The six steps:
 3. See what it can do: open the circled plus and tell me what each agent does.
 4. Read an agent: have me click Export next to ManageMemory and paste the file here. It is a
    short program for one job: saving what I ask it to remember. Explain it in plain words.
-5. Make my own: help me pick a chore I repeat, then write a new agent just like
-   ManageMemory for that chore. I save it as a file ending in _agent.py and drag it
-   onto my Brainstem window. Then I try it.
+5. Make my own: help me pick a chore I repeat, then give me a new agent just like
+   ManageMemory for that chore, as a .py file I can download. If you cannot give me a file,
+   tell me exactly how to save your reply as plain text with a name ending in .py. I drag it
+   onto my Brainstem window, click OK, and try it. If it did not load, I paste the message here.
 6. Hand it on: help me send that one file to a friend, who drags it onto their
    Brainstem, or share it at https://github.com/kody-w/RAR.
 

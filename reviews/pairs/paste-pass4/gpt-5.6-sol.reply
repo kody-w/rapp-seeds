@@ -1,0 +1,200 @@
+● skill(adversarial-review)
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read Y.gpt-5.6-sol.txt
+  │ reviews/pairs/paste-pass4/Y.gpt-5.6-sol.txt
+  └ 49 lines read
+
+● Read X.gpt-5.6-sol.txt
+  │ reviews/pairs/paste-pass4/X.gpt-5.6-sol.txt
+  └ 47 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● List relevant public repository source files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E
+  │ '(^|/)(static|templates|agents|brainstem|app|ui|chat).*(\.py|\.js|\.html)$|(^|/)manage_memory_ag
+  │ ent\.py$' | head -200
+  └ 6 lines…
+
+● Inspect Windows installer launch behavior (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | rg -n -C 6
+  │ 'browser|Start-Process|7071|launcher|brainstem|Running|Start-Brainstem' | tail -220
+  └ 2 lines…
+
+● Inspect Unix installer launch behavior (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | rg -n -C 6
+  │ 'browser|open|7071|launcher|brainstem\(\)|exec|Running|start' | tail -180
+  └ 2 lines…
+
+● Inspect ManageMemory agent source (shell)
+  │ gh api
+  │ 'repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py?ref=main'
+  │ --jq '.content' | base64 --decode | sed -n '1,240p'
+  └ 91 lines…
+
+✗ Inspect Brainstem UI and agent import behavior (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py?ref=main' --jq
+  │ '.content' | base64 --decode | rg -n -C 5 'Manage installed
+  │ agents|Export|drag|drop|_agent\.py|\.py file|did not load|confirm|upload'
+  └ /bin/bash: rg: command not found
+    Failed with exit code 127
+
+● Inspect Windows installer launch behavior (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | grep -Ein -C 6
+  │ 'browser|Start-Process|7071|launcher|brainstem|running|Start-Brainstem' | tail -260
+  └ 260 lines…
+
+● Inspect Unix installer launch behavior (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | grep -Ein -C 6
+  │ 'browser|open|7071|launcher|brainstem\(\)|exec|running|start' | tail -220
+  └ 193 lines…
+
+● List Brainstem package files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem?ref=main' --jq '.[] |
+  │ [.type,.name,.path] | @tsv'
+  └ 17 lines…
+
+● Inspect Brainstem UI and agent import behavior (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py?ref=main' --jq
+  │ '.content' | base64 --decode | grep -Ein -C 6 'Manage installed
+  │ agents|Export|drag|drop|_agent\.py|\.py file|did not load|confirm|upload' | head -500
+  └ 372 lines…
+
+● Inspect public Brainstem documentation claims (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/README.md?ref=main' --jq '.content'
+  │ | base64 --decode | grep -Ein -C 5
+  │ 'memory|folder|soul\.md|agents/|browser|terminal|Copilot|GitHub account|drag|export' | head -420
+  └ 191 lines…
+
+● Verify installer repository status (shell)
+  │ gh api 'repos/kody-w/rapp-installer' --jq
+  │ '{visibility,license:.license.spdx_id,archived,default_branch,updated_at,pushed_at}'
+  └ 1 line…
+
+● Inspect agent manager interface details (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' --jq '.content'
+  │ | base64 --decode | grep -Ein -C 8 'Manage installed
+  │ agents|Export|drag|drop|agents/import|confirm\(|_agent\.py|\.py file|did not
+  │ load|circled|agent-manager|manage agents' | head -700
+  └ 15 lines…
+
+● Verify public RAR sharing repository (shell)
+  │ gh api 'repos/kody-w/RAR' --jq
+  │ '{name,visibility,license:.license.spdx_id,html_url,description,archived,default_branch}'
+  └ 1 line…
+
+● Locate manager button labels and controls (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' --jq '.content'
+  │ | base64 --decode | grep -En 'title=|aria-label=|agent.*button|plus|\+|manage' | grep -Ei
+  │ 'agent|manage|title|aria' | head -180
+  └ 32 lines…
+
+● Check installer public licensing evidence (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/LICENSE?ref=main' --jq '.content' 2>/dev/null |
+  │ base64 --decode | head -20; gh api
+  │ 'repos/kody-w/rapp-installer/contents/pyproject.toml?ref=main' --jq '.content' 2>/dev/null |
+  │ base64 --decode | grep -Ein 'license|name|version' | head -20
+  └ 2 lines…
+
+● Locate drag-and-drop implementation lines (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' --jq '.content'
+  │ | base64 --decode | grep -En 'function
+  │ (handle|import|upload|export)|addEventListener\(.drop|dataTransfer|drag' | head -220
+  └ 14 lines…
+
+● Locate exact agent manager interface lines (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' --jq '.content'
+  │ | base64 --decode | grep -En 'Manage installed
+  │ agents|agents/import|confirm\(|exportAgent|dragover|drop|\.py|Export|agent-manager' | head -240
+  └ 75 lines…
+
+● Verify local memory storage behavior (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py?ref=main' --jq
+  │ '.content' | base64 --decode | grep -En -C 6 'brainstem_data|memory|json|path|HOME|storage' |
+  │ head -300
+  └ 242 lines…
+
+● Read server agent import and export routes (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py?ref=main' --jq
+  │ '.content' | base64 --decode | sed -n '2970,3135p'
+  └ 166 lines…
+
+● Read agent manager and import workflow source (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' --jq '.content'
+  │ | base64 --decode | sed -n '1090,1140p;1690,1765p;1800,1865p'
+  └ 193 lines…
+
+● Check memory persistence and repository license files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/contents/rapp_brainstem/.gitignore?ref=main' --jq '.content'
+  │ | base64 --decode; printf '\n--- root files ---\n'; gh api
+  │ 'repos/kody-w/rapp-installer/contents?ref=main' --jq '.[] | .name' | grep -Ei
+  │ 'license|copying|notice' || true
+  └ 19 lines…
+
+● Read words.py
+  │ tools/words.py
+  └ L1:260 (63 lines read)
+
+✗ Compare candidate wording and length (shell)
+  │ wc -w reviews/pairs/paste-pass4/X.gpt-5.6-sol.txt reviews/pairs/paste-pass4/Y.gpt-5.6-sol.txt &&
+  │ diff -u reviews/pairs/paste-pass4/X.gpt-5.6-sol.txt reviews/pairs/paste-pass4/Y.gpt-5.6-sol.txt
+  └ 489 reviews/pairs/paste-pass4/X.gpt-5.6-sol.txt
+    551 reviews/pairs/paste-pass4/Y.gpt-5.6-sol.txt
+    1040 total
+    --- reviews/pairs/paste-pass4/X.gpt-5.6-sol.txt 2026-10-18 00:46:05
+    +++ reviews/pairs/paste-pass4/Y.gpt-5.6-sol.txt 2026-10-18 00:46:05
+    @@ -27,8 +27,9 @@
+    - Its folder: ~/.brainstem/src/rapp_brainstem (Windows: $HOME\.brainstem\src\rapp_brainstem).
+    The page that tells it how to behave is soul.md there. Agents are in agents/.
+    - In the Brainstem window, the circled plus at the top right ("Manage installed agents")
+    -  lists every agent, with an Export button for each. Dragging a file whose name ends in
+    -  _agent.py onto the window adds it as a new agent.
+    +  lists every agent, with an Export button for each. Export downloads the agent as a .py file.
+    +  Dragging a .py file onto the window asks to confirm, then adds it as an agent (it renames it
+    to
+    +  end in _agent.py itself). If the file has an error, it says the agent did not load.
+
+    The six steps:
+    1. Get my Brainstem with the install line for my computer.
+    @@ -37,9 +38,10 @@
+    3. See what it can do: open the circled plus and tell me what each agent does.
+    4. Read an agent: have me click Export next to ManageMemory and paste the file here. It is a
+    short program for one job: saving what I ask it to remember. Explain it in plain words.
+    -5. Make my own: help me pick a chore I repeat, then write a new agent just like
+    -   ManageMemory for that chore. I save it as a file ending in _agent.py and drag it
+    -   onto my Brainstem window. Then I try it.
+    +5. Make my own: help me pick a chore I repeat, then give me a new agent just like
+    +   ManageMemory for that chore, as a .py file I can download. If you cannot give me a file,
+    +   tell me exactly how to save your reply as plain text with a name ending in .py. I drag it
+    +   onto my Brainstem window, click OK, and try it. If it did not load, I paste the message
+    here.
+    6. Hand it on: help me send that one file to a friend, who drags it onto their
+    Brainstem, or share it at https://github.com/kody-w/RAR.
+    Failed with exit code 1
+
+● Run forbidden-word checks on both candidates (shell)
+  │ python3 tools/words.py reviews/pairs/paste-pass4/X.gpt-5.6-sol.txt; x=$?; python3 tools/words.py
+  │ reviews/pairs/paste-pass4/Y.gpt-5.6-sol.txt; y=$?; printf 'exit_codes X=%s Y=%s\n' "$x" "$y"
+  └ 3 lines…
+
+{"better":"Y","margin":"clear","why":"Y matches the live import, confirmation, automatic renaming, export, and error behavior while giving a first-time user a workable file-saving fallback, outweighing its modest extra length."}
+
+
+
+Changes    +0 -0
+AI Credits 52.54 (1m 27s)
+Tokens     ↑ 534.0k (476.7k cached) • ↓ 5.3k (2.6k reasoning)
+Resume     copilot --resume=1df2b9e1-ed2c-4ebe-b715-2709cb330571
