@@ -1,0 +1,23 @@
+{
+ "tag": "room-pass3",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "slight: Y better serves first-time participants by adding a live, accurate one-page handout that makes the room format more usable while leaving the source-supported installer claims and core message unchanged."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: Y adds a valid link to the existing `../print/hour.pdf` one-sheet handout built specifically for in-room participants to follow each step on paper."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The two are identical except X adds a 'Before the room' bullet linking the one-page handout, which I checked is live and carries the same message and steps (including the Terminal/PowerShell instructions the room table omits), so non-technical attendees get a sheet to follow at almost no cost in simplicity."
+  ]
+ ]
+}
