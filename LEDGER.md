@@ -17,6 +17,10 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 ## For Kody
 - The IETF upload is staged in the open Chrome tab. The final Upload click was blocked by the safety classifier as a real-world submission; it needs your one click.
 - **The Brainstem core has no license.** kody-w/rapp-installer has no LICENSE file and no license line in its README (checked 2026-10-17 22:40 via the GitHub API and contents). The open format, kody-w/rapp-1, is MIT. Until the core carries a license, seeds say "its source is public", never "open source". Adding a LICENSE file to the core is a core change, so it is yours to decide.
+- **Drafts await your yes.** X thread, LinkedIn, blog and Show HN drafts are in the private repo airaptr/seeds. Nothing is posted.
+- **The 60-second short needs real filming** on a personal machine with a personal Copilot sign-in. This Mac's Brainstem is the work one, so it was not used.
+- **Unverified with a live model:** that Copilot chooses to save a memory when asked (the restart proof uses a scripted model), and that a free Copilot plan works with the Brainstem.
+- The session moved from Fable 5.1 to Opus 5.5 at about 22:15 ET; commits after that carry the Opus attribution.
 
 | Pass | Change | Score before -> after | Verification |
 |---|---|---|---|
@@ -50,3 +54,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 12 | hour step 2: tell it one thing to remember, ask tomorrow what it remembers | side-by-side 3 of 3 prefer new (pass 6 tried this under the noisy absolute check) | compare.sh hour-pass12; tools/proofs/prove.py on the pinned Brainstem: memory saved, process restarted, empty history, memory reached the model (False before, True after); real-model save unverified |
 | paste 3 | paste step 2 mirrors the hour page memory moment | side-by-side 3 of 3 prefer new | compare.sh paste-pass3 |
 | room 2 | room hour table mirrors the hour page (remember-tomorrow, Export ManageMemory, plain words) | side-by-side 2 of 3 prefer new (Gemini preferred plain 'the memory agent') | compare.sh room-pass2 |
+| card check | QR decoded by OpenCV from the rendered card: https://kody-w.github.io/rapp-seeds/ | - | verification only |
