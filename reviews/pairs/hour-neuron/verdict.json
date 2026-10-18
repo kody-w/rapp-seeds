@@ -1,0 +1,23 @@
+{
+ "tag": "hour-neuron",
+ "new_votes": 2,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "old",
+   "slight: X is cleaner and more faithful to the public implementation, which makes a new agent available on the next request but lets the model decide whether to call it, whereas Y promises that it fires on the next message."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: Y includes MESSAGE.md's neuron analogy for an agent in step 3, which directly grounds the opening promise that 'It thinks the way you do' and connects the 'Brainstem' metaphor for a first-time reader."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The two versions differ only in Y's two added neuron sentences, which restore MESSAGE.md's own definition of an agent (it fires when your message needs its job), and that gives a newcomer a mental model for 'it thinks the way you do' and matches the public source (soul.md says agents are called 'when they fit the request'; agents reload on every /chat, so 'next message' holds), at a small cost in brevity."
+  ]
+ ]
+}

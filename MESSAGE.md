@@ -23,7 +23,7 @@ That is when people say: *AI should have been like this all along.*
 | Word | Means |
 |---|---|
 | **Brainstem** | the small program on your computer that runs your AI. It links how you think with how an AI thinks. |
-| **agent** | one file that does one job |
+| **agent** | one file that does one job. Like a neuron in a brain: when your message needs that job, it fires. |
 | **registry** | where people share agents |
 
 Everything else is said in plain words. **RAPP** is the name of the open format underneath, free for anyone.

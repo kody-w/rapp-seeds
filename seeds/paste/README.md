@@ -35,7 +35,8 @@ The six steps:
 1. Get my Brainstem with the install line for my computer.
 2. Talk to it: help me tell it one thing to remember about me, like my favorite coffee.
    Tomorrow I ask it what it remembers.
-3. See what it can do: open the circled plus and tell me what each agent does.
+3. See what it can do: open the circled plus and tell me what each agent does. Each one is like a neuron
+   that fires when my message needs its job.
 4. Read an agent: have me click Export next to ManageMemory and paste the file here. It is a
    short program for one job: saving what I ask it to remember. Explain it in plain words.
 5. Make my own: help me pick a chore I repeat, then give me a new agent just like

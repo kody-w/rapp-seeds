@@ -1,0 +1,204 @@
+I'll start by reading the rubric, the message, and both seed versions.
+
+● List repo and file sizes (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la && wc -c RUBRIC.md MESSAGE.md
+  │ reviews/pairs/hour-neuron/X.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-neuron/Y.claude-sonnet-5.5.txt
+  └ 21 lines…
+
+Reading the rubric, message, and both versions now.
+
+● Read RUBRIC.md
+  └ 33 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read X.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-neuron/X.claude-sonnet-5.5.txt
+  └ 87 lines read
+
+● Read Y.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-neuron/Y.claude-sonnet-5.5.txt
+  └ 87 lines read
+
+The two files look nearly identical. I'll diff them to isolate the exact differences.
+
+✗ Diff X and Y versions (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/reviews/pairs/hour-neuron && diff
+  │ X.claude-sonnet-5.5.txt Y.claude-sonnet-5.5.txt; echo "---- exit: $?"; ls -la; ls -la ..
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+The compound command was denied; I'll retry with a simpler diff.
+
+✗ Diff X and Y (shell)
+  │ diff /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/reviews/pairs/hour-neuron/X.claude-sonnet-
+  │ 5.5.txt /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/reviews/pairs/hour-neuron/Y.claude-sonn
+  │ et-5.5.txt
+  └ 65c65
+    < <li><b>See what it can do.</b><span>Click the circled plus &#8853; at the top right of your
+    Brainstem (it says <em>Manage installed agents</em> when you point at it). Each one listed is an
+    agent: one file that does one job.</span></li>
+    ---
+    > <li><b>See what it can do.</b><span>Click the circled plus &#8853; at the top right of your
+    Brainstem (it says <em>Manage installed agents</em> when you point at it). Each one listed is an
+    agent: one file that does one job. Think of each one as a neuron in a brain: when your message
+    needs its job, it fires and does it.</span></li>
+    67c67
+    < <li><b>Make your own.</b><span>In the same chat, ask for a new agent just like it, for a chore
+    you repeat, as a file you can download. Drag that file onto your Brainstem window and click OK
+    when it asks. It uses it on your next message. If it says the agent did not load, paste that
+    message into the chat and ask for a fix.</span></li>
+    ---
+    > <li><b>Make your own.</b><span>In the same chat, ask for a new agent just like it, for a chore
+    you repeat, as a file you can download. Drag that file onto your Brainstem window and click OK
+    when it asks. Your Brainstem just grew a new neuron, and it fires on your next message. If it
+    says the agent did not load, paste that message into the chat and ask for a fix.</span></li>
+    Failed with exit code 1
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+The installers were truncated; I'll fetch the remaining portions, since the "runs while that Terminal window is open" and "paste the same line to bring it back" claims depend on how they launch.
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · max_length: 20000, star…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · max_length: 20000, sta…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+I now have the full `install.sh`. Next I'll check whether the rubric's mechanical gates (`tools/words.py`) treat "neuron" and "fires" as clean, since Y adds them.
+
+● List tools, seeds, reviews dirs (shell)
+  │ ls -la /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/tools
+  │ /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/seeds
+  │ /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/reviews
+  │ /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/reviews/pairs 2>&1 | head -80
+  └ 80 lines…
+
+/ Search (glob)
+  │ "**/*" in tools, reviews/pairs/hour-neuron, seeds/hour
+  └ 34 files found
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Read same.py
+  │ tools/same.py
+  └ 41 lines read
+
+Running the word check on both candidates (read-only, output to stdout):
+
+● Run word check on X and Y (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 -B tools/words.py
+  │ reviews/pairs/hour-neuron/X.claude-sonnet-5.5.txt; echo "X exit: $?"; python3 -B tools/words.py
+  │ reviews/pairs/hour-neuron/Y.claude-sonnet-5.5.txt; echo "Y exit: $?"
+  └ 4 lines…
+
+Both pass the word check. Next I'll verify the claims in the changed sentences, and the rest of the page, against the public source. First the Brainstem directory layout:
+
+● List rapp_brainstem directory in public repo (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem --jq '.[] |
+  │ "\(.type)\t\(.size)\t\(.name)"' 2>&1 | head -60
+  └ 17 lines…
+
+✗ Download Brainstem UI and server source for claim checks (shell)
+  │ mkdir -p /tmp/rapp_verify && cd /tmp/rapp_verify && for f in index.html brainstem.py README.md
+  │ soul.md .gitignore VERSION CLAUDE.md; do curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/$f" -o "$f" &&
+  │ echo "ok $f $(wc -c < "$f")"; done; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents --jq '.[] | …
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+Writing to /tmp isn't permitted, so I'll stream the source straight into grep instead.
+
+● Grep Brainstem UI for plus button, export, drag-drop (shell)
+  │ curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | grep
+  │ -n -i -E "Manage installed agents|⊕|&#8853;|8853|drag|drop|Export" | cut -c1-260 | head -60
+  └ 60 lines…
+
+The plus button, Export buttons and drag-drop all exist. Now the details: the icon shape, the OK confirmation on drop, and whether a new agent is live on the next message.
+
+● View agents button markup and drop handler (shell)
+  │ curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '1100,1135p;1700,1790p' | cut -c1-240
+  └ 127 lines…
+
+● Grep server for agent loading and import/export routes (shell)
+  │ curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" |
+  │ grep -n -E "def load_agents|load_agents\(|/agents/import|/agents/export|def import_agent|def
+  │ export_agent|hot|reload|AGENTS_PATH|def chat\(|tool_calls|tools=|Content-Disposition|attachment"
+  │ | cut -c1-220 | head -80
+  └ 80 lines…
+
+`load_agents()` runs on every `/chat`, so a freshly dropped agent is available on the next message. Now the import route, to see how it handles file naming and failures:
+
+● View agent export and import routes (shell)
+  │ curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" | sed
+  │ -n '3003,3125p' | cut -c1-230
+  └ 123 lines…
+
+● View agent list rendering and list endpoint (shell)
+  │ curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '1800,1870p' | cut -c1-200; echo ======; curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" | sed
+  │ -n '2975,3002p' | cut -c1-200
+  └ 99 lines…
+
+● List bundled agents and read ManageMemory agent (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents --jq '.[] |
+  │ "\(.type)\t\(.size)\t\(.name)"'; echo =====; curl -fsSL "https://raw.githubusercontent.com/kody-
+  │ w/rapp-installer/main/rapp_brainstem/agents/manage_memory_agent.py" | head -120 | cut -c1-220
+  └ 97 lines…
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · max_length: 12000, sta…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Check public docs for neuron vocabulary and hot-load wording (shell)
+  │ for f in README.md CLAUDE.md CONSTITUTION.md soul.md; do echo "=== $f"; curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/$f" | grep -n -i
+  │ -E "neuron|synapse|fires|firing|brainstem is|one file|hot-?load|every /chat|each request|next
+  │ message|restart" | cut -c1-240 | head -14; done; echo "=== repo README"; curl -fsSL
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md" | grep -n -i -E …
+  └ 23 lines…
+
+I'll confirm I left no changes behind in the repo or /tmp.
+
+✗ Verify no files were changed or left behind (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git status --short | head -20; ls -d
+  │ /tmp/rapp_verify 2>&1 | head -2
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Check git working tree is clean (shell)
+  │ git -C /Users/kodywildfeuer/Documents/GitHub/rapp-seeds status --short
+  └ 13 lines…
+
+{"better": "Y", "margin": "slight", "why": "The two versions differ only in Y's two added neuron sentences, which restore MESSAGE.md's own definition of an agent (it fires when your message needs its job), and that gives a newcomer a mental model for 'it thinks the way you do' and matches the public source (soul.md says agents are called 'when they fit the request'; agents reload on every /chat, so 'next message' holds), at a small cost in brevity."}
+
+
+
+Changes    +0 -0
+AI Credits 84.4 (4m 23s)
+Tokens     ↑ 1.9m (1.8m cached, 137.0k written) • ↓ 32.3k (27.1k reasoning)
+Resume     copilot --resume=1f5a75f2-cbb2-48ea-b5a3-02a95360ee73
