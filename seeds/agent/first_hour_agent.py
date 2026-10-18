@@ -2,7 +2,11 @@
 
 Drag this file onto your Brainstem window and click OK. Then say: teach me my first hour.
 It is one file that does one job, like every agent. Read it: the six steps are below, in plain words.
-Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone.
+
+Your AI, as files you own.
+1. Learn it in an hour. It thinks the way you do, so you can see how it works.
+2. Run it on any computer. Mac, Windows or Linux. Its memory stays in your own folder.
+3. Hand it to anyone. It is just files. One agent is one file.
 """
 from agents.basic_agent import BasicAgent
 
@@ -59,5 +63,6 @@ class FirstHourAgent(BasicAgent):
         title, text = STEPS[step - 1]
         after = (f" When you are ready, say next for step {step + 1} of {len(STEPS)}."
                  if step < len(STEPS) else
-                 " That is the hour. Tomorrow I am still here, on your computer, remembering.")
+                 " That is the hour. Tomorrow I am still here, on your computer, remembering. "
+                 "Your AI, as files you own.")
         return f"Step {step} of {len(STEPS)}: {title} {text}{after}"

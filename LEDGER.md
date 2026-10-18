@@ -64,3 +64,5 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | check | tools/same.py: every seed carries the line and three promises (9 of 9 ok; catches a one-word change, tested); CI runs words.py + same.py on every push | - | negative test on slides |
 | agent | FirstHour: the hour as one agent file you drag onto your Brainstem | new | pinned Brainstem: /agents/import said imported successfully; model calls for steps 1, 2, 6, 9 returned the right step (9 clamps to 6); words.py 0 |
 | 15 | hour step 1: offer the FirstHour agent | side-by-side 0 of 3 | REVERTED (second action before agents are explained; FirstHour stays its own seed) |
+| agent 0 | baseline FirstHour | median 72 (72, 85, 65) | panel |
+| agent 1 | FirstHour carries the full message; step 6 ends on the line; same.py now checks it | side-by-side 3 of 3 prefer new | compare.sh agent-pass1; re-imported and called on the pinned Brainstem |

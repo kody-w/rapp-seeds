@@ -1,0 +1,206 @@
+● skill(adversarial-review)
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read first_hour_agent.py
+  │ seeds/agent/first_hour_agent.py
+  └ 63 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+/ Search (grep)
+  │ "Manage installed agents|ManageMemory|circled plus|Drag this file|did not load|Export" in
+  │ **/*.{py,md,js,ts,tsx,html}
+  └ 44 lines found
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+/ Search (glob)
+  │ "**/basic_agent.py"
+  └ No matches found
+
+● Inspect repository state (shell)
+  │ git --no-pager status --short && git --no-pager log -1 --oneline
+  └ 5 lines…
+
+● Run forbidden-word check on seed (shell)
+  │ python3 tools/words.py seeds/agent/first_hour_agent.py
+  └ 1 line…
+
+● Find public Brainstem UI source (shell)
+  │ gh search code '"Manage installed agents" owner:kody-w' --limit 20 --json repository,path,url
+  │ --jq '.[] | [.repository.nameWithOwner,.path,.url] | @tsv'
+  └ No Content
+
+✗ Find public Brainstem repositories (shell)
+  │ gh search repos 'brainstem user:kody-w' --limit 30 --json
+  │ nameWithOwner,url,description,isPrivate --jq '.[] |
+  │ [.nameWithOwner,.isPrivate,.url,.description] | @tsv'
+  └ Unknown JSON field: "nameWithOwner"
+    Available fields:
+    createdAt
+    defaultBranch
+    description
+    forksCount
+    fullName
+    hasDownloads
+    hasIssues
+    hasPages
+    hasProjects
+    hasWiki
+    homepage
+    id
+    isArchived
+    isDisabled
+    isFork
+    isPrivate
+    language
+    license
+    name
+    openIssuesCount
+    owner
+    pushedAt
+    size
+    stargazersCount
+    updatedAt
+    url
+    visibility
+    watchersCount
+    Failed with exit code 1
+
+● Inspect seed commit evidence (shell)
+  │ git --no-pager show --format=fuller --stat --summary fd6518a && git --no-pager show
+  │ --format='%B' --no-patch fd6518a
+  └ 20 lines…
+
+/ Search (grep)
+  │ "pinned Brainstem|Brainstem.*commit|rapp-installer|index\.html L1114|importer facts" in
+  │ **/*.{md,txt,json,yml,yaml}
+  └ 59 lines found
+
+● Read LEDGER.md
+  └ L1:80 (65 lines read)
+
+● Read README.md
+  │ seeds/agent/README.md
+  └ 9 lines read
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Find public Brainstem repositories (shell)
+  │ gh search repos 'brainstem user:kody-w' --limit 30 --json
+  │ fullName,url,description,isPrivate,pushedAt --jq '.[] |
+  │ [.fullName,.isPrivate,.pushedAt,.url,.description] | @tsv'
+  └ 30 lines…
+
+● Read same.py
+  │ tools/same.py
+  └ 40 lines read
+
+● List public installer repository files (shell)
+  │ gh api repos/kody-w/rapp-installer/contents --jq '.[] | [.type,.name,.path] | @tsv' | head -80
+  └ 29 lines…
+
+● Locate public Brainstem implementation files (shell)
+  │ gh api repos/kody-w/rapp-installer/git/trees/main?recursive=1 --jq '.tree[] | select(.path |
+  │ test("(index\\.html|brainstem\\.py|basic_agent\\.py|manage_memory|memory).*"; "i")) |
+  │ [.type,.path] | @tsv' | head -120
+  └ 7 lines…
+
+● Read public BasicAgent implementation (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/basic_agent.py
+  └ 35 lines…
+
+● Verify public agent import behavior (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py | rg -n -C 4 'agents/import|did
+  │ not load|_agent.py|load_agents|imported successfully|Import' | head -260
+  └ 1 line…
+
+● Verify public Brainstem UI claims (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html | rg -n -C 3 'Manage installed
+  │ agents|Export|drag|drop|agents/import|did not load|circled|⊕' | head -220
+  └ 1 line…
+
+● Verify public memory persistence (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py && printf
+  │ '\n--- LOCAL STORAGE ---\n' && gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py | head -260
+  └ 343 lines…
+
+● Verify public agent import behavior (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py | grep -n -E -C 4
+  │ 'agents/import|did not load|_agent\.py|load_agents|imported successfully|Import' | head -300
+  └ 214 lines…
+
+● Verify public Brainstem UI claims (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html | grep -n -E -C 3 'Manage
+  │ installed agents|Export|drag|drop|agents/import|did not load|⊕' | head -240
+  └ 240 lines…
+
+● Inspect public agents panel controls (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html | grep -n -E -C 2
+  │ 'title=.*agent|agent.*title|onclick=.*export|/agents/export|manage.*agent' | head -240
+  └ 53 lines…
+
+● Inspect agent loading and export endpoints (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py | sed -n
+  │ '1832,1888p;2980,3045p'
+  └ 123 lines…
+
+● Inspect drag confirmation and agents list (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html | sed -n '1718,1768p;1805,1860p'
+  └ 107 lines…
+
+● Confirm public sources are current (shell)
+  │ gh api repos/kody-w/rapp-installer/commits/main --jq '[.sha,.commit.committer.date,.html_url] |
+  │ @tsv' && gh api repos/kody-w/RAR/commits/main --jq '[.sha,.commit.committer.date,.html_url] |
+  │ @tsv'
+  └ 2 lines…
+
+● Exercise FirstHour agent behavior (shell)
+  │ python3 - <<'PY'
+  │ import importlib.util, sys, types
+  │ class BasicAgent:
+  │ def __init__(self, name=None, metadata=None):
+  │ if name is not None: self.name = name…
+  └ 21 lines…
+
+● Verify saved memory is recalled (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py | sed -n
+  │ '1,260p'
+  └ 181 lines…
+
+● Check supported computer platforms (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/install.sh | grep -n -E -C 2
+  │ 'Darwin|Linux|uname|Unsupported|macOS' | head -100 && printf '\n--- WINDOWS ---\n' && gh api -H
+  │ 'Accept: application/vnd.github.raw+json' repos/kody-w/rapp-installer/contents/install.ps1 |
+  │ grep -n -E -C 2 'Windows|winget|PowerShell' | head -100
+  └ 103 lines…
+
+{"seed":"seeds/agent/first_hour_agent.py","scores":{"1":5,"2":6,"3":7,"4":6,"5":7,"6":8,"7":6,"8":9,"9":8,"10":10},"total":72,"weakest":"1: It includes the line and only the short promise headings, omitting the required exact second sentence of all three promises.","fix":"Replace `Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone.` with `Your AI, as files you own.\\nLearn it in an hour. It thinks the way you do, so you can see how it works.\\nRun it on any computer. Mac, Windows or Linux. Its memory stays in your own folder.\\nHand it to anyone. It is just files. One agent is one file.`"}
+
+
+
+Changes    +0 -0
+AI Credits 70.54 (2m 9s)
+Tokens     ↑ 475.9k (382.0k cached) • ↓ 8.8k (6.0k reasoning)
+Resume     copilot --resume=47df0882-9d5d-4291-8715-f9aa465fcf75

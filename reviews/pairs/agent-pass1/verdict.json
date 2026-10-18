@@ -1,0 +1,23 @@
+{
+ "tag": "agent-pass1",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y preserves the required line and all three promises verbatim while retaining the same publicly checkable first-hour flow as X."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: X includes the full three promises from MESSAGE.md verbatim in its docstring and closes the final step with the core line, directly satisfying Criterion 1 ('Same message'), whereas Y truncates the three promises to their headings only."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: X carries the line and all three promises with their sentences in MESSAGE.md's exact words (and ends the hour on the line), while Y keeps only the three headlines and fails the repo's own same.py full-seed check, and X's added claims (Mac/Windows/Linux, memory in your own folder, one agent = one file) all verify against the installers and repo, so Y's only edge is a slightly shorter docstring."
+  ]
+ ]
+}
