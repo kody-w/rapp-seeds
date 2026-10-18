@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass17",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "slight: X adds a plain, source-verifiable disclosure that messages and memories are sent to Copilot, preventing the local-files promise from misleading a skeptical reader."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: X is more honest for a skeptical reviewer under Details by clarifying that while memory files live locally on your computer, the Brainstem sends your message and needed memories to Copilot when generating an answer."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: X alone says in plain words, inside Details, that Copilot gets your message and your saved memories (brainstem.py attaches up to your 50 most recent memories to every request), which honestly qualifies 'its memory stays on your computer', while Y leaves that data flow unstated; X's 'the memories it needs' is only slightly looser than the code's recent-50 behavior."
+  ]
+ ]
+}

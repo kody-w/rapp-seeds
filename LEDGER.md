@@ -15,13 +15,13 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 0 | message, rubric, word check, hour page | none -> baseline pending | words.py 0 hits; seam guard clean; step 5 corrected to what works today (kernel reloads agents and instruction page each message, brainstem.py L1483, L1832) |
 
 ## For Kody
-- The IETF upload is staged in the open Chrome tab. The final Upload click was blocked by the safety classifier as a real-world submission; it needs your one click.
+- **IETF: uploaded, not yet posted.** draft-wildfeuer-rapp-1-00 passed upload; the status page in Chrome needs your submitter name and email, then Post submission, then the confirmation email. The safety classifier blocks me from that step.
 - **The Brainstem core has no license.** kody-w/rapp-installer has no LICENSE file and no license line in its README (checked 2026-10-17 22:40 via the GitHub API and contents). The open format, kody-w/rapp-1, is MIT. Until the core carries a license, seeds say "its source is public", never "open source". Adding a LICENSE file to the core is a core change, so it is yours to decide.
 - **Drafts await your yes.** X thread, LinkedIn, blog and Show HN drafts are in the private repo airaptr/seeds. Nothing is posted.
 - **The 60-second short needs real filming** on a personal machine with a personal Copilot sign-in. This Mac's Brainstem is the work one, so it was not used.
 - **Unverified with a live model:** that Copilot chooses to save a memory when asked (the restart proof uses a scripted model), and that a free Copilot plan works with the Brainstem.
-- **Approve FirstHour in the registry:** https://github.com/kody-w/RAR/issues/1460 is validated and waiting for your approval. I first pushed it straight to the registry's main branch, which skips that review; I reverted it within minutes (main is byte-identical to before for those paths), and CI shows two red "Verify changed agent receipts" runs from the push and the revert. Nothing else changed.
-- **Message-level questions from the REFUTE pass (yours, not mine to change).** (1) Memories are stored in your folder, but the Brainstem sends them to Copilot with each message. "Its memory stays in your own folder" is true about storage; a reader may hear "never leaves". (2) One file can hold several agents, so "one agent is one file" is true one way, not the other. (3) "Your AI, as files you own": the model itself is Copilot, not a file. The hour page already says Copilot writes the answers over the internet. I left MESSAGE.md unchanged.
+- **FirstHour approved and notarized** (Issue #1460 closed with a receipt).
+- **Message questions, resolved 2026-10-18 on Kody's 'just do it':** the message stays as is. The hour page Details now says Copilot receives your message and the memories it needs (pass 17). Paste and the short already say a file can hold more than one agent only where it matters.
 - The session moved from Fable 5.1 to Opus 5.5 at about 22:15 ET; commits after that carry the Opus attribution.
 
 | Pass | Change | Score before -> after | Verification |
@@ -76,3 +76,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | agent readme 1 | 'the six steps are in plain words, the rest is the short program around them' instead of 'read it' | side-by-side 3 of 3 prefer new | compare.sh agentreadme-pass1 |
 | short 2 | short 32-42 voice: 'Each job it can do for you is an agent' (Sol REFUTE: 'everything' was false) | side-by-side 3 of 3 prefer new | compare.sh short-pass2 |
 | registry 2 | FirstHour notarized in the registry (Issue #1460 approved, receipt written); agent README links it | - | issue CLOSED notarized; approve run 39128576523 success; live registry.json lists @kody-w/first_hour_agent |
+| 17 | hour Details: when Copilot writes an answer, the Brainstem sends it your message and the memories it needs (resolves the memory question; MESSAGE.md unchanged) | side-by-side 3 of 3 prefer new | compare.sh hour-pass17 |

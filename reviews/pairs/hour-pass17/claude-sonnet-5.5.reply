@@ -1,0 +1,142 @@
+I'll start by reading the rubric, the message, and both versions.
+
+● List repo and file sizes (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la && wc -c RUBRIC.md MESSAGE.md
+  │ reviews/pairs/hour-pass17/X.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-pass17/Y.claude-sonnet-5.5.txt
+  └ 20 lines…
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read Y.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-pass17/Y.claude-sonnet-5.5.txt
+  └ 87 lines read
+
+● Read X.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-pass17/X.claude-sonnet-5.5.txt
+  └ 87 lines read
+
+The two look nearly identical. I'll diff them to isolate the exact differences.
+
+● Diff X and Y versions (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/reviews/pairs/hour-pass17 && ls -la && diff
+  │ X.claude-sonnet-5.5.txt Y.claude-sonnet-5.5.txt; echo "exit: $?"
+  └ 22 lines…
+
+✗ Inspect rapp-installer repo metadata and file tree (shell)
+  │ cd /tmp/rapp-verify && gh api repos/kody-w/rapp-installer --jq
+  │ '{name,default_branch,description,license:.license.spdx_id,pushed_at,private}' 2>&1 | head -20;
+  │ echo ----; gh api "repos/kody-w/rapp-installer/git/trees/HEAD?recursive=1" --jq '.tree[] |
+  │ select(.type=="blob") | .path' 2>&1 | head -150
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+✗ Fetch public installers and view install.sh (shell)
+  │ cd /tmp && rm -rf rapp-verify && mkdir rapp-verify && cd rapp-verify && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh -o install.sh && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.ps1 -o install.ps1 && wc -c install.sh
+  │ install.ps1 && echo ---- && sed -n '1,140p' install.sh
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+Bash was denied for those, so I'll use the web fetch tool to read the public sources.
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem/a…
+  └ Here is the raw content:
+
+● Fetching web content https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem?r…
+  └ Here is the raw content:
+
+Bundled agents include `context_memory_agent.py` and `manage_memory_agent.py`. I'll read both to see how memory reaches the prompt.
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Grep brainstem.py for prompt/memory wiring (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | grep
+  │ -n -E "system_context|memory|def _build_system|def build_system|soul|messages =
+  │ \[|api.githubcopilot|chat/completions" | head -120
+  └ 44 lines…
+
+That worked. Next I'll read the exact request-building code around lines 2260–2310 and 2436–2480.
+
+● Read streaming /chat message-building code (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '2436,2500p'
+  └ 64 lines…
+
+● Read /chat message-building code (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '2255,2330p'
+  └ 76 lines…
+
+● Read the word-check tool (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls tools && echo ---- && sed -n '1,200p'
+  │ tools/words.py
+  └ 71 lines…
+
+`words.py` accepts file paths, so I'll run it on both versions (read-only).
+
+● Run word check on X and Y (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 -B tools/words.py
+  │ reviews/pairs/hour-pass17/X.claude-sonnet-5.5.txt; echo "X exit: $?"; python3 -B tools/words.py
+  │ reviews/pairs/hour-pass17/Y.claude-sonnet-5.5.txt; echo "Y exit: $?"
+  └ 4 lines…
+
+Both pass the word check, so criterion 10 is a tie. Next I'll confirm where memory is stored, since X's sentence interacts with "memory stays in your own folder".
+
+● Read call_copilot outbound request code (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '1860,1935p'
+  └ 75 lines…
+
+● Verify where memory is stored locally (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/local_storage.py |
+  │ sed -n '1,80p'; echo ======; curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | grep
+  │ -n -E "azure_file_storage|brainstem_data|BRAINSTEM_DATA|_STORAGE_DIR|DATA_DIR" | head -30
+  └ 85 lines…
+
+● Read compare script and review prompt (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && sed -n '1,120p' tools/compare.sh; echo;
+  │ echo ======REVIEW-PROMPT======; sed -n '1,80p' tools/REVIEW-PROMPT.md
+  └ 50 lines…
+
+● Check default-on status and filtering of memory injection (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | grep
+  │ -n -i -E "disabled_agents|disable_agent|context_memory|ContextMemory|enabled_agents|agent_enable
+  │ d|relevan" | head -40; echo =====; curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-inst
+  │ aller/main/rapp_brainstem/agents/basic_agent.py
+  └ 39 lines…
+
+{"better": "X", "margin": "slight", "why": "X alone says in plain words, inside Details, that Copilot gets your message and your saved memories (brainstem.py attaches up to your 50 most recent memories to every request), which honestly qualifies 'its memory stays on your computer', while Y leaves that data flow unstated; X's 'the memories it needs' is only slightly looser than the code's recent-50 behavior."}
+
+
+
+Changes    +0 -0
+AI Credits 80.99 (5m 23s)
+Tokens     ↑ 1.1m (981.1k cached, 121.4k written) • ↓ 40.8k (36.9k reasoning)
+Resume     copilot --resume=d77e2b26-4a25-45dd-a536-ec13c1bb41ae
