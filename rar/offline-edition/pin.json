@@ -1,0 +1,8 @@
+{
+  "repo": "https://github.com/kody-w/rapp-installer",
+  "commit": "0e43ee580e78c150b1c59002456822d2e779388e",
+  "version": "0.6.16",
+  "file": "rapp_brainstem/brainstem.py",
+  "blob": "3f7102ff508c813bb6494511fc32a421a633e418",
+  "addons": ["local-model/local_model.py"]
+}
