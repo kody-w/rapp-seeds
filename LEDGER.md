@@ -21,6 +21,7 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 - **The 60-second short needs real filming** on a personal machine with a personal Copilot sign-in. This Mac's Brainstem is the work one, so it was not used.
 - **Unverified with a live model:** that Copilot chooses to save a memory when asked (the restart proof uses a scripted model), and that a free Copilot plan works with the Brainstem.
 - **Approve FirstHour in the registry:** https://github.com/kody-w/RAR/issues/1460 is validated and waiting for your approval. I first pushed it straight to the registry's main branch, which skips that review; I reverted it within minutes (main is byte-identical to before for those paths), and CI shows two red "Verify changed agent receipts" runs from the push and the revert. Nothing else changed.
+- **Message-level questions from the REFUTE pass (yours, not mine to change).** (1) Memories are stored in your folder, but the Brainstem sends them to Copilot with each message. "Its memory stays in your own folder" is true about storage; a reader may hear "never leaves". (2) One file can hold several agents, so "one agent is one file" is true one way, not the other. (3) "Your AI, as files you own": the model itself is Copilot, not a file. The hour page already says Copilot writes the answers over the internet. I left MESSAGE.md unchanged.
 - The session moved from Fable 5.1 to Opus 5.5 at about 22:15 ET; commits after that carry the Opus attribution.
 
 | Pass | Change | Score before -> after | Verification |
@@ -71,3 +72,5 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | badge 0 | baseline badge | median 66 (66, 78, 64) | panel |
 | badge 1 | badge lines carry all three promise names and 'click OK'; same.py now checks them | side-by-side 3 of 3 prefer new | compare.sh badge-pass1 |
 | 16 | hour step 2: if it does not save it, say 'remember that, it matters to me' (the Brainstem's own tour gives the same advice, index.html 4253-4264) | side-by-side 2 of 3 prefer new (Gemini: reads as defensive) | compare.sh hour-pass16; found by Sol REFUTE pass |
+| paste 5 | the panel lists agent files, one Export per file (Sol REFUTE: one file can hold several agents) | side-by-side 3 of 3 prefer new | compare.sh paste-pass5 |
+| agent readme 1 | 'the six steps are in plain words, the rest is the short program around them' instead of 'read it' | side-by-side 3 of 3 prefer new | compare.sh agentreadme-pass1 |

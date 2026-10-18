@@ -27,7 +27,7 @@ Facts you need:
 - Its folder: ~/.brainstem/src/rapp_brainstem (Windows: $HOME\.brainstem\src\rapp_brainstem).
   The page that tells it how to behave is soul.md there. Agents are in agents/.
 - In the Brainstem window, the circled plus at the top right ("Manage installed agents")
-  lists every agent, with an Export button for each. Export downloads the agent as a .py file.
+  lists the agent files, with an Export button for each file. Export downloads the agent as a .py file.
   Dragging a .py file onto the window asks to confirm, then adds it as an agent (it renames it to
   end in _agent.py itself). If the file has an error, it says the agent did not load.
 

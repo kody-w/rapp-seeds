@@ -1,0 +1,23 @@
+{
+ "tag": "paste-pass5",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "slight: Y is more precisely true because the panel lists agent files and exports one .py file per entry, while remaining clear to a first-time reader."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: X is slightly more accurate to the actual Brainstem UI in `index.html`, where the Installed Agents panel iterates over `data.files` (each entry being an `.py` file with its filename and one Export button per file) rather than individual agent classes."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The seeds differ only in one line, and X's \"lists the agent files, with an Export button for each file\" matches the public brainstem code exactly (the panel is built from `/agents` file entries, with one Export per file), whereas Y's slightly shorter \"every agent \u2026 each\" is looser, since one file can hold several agents and broken files are listed too."
+  ]
+ ]
+}
