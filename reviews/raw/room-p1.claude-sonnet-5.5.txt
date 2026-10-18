@@ -193,3 +193,103 @@ Writing to /tmp was denied; I'll stream the scripts straight into grep instead.
   │ curl -fsSL --max-time 40 https://kody-w.github.io/RAR/submit.html | sed -n '360,400p'
   └ 40 lines…
 
+● Read UI agents panel and welcome text (shell)
+  │ curl -fsSL --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1100,1130p;1205,1225p'
+  └ 51 lines…
+
+● Verify licenses and where memory is stored (shell)
+  │ for r in rapp-installer rapp-1 RAR rapp-seeds; do printf '%s: ' "$r"; gh api
+  │ repos/kody-w/$r/license --jq '.license.spdx_id // "none"' 2>&1 | head -1; done; echo ----;
+  │ curl -fsSL --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/local_storage.py |
+  │ grep -n -i -E 'brainstem_data|DATA_DIR|memory' | head -12; echo ----; curl -fsSL --max-time …
+  └ 37 lines…
+
+● Check QR decode tooling and SVG structure (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 -c "
+  │ import importlib
+  │ for m in ['cv2','numpy','PIL','pyzbar','qrcode','segno','cairosvg']:
+  │ try:
+  │ importlib.import_module(m); print(m,'yes')…
+  └ 24 lines…
+
+Let me verify the card's QR actually encodes the page URL the seed points people to (decoding the SVG path in-memory, no files written).
+
+● Decode card QR by regenerating candidates (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'PY'
+  │ import re, qrcode
+  │ svg = open('seeds/card/card.svg').read()
+  │ d = re.search(r'<path stroke="#1c1f23" d="([^"]+)"', svg).group(1)
+  │ toks = re.findall(r'([MmHh])\s*(-?\d+(?:\.\d+)?)(?:[ ,]+(-?\d+(?:\.\d+)?))?', d)…
+  └ 33 lines…
+
+● Decode the card QR payload in-memory (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'PY'
+  │ import re, qrcode
+  │ from qrcode.main import QRCode
+  │ svg = open('seeds/card/card.svg').read()
+  │ d = re.search(r'<path stroke="#1c1f23" d="([^"]+)"', svg).group(1)…
+  └ 62 lines…
+
+The card's QR decodes to the right page. Now I'll run my proposed fix text through the repo's own word rules (in memory, no files) so the suggested replacement doesn't introduce hits.
+
+● Check proposed fix text against word rules (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'PY'
+  │ import re, sys
+  │ sys.path.insert(0, 'tools')
+  │ import words
+  │ fix = """For anyone leading a team, a class or a meetup. **Do one thing:** put …
+  └ 14 lines…
+
+● See what differs between local and live hour page (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager diff --stat --
+  │ seeds/hour/index.html | tail -3; git --no-pager diff -- seeds/hour/index.html | head -40
+  └ 15 lines…
+
+● Check live hour page matches the room flow (shell)
+  │ curl -fsSL --max-time 30 https://kody-w.github.io/rapp-seeds/seeds/hour/ | sed -e
+  │ 's/<style[^>]*>.*<\/style>//g' -e 's/<script[^>]*>.*<\/script>//g' | sed 's/<[^>]*>/ /g' | tr -s
+  │ ' \n' | grep -i -E 'Terminal|install|paste|agents|Export|_agent|registry|memory|hour' | head -20
+  └ 20 lines…
+
+Let me confirm I left the working tree exactly as I found it (read-only review).
+
+✗ Verify no stray files from the review (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager status --short; ls
+  │ /tmp/roomreview 2>&1 | head -2
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Verify working tree unchanged by review (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager status --short
+  └ 5 lines…
+
+The tree shows changes I didn't make (another process is active in this repo). I'll re-read the seed to make sure I'm scoring its current text.
+
+● Re-check seed's current content and diff (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la --time-style=full-iso
+  │ seeds/room/README.md 2>/dev/null || ls -la seeds/room/README.md; echo ----; git --no-pager diff
+  │ --stat; echo ----; cat seeds/room/README.md | md5; git --no-pager diff -- seeds/room/README.md |
+  │ head -60
+  └ 25 lines…
+
+● Validate final JSON and score sum (shell)
+  │ python3 - <<'PY'
+  │ import json
+  │ s = r'''{"seed": "seeds/room/README.md", "scores":
+  │ {"1":8,"2":5,"3":5,"4":5,"5":4,"6":7,"7":6,"8":7,"9":5,"10":9}, "total": 61, "weakest": "Line
+  │ 5 (One action): the page never names a single next step and has no 'Details' fold, so three …
+  └ 17 lines…
+
+{"seed": "seeds/room/README.md", "scores": {"1":8,"2":5,"3":5,"4":5,"5":4,"6":7,"7":6,"8":7,"9":5,"10":9}, "total": 61, "weakest": "Line 5 (One action): the page never names a single next step and has no 'Details' fold, so three prep tasks, a seven-row table, four fixes and a follow-up ask all sit in the main flow with machinery such as _agent.py and 'export the memory agent' inline.", "fix": "Lead with one action and fold the rest. Replace the two opening lines ('For anyone teaching the Brainstem' through 'one agent they made.') with: 'For anyone leading a team, a class or a meetup. **Your one task:** run the table below. Put https://kody-w.github.io/rapp-seeds/ on the screen, say each quote, and let everyone do the action beside it. The Brainstem is the small program on your computer that runs your AI. An agent is one file that does one job.' Then wrap 'When something goes wrong' and 'After' in <details markdown=\"1\"><summary>Details</summary> ... </details>, delete the promise 'The best agents from a room become the next room's examples.', and change the _agent.py bullet to 'Their agent does not appear: read the pop-up message, it names the problem. The file must end in .py.' (the Brainstem renames any .py file to _agent.py itself, so today's stated cause is wrong)."}
+
+
+
+Changes    +0 -0
+AI Credits 132.54 (9m 0s)
+Tokens     ↑ 2.5m (2.4m cached, 140.6k written) • ↓ 73.7k (62.3k reasoning)
+Resume     copilot --resume=62013b34-bac1-4a97-bcc1-ec502d223df3

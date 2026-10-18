@@ -3,7 +3,11 @@
 For anyone teaching the Brainstem to a group: a team, a class, a meetup. One hour, no slides required.
 Everyone leaves with their own Brainstem and one agent they made.
 
-**The message, said first and last:** Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone.
+**The message, said first and last:** Your AI, as files you own.
+
+1. **Learn it in an hour.** It thinks the way you do, so you can see how it works.
+2. **Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder.
+3. **Hand it to anyone.** It is just files. One agent is one file.
 
 ## Before the room
 

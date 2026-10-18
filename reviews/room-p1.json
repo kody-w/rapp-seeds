@@ -1,0 +1,51 @@
+{
+ "seed": "seeds/room/README.md",
+ "tag": "room-p1",
+ "reviews": [
+  {
+   "seed": "seeds/room/README.md",
+   "scores": {
+    "1": 10,
+    "2": 5,
+    "3": 9,
+    "4": 4,
+    "5": 3,
+    "6": 8,
+    "7": 4,
+    "8": 8,
+    "9": 7,
+    "10": 10
+   },
+   "total": 68,
+   "weakest": "5: The page exposes prerequisites, a six-step technical runbook, troubleshooting, and registry publishing instead of giving the reader one clear next action with the machinery hidden under Details.",
+   "fix": "Replace `## Before the room` with `## Start\n\nOpen https://kody-w.github.io/rapp-seeds/ on the shared screen and ask everyone to follow it.\n\n<details>\n<summary>Details for facilitators</summary>\n\n## Before the room`, then append `</details>` after the final sentence, so the only visible action is opening the one-hour page.",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/room/README.md",
+   "scores": {
+    "1": 10,
+    "2": 8,
+    "3": 9,
+    "4": 8,
+    "5": 6,
+    "6": 8,
+    "7": 9,
+    "8": 9,
+    "9": 8,
+    "10": 10
+   },
+   "total": 85,
+   "weakest": "Line 5 (One action): technical troubleshooting and file-extension rules (`_agent.py`) sit in the main body with no `<details>` block, while the actual install commands needed to run the room are missing.",
+   "fix": "Move `## When something goes wrong` (including `_agent.py`) and the exact Mac/Linux and Windows install commands from MESSAGE.md into a `<details><summary>Details</summary>...</details>` block at the bottom, and end the 58-60 Close quote with `\"Tomorrow it is still there, remembering. AI should have been like this all along. Your AI, as files you own.\"` so the promise of `'The message, said first and last'` is literally true.",
+   "model": "gemini-4-argon"
+  },
+  {
+   "model": "claude-sonnet-5.5",
+   "error": "no JSON in reply"
+  }
+ ],
+ "median": 76.5,
+ "min": 68,
+ "n": 2
+}

@@ -1,0 +1,23 @@
+{
+ "tag": "room-pass1",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X includes the line and all three promises verbatim as the rubric requires, while Y reduces the promises to headings and omits their essential supporting words."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: Y includes the full text of all three promises from MESSAGE.md verbatim as required by Criterion 1 ('Same message'), whereas X strips out the explanatory sentences of each promise."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The files differ only in the message block, and X carries the line and all three promises verbatim from MESSAGE.md, with support that checks out against the installers and source (Mac/Windows/Linux installers, local .brainstem_data memory, one *_agent.py per agent), while Y compresses them into bare slogans that drop the promise sentences in exchange for brevity."
+  ]
+ ]
+}

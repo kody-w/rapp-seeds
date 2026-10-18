@@ -1,0 +1,215 @@
+● skill(adversarial-review)
+
+I’m grounding the score in the repository’s exact rubric and message contract before checking the seed’s linked claims.
+
+● Read README.md
+  │ seeds/room/README.md
+  └ 40 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+The seed’s truth score depends on whether the public landing page, pocket card, and registry actually support the workshop flow it describes, so I’m testing those references directly.
+
+● Read README.md
+  │ seeds/card/README.md
+  └ 8 lines read
+
+/ Search (glob)
+  │ "tools/*"
+  └ 4 files found
+
+/ Search (glob)
+  │ "seeds/room/**"
+  └ 1 file found
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/ · url: "https://kody-w.github.io/rapp-s…
+  └ Contents of https://kody-w.github.io/rapp-seeds/:
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+The landing page is only a doorway, so I’m following it into the actual one-hour experience and checking the installer/word gate rather than crediting the workshop outline at face value.
+
+✗ Read README.md
+  │ seeds/hour/README.md
+  └ Path does not exist
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Read REVIEW-PROMPT.md
+  │ tools/REVIEW-PROMPT.md
+  └ 12 lines read
+
+/ Search (glob)
+  │ "seeds/card/*"
+  └ 3 files found
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/seeds/hour/ · url: "https://kody-w.githu…
+  └ Contents of https://kody-w.github.io/rapp-seeds/seeds/hour/:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+The published installer documentation already conflicts on the Windows URL, so I’m checking the live scripts and UI source for the exact panel/export/drag behaviors before assigning line 4.
+
+● Read card.svg
+  │ seeds/card/card.svg
+  └ 15 lines read
+
+/ Search (glob)
+  │ "**/*hour*"
+  └ 34 files found
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.ps1 · u…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Run word gate on room seed (shell)
+  │ python3 tools/words.py seeds/room/README.md
+  └ 1 line…
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Find memory agent references (shell)
+  │ gh search code '"memory agent"' --repo kody-w/rapp-installer --limit 20 --json path,url --jq
+  │ '.[] | [.path,.url] | @tsv'
+  └ No Content
+
+● Find agents panel implementation (shell)
+  │ gh search code '"Manage installed agents"' --repo kody-w/rapp-installer --limit 20 --json
+  │ path,url --jq '.[] | [.path,.url] | @tsv'
+  └ 1 line…
+
+● Find drag import implementation (shell)
+  │ gh search code 'drag' --repo kody-w/rapp-installer --limit 30 --json path,url --jq '.[] |
+  │ [.path,.url] | @tsv'
+  └ 6 lines…
+
+The remaining uncertainty is whether the advertised workshop actions are actually implemented and whether “share in the registry” is a realistic closing step; I’m resolving those specific points from public source.
+
+/ Search (grep)
+  │ "seeds/hour|rapp-seeds" in *.{md,html,svg,py,json}
+  └ 45 lines found
+
+● Check QR decoding support (shell)
+  │ python3 - <<'PY'
+  │ try:
+  │ import cv2
+  │ print('cv2=yes')
+  │ except Exception as e:…
+  └ 3 lines…
+
+● Inspect agent UI behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | rg -n -C 5 'Manage installed agents|Export|drag|drop|memory
+  │ agent|import' | head -220
+  └ 1 line…
+
+● Inspect agent backend behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | rg -n -C 5 'export|upload|drop|agents|memory|install' | head
+  │ -260
+  └ 1 line…
+
+● Inspect registry submission requirements (shell)
+  │ gh api repos/kody-w/RAR/contents/rapp_sdk.py -H 'Accept: application/vnd.github.raw+json' | rg
+  │ -n -C 4 '__manifest__|def cmd_submit|submit' | head -220
+  └ 1 line…
+
+● Inspect installer restart behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/install.sh -H 'Accept:
+  │ application/vnd.github.raw+json' | rg -n -C 6 'start|browser|Already up to
+  │ date|brainstem|memory|data' | tail -220
+  └ 1 line…
+
+● List bundled Brainstem agents (shell)
+  │ gh api repos/kody-w/rapp-installer/git/trees/main?recursive=1 --jq '.tree[] | select(.path |
+  │ startswith("rapp_brainstem/agents/")) | .path' | head -100
+  └ 6 lines…
+
+I found the repository’s live hour page and am now matching its promised UI actions against the current Brainstem source, plus checking whether registry submission is truly a simple participant follow-up.
+
+/ Search (glob)
+  │ "**/*room*" in reviews
+  └ 7 files found
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● Inspect memory agent source (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py -H
+  │ 'Accept: application/vnd.github.raw+json' | head -220
+  └ 91 lines…
+
+● Check Brainstem repository license (shell)
+  │ gh api repos/kody-w/rapp-installer/license --jq '.license.spdx_id // "none"' 2>/dev/null || echo
+  │ none
+  └ 1 line…
+
+● Inspect installer launch behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/install.sh -H 'Accept:
+  │ application/vnd.github.raw+json' | tail -180
+  └ 180 lines…
+
+● Inspect registry submission requirements (shell)
+  │ gh api repos/kody-w/RAR/contents/rapp_sdk.py -H 'Accept: application/vnd.github.raw+json' | grep
+  │ -n -E -C 5 '__manifest__|def cmd_submit|submit' | head -260
+  └ 237 lines…
+
+● Inspect agent UI behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -E -C 5 'Manage installed
+  │ agents|Export|drag|drop|memory agent|import' | head -220
+  └ 220 lines…
+
+● Inspect agent backend behavior (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -E -C 5 'export|upload|agents|memory|install' | head
+  │ -280
+  └ 280 lines…
+
+The critical truth gap is now concrete: the workshop’s model agent has no registry manifest, while RAR rejects files without one. I’m checking the local import constraints to distinguish a workable room exercise from an overpromised one.
+
+● Fetching web content https://kody-w.github.io/RAR/ · url: "https://kody-w.github.io/RAR/", max_le…
+  └ Contents of https://kody-w.github.io/RAR/:
+
+● Inspect agent filename loading rules (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -E -A 35 -B 12
+  │ 'glob.*agent|endswith.*_agent|_agent.py' | head -220
+  └ 176 lines…
+
+● Inspect UI behavior tests (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/tests/test_polish.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -E -C 4 'agent|drop|export|memory|persist' | head
+  │ -260
+  └ 243 lines…
+
+● Inspect agent import endpoint (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -A 140 -B 12 "agents/import" | head -190
+  └ 153 lines…
+
+● Inspect agent export endpoint (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -n -A 80 -B 12 "agents/export" | head -130
+  └ 93 lines…
+
+{"seed":"seeds/room/README.md","scores":{"1":10,"2":5,"3":9,"4":4,"5":3,"6":8,"7":4,"8":8,"9":7,"10":10},"total":68,"weakest":"5: The page exposes prerequisites, a six-step technical runbook, troubleshooting, and registry publishing instead of giving the reader one clear next action with the machinery hidden under Details.","fix":"Replace `## Before the room` with `## Start\n\nOpen https://kody-w.github.io/rapp-seeds/ on the shared screen and ask everyone to follow it.\n\n<details>\n<summary>Details for facilitators</summary>\n\n## Before the room`, then append `</details>` after the final sentence, so the only visible action is opening the one-hour page."}
+
+
+
+Changes    +0 -0
+AI Credits 65.07 (11m 1s)
+Tokens     ↑ 400.5k (329.7k cached) • ↓ 11.8k (8.9k reasoning)
+Resume     copilot --resume=dbe5ced7-8c25-431b-af29-c66b535a2372
