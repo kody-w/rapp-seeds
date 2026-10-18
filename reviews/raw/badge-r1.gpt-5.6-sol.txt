@@ -1,0 +1,42 @@
+● skill(adversarial-review)
+
+I’m scoring against the repository’s exact rubric and message contract, then I’ll verify the seed’s linked claims.
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read README.md
+  │ seeds/badge/README.md
+  └ 17 lines read
+
+The seed’s decisive claim is the drag-and-ready behavior; I’m checking the live landing page, rendered badge, and repository word gate rather than trusting the README copy.
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/ · url: "https://kody-w.github.io/rapp-s…
+  └ Contents of https://kody-w.github.io/rapp-seeds/:
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/seeds/badge/badge.svg · url: "https://ko…
+  └ Here is the raw content:
+
+● Run forbidden-word check for badge seed (shell)
+  │ python3 tools/words.py seeds/badge/README.md
+  └ 1 line…
+
+The linked landing page does not substantiate the operational claim itself, so I’m following its only public path once to see whether the promised one-hour flow or drag behavior is actually documented.
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/seeds/hour/ · url: "https://kody-w.githu…
+  └ Contents of https://kody-w.github.io/rapp-seeds/seeds/hour/:
+
+● Fetching web content https://github.com/kody-w/rapp-seeds/tree/main/seeds/badge · url: "https://g…
+  └ Contents of https://github.com/kody-w/rapp-seeds/tree/main/seeds/badge:
+
+{"seed":"seeds/badge/README.md","scores":{"1":3,"2":6,"3":7,"4":5,"5":6,"6":8,"7":7,"8":9,"9":5,"10":10},"total":66,"weakest":"Line 1: It includes the line and only one promise headline, omitting the exact run-anywhere and hand-it-to-anyone promises.","fix":"Replace both copies of the prose beneath the badge with: \"Your AI, as files you own.\\n\\n**Learn it in an hour.** It thinks the way you do, so you can see how it works.\\n**Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder.\\n**Hand it to anyone.** It is just files. One agent is one file.\\n\\n[Start your first hour.](https://kody-w.github.io/rapp-seeds/seeds/hour/)\""}
+
+
+
+Changes    +0 -0
+AI Credits 23.18 (1m 19s)
+Tokens     ↑ 118.3k (99.3k cached) • ↓ 5.8k (5.1k reasoning)
+Resume     copilot --resume=5223a4da-bd4a-434c-9287-9ece0f00aae3

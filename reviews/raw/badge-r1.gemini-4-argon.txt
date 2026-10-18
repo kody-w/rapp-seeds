@@ -1,0 +1,32 @@
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read README.md
+  │ seeds/badge/README.md
+  └ 17 lines read
+
+● Read badge.svg
+  │ seeds/badge/badge.svg
+  └ 8 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Check words.py and verify public URLs (shell)
+  │ python3 tools/words.py seeds/badge/README.md && curl -sI
+  │ https://kody-w.github.io/rapp-seeds/seeds/badge/badge.svg | head -n 5 && curl -sI
+  │ https://kody-w.github.io/rapp-seeds/ | head -n 5
+  └ 11 lines…
+
+{"seed": "seeds/badge/README.md", "scores": {"1": 5, "2": 7, "3": 7, "4": 9, "5": 7, "6": 8, "7": 10, "8": 9, "9": 6, "10": 10}, "total": 78, "weakest": "Line 1: The seed includes the main line and 'Learn it in an hour.' but omits the other two required promises ('Run it on any computer.' and 'Hand it to anyone.') and changes 'One agent is one file.' to 'This agent is one file.'", "fix": "Include all three verbatim promises from MESSAGE.md in both the snippet and preview by replacing the two lines under the badge with: 'One agent is one file. Drag it onto your Brainstem window and it is ready on your next message.\\nYour AI, as files you own. [Learn it in an hour.](https://kody-w.github.io/rapp-seeds/) Run it on any computer. Hand it to anyone.'"}
+
+
+
+Changes    +0 -0
+AI Credits 30.49 (41s)
+Tokens     ↑ 397.4k (260.7k cached) • ↓ 542 (1.7k reasoning)
+Resume     copilot --resume=e115320e-73b4-4e5c-8de0-4a87139a29d8

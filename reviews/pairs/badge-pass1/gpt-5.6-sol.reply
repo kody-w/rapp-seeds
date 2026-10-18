@@ -1,0 +1,327 @@
+● skill(adversarial-review)
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read X.gpt-5.6-sol.txt
+  │ reviews/pairs/badge-pass1/X.gpt-5.6-sol.txt
+  └ 17 lines read
+
+● Read Y.gpt-5.6-sol.txt
+  │ reviews/pairs/badge-pass1/Y.gpt-5.6-sol.txt
+  └ 17 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● List relevant public installer source files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -Ei
+  │ 'rapp_brainstem|html|js|frontend|static|template|upload|drag' | head -200
+  └ 47 lines…
+
+● Inspect public drag-and-drop behavior (shell)
+  │ tmp=$(mktemp) && gh api
+  │ 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' -H 'Accept:
+  │ application/vnd.github.raw+json' > "$tmp" && rg -n -i -C 4 'drag|drop|click
+  │ ok|confirm|upload|agent file|\.py' "$tmp" | head -240 && rm -f "$tmp"
+  └ 1 line…
+
+✗ Inspect public drag-and-drop behavior (shell)
+  │ tmp=$(mktemp) && gh api
+  │ 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' -H 'Accept:
+  │ application/vnd.github.raw+json' > "$tmp" && grep -Ein -C 4 'drag|drop|click
+  │ OK|confirm|upload|agent file|\.py' "$tmp" | head -240; status=${PIPESTATUS[0]}; rm -f "$tmp";
+  │ exit "$status"
+  └ 739-  .rar-group-chip:hover .rar-group-count { color: #8b949e; }
+    740-  .rar-group-chip.active .rar-group-count { color: rgba(255,255,255,0.7); }
+    741-  .rar-group:not(:empty) { margin-top: 8px; }
+    742-
+    743:  /* ── Drag & Drop Overlay ── */
+    744:  #drop-overlay {
+    745-    display: none; position: fixed; inset: 0;
+    746-    background: rgba(35,134,54,0.9); z-index: 200;
+    747-    align-items: center; justify-content: center; flex-direction: column;
+    748-    color: #fff; font-size: 24px; font-weight: 600;
+    749-    border: 6px dashed rgba(255,255,255,0.5); border-radius: 16px; margin: 16px;
+    750-    pointer-events: none;
+    751-  }
+    752:  #drop-overlay .icon { width: 64px; height: 64px; margin-bottom: 16px; }
+    753-
+    754-  /* ── Starter Prompts ── */
+    755-  #starter-prompts {
+    756-    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    --
+    1024-  <button id="copilot-retry-btn" onclick="retryCopilot()" style="margin-left:10px;backgroun
+    d:#f2cc60;color:#3d2c00;border:none;border-radius:5px;padding:4px
+    12px;font-size:13px;font-weight:600;cursor:pointer">Retry</button>
+    1025-  <a href="https://github.com/github-copilot/signup" target="_blank"
+    style="color:#f2cc60;margin-left:10px;text-decoration:underline">Enable Copilot &rarr;</a>
+    1026-</div>
+    1027-
+    1028:<div id="drop-overlay">
+    1029-  <span class="icon"><svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4
+    9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5
+    0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg></span>
+    1030:  Drop .py agent file to install
+    1031-</div>
+    1032-
+    1033-<div id="login-overlay" style="display:none" role="dialog" aria-modal="true"
+    aria-labelledby="login-title">
+    1034-  <div class="login-card">
+    --
+    1122-        <ul class="agent-list" id="agent-list-ul">
+    1123-          <!-- Populated by JS -->
+    1124-        </ul>
+    1125-        <div style="font-size:10px; color:#8b949e; margin-top:12px; text-align:center;">
+    1126:          Drag & drop agent.py files anywhere to install new agents
+    1127-        </div>
+    1128-      </div>
+    1129-    </div>
+    1130-
+    --
+    1201-  </div>
+    1202-</header>
+    1203-
+    1204-<div id="chat" role="log" aria-live="polite" aria-relevant="additions text">
+    1205:  <!-- Subtle Drop Watermark -->
+    1206-  <div id="chat-watermark">
+    1207:    Drag & Drop .py Agents Here
+    1208-    <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64
+    5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5
+    0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+    1209-  </div>
+    1210-
+    1211-  <div class="msg system">
+    --
+    1214-      <p>I am your local assistant powered by Copilot. Here is a quick tour to get you
+    started:</p>
+    1215-      <ul>
+    1216-        <li><strong>Chat</strong>: Just ask me questions below to start building and
+    researching!</li>
+    1217-        <li><strong>Agents Panel</strong>: Click the <svg class="iconify"
+    style="vertical-align: middle; width: 1.25em; height: 1.25em;" viewBox="0 0 24 24"
+    fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12
+    2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8
+    8zm-1-13h2v4h4v2h-4v4h-2v-4H7v-2h4z"/></svg> icon (top right) to view or remove installed
+    tools.</li>
+    1218:        <li><strong>Add Agents</strong>: Drag and drop any <code>agent.py</code> file
+    directly onto this window to instantly teach me new things.</li>
+    1219-      </ul>
+    1220-      <p><em>Click one of the prompts below to get started!</em></p>
+    1221-      <p class="tour-invite-wrap"><button class="starter-btn tour-invite"
+    onclick="startTour()">New here? Take the 5-minute guided tour</button><button
+    class="tour-invite-hide" onclick="hideTourInvite()" title="Hide this — you can still find the
+    Training Quest in the toolbar"><svg viewBox="0 0 16 16"
+    style="width:10px;height:10px;fill:currentColor"><path d="M3.72 3.72a.75.75 0 011.06 0L8
+    6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22
+    3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/></svg></button></p>
+    1222-    </div>
+    --
+    1648-        dot.className = 'dot';
+    1649-        statusText.textContent = 'connected';
+    1650-        statusText.style.cursor = 'pointer';
+    1651-        statusText.title = 'Click to switch account';
+    1652:        statusText.onclick = () => { if (confirm('Switch GitHub account?'))
+    switchAccount(); };
+    1653-        hideLoginOverlay();
+    1654-        safeSet('brainstem_auth', 'true');
+    1655-        loginInProgress = false;
+    1656-        clog('health.ok', { copilot: d.copilot, model: d.model });
+    --
+    1696-  }
+    1697-  checkHealth();
+    1698-  healthInterval = setInterval(checkHealth, 5000);
+    1699-
+    1700:  // ── Drag & Drop Agents ──
+    1701:  const dropOverlay = document.getElementById('drop-overlay');
+    1702-
+    1703:  window.addEventListener('dragover', (e) => {
+    1704-    e.preventDefault();
+    1705-    if (e.dataTransfer && e.dataTransfer.types.includes('Files')) {
+    1706:      dropOverlay.style.display = 'flex';
+    1707-    }
+    1708-  });
+    1709-
+    1710:  window.addEventListener('dragleave', (e) => {
+    1711-    e.preventDefault();
+    1712:    // dragleave fires for every element the pointer crosses, and the overlay has
+    1713:    // pointer-events:none so it's never e.target. Hide only when the drag actually
+    1714:    // leaves the window, otherwise the overlay sticks forever after a non-drop.
+    1715-    if (e.relatedTarget === null ||
+    1716-        e.clientX <= 0 || e.clientY <= 0 ||
+    1717-        e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+    1718:      dropOverlay.style.display = 'none';
+    1719-    }
+    1720-  });
+    1721-
+    1722:  window.addEventListener('drop', async (e) => {
+    1723-    e.preventDefault();
+    1724:    dropOverlay.style.display = 'none';
+    1725-    const files = e.dataTransfer.files;
+    1726-    if (!files || files.length === 0) return;
+    1727-
+    1728-    for (const file of files) {
+    1729:      if (!file.name.endsWith('.py')) {
+    1730:        alert('Only .py agent files are supported.');
+    1731-        continue;
+    1732-      }
+    1733:      if (!confirm(`Install ${file.name}? This executes Python code on your machine.`)) {
+    1734-        continue;
+    1735-      }
+    1736-      const formData = new FormData();
+    1737-      formData.append('file', file);
+    --
+    1765-  if (safeGet('rapp_theme') === 'light') {
+    1766-    document.body.classList.add('light-mode');
+    1767-  }
+    1768-
+    1769:  // ── Agents Panel (installed *_agent.py files) ──
+    1770-  function toggleAgentsPanel() {
+    1771-    const p = document.getElementById('agents-panel');
+    1772-    const open = p.classList.toggle('open');
+    1773-    if (open) loadAgentsList();
+    --
+    1810-        ul.innerHTML = '<li><span class="agent-name" style="color:#8b949e">No agents
+    found.</span></li>';
+    1811-        return;
+    1812-      }
+    1813-      for (const item of data.files) {
+    1814:        // basic_agent.py is the shared base class, not a usable agent — never list it.
+    1815:        if (item.filename === 'basic_agent.py') continue;
+    1816-
+    1817-        const li = document.createElement('li');
+    1818-        const nameWrap = document.createElement('div');
+    1819-        nameWrap.className = 'agent-name';
+    --
+    1848-        delBtn.className = 'export-btn del-btn';
+    1849-        delBtn.style.color = '#f85149';
+    1850-        delBtn.textContent = 'Delete';
+    1851-        delBtn.onclick = async () => {
+    1852:          if (confirm(`Are you sure you want to remove ${item.filename}?`)) {
+    1853-            try {
+    1854-              const r = await fetch(`${API}/agents/${encodeURIComponent(item.filename)}`, {
+    method: 'DELETE' });
+    1855-              if (r.ok) {
+    1856-                loadAgentsList();
+    --
+    1877-  }
+    1878-
+    1879-  // ── RAR Registry Browser ──
+    1880-  // Search a public catalog of agents and hot-load any of them into this
+    1881:  // brainstem by fetching the raw .py and POSTing it to /agents/import.
+    1882-  const RAR_REVISION = '241c6191736a856b6837ef2398447a25710b8d72';
+    1883-  const RAR_BASE = `https://raw.githubusercontent.com/kody-w/RAR/${RAR_REVISION}`;
+    1884-  // Same static files via the jsdelivr CDN mirror — used only when raw
+    1885-  // rate-limits (HTTP 429) or hiccups. Plain file hosting, no API.
+    --
+    1898-  let rarRegistry = null;     // cached agents array (lazy-loaded on first search)
+    1899-  let rarLoading = null;      // in-flight promise, to dedupe concurrent loads
+    1900-  let rarSearchTimer = null;
+    1901-
+    1902:  // Only standalone *_agent.py files can be hot-loaded. The registry also carries
+    1903:  // stacks/swarms (bundles, no single .py) and stub/card entries (.py.stub, .py.card,
+    1904:  // or scope-prefixed @ filenames) — none of those import cleanly, so drop them here.
+    1905-  function isLoadableAgent(a) {
+    1906-    const base = (a && a._file ? a._file : '').replace(/\\/g, '/').split('/').pop();
+    1907:    return base.endsWith('_agent.py') && base !== 'basic_agent.py' && !base.startsWith('@')
+    1908-      && /^[0-9a-f]{64}$/i.test(a._sha256 || '');
+    1909-  }
+    1910-
+    1911-  async function sha256Hex(bytes) {
+    --
+    2017-      counts[c] = (counts[c] || 0) + 1;
+    2018-    }
+    2019-    return Object.entries(counts).sort((a, b) => b[1] - a[1]);   // biggest first
+    2020-  }
+    2021:  // Drop the bottom-quartile categories — tiny groups make noisy chips and
+    2022-  // aren't useful for browsing a large catalog.
+    2023-  function pickFeaturedGroups(agents) {
+    2024-    const entries = groupCounts(agents);
+    2025-    const vals = entries.map(e => e[1]).slice().sort((x, y) => x - y);
+    --
+    2122-    const path = agent._file;
+    2123-    if (!path) { alert('This registry entry has no file path.'); return; }
+    2124-    const filename = agent._install_filename || path.replace(/\\/g, '/').split('/').pop();
+    2125-    const expectedDigest = (agent._sha256 || '').toLowerCase();
+    2126:    if (!filename.endsWith('_agent.py') || filename.includes('/') ||
+    filename.includes('\\')) {
+    2127-      alert('This registry entry has an invalid install filename.');
+    2128-      return;
+    2129-    }
+    2130-    if (!/^[0-9a-f]{64}$/.test(expectedDigest)) {
+    2131-      alert('This registry entry has no valid SHA-256 digest and cannot be installed.');
+    2132-      return;
+    2133-    }
+    2134:    if (!confirm(`Install ${filename}?\n\nThis executes Python code on your machine. The
+    source is pinned to RAR commit ${RAR_REVISION.slice(0, 12)} and its SHA-256 will be verified
+    before installation.`)) {
+    2135-      return;
+    2136-    }
+    2137-    const orig = btn.textContent;
+    2138-    btn.disabled = true;
+    --
+    2267-  }
+    2268-
+    2269-  // ── Models ──
+    2270-  let modelsLoaded = false;
+    2271:  let currentModel = null;   // last model the server confirmed — the revert target
+    2272-  async function loadModels() {
+    2273-    if (modelsLoaded) return;
+    2274-    try {
+    2275-      const r = await fetch(`${API}/models`);
+    --
+    2308-  }
+    2309-
+    2310-  async function changeModel(modelId) {
+    2311-    const sel = document.getElementById('model-select');
+    2312:    // If the switch fails, snap the dropdown back to the last confirmed model so it
+    2313-    // never displays a selection the server didn't accept.
+    2314-    const revert = () => { if (sel && currentModel) sel.value = currentModel; };
+    2315-    try {
+    2316-      const r = await fetch(`${API}/models/set`, {
+    --
+    2370-    'A','UL','OL','LI','DL','DT','DD',
+    2371-    'H1','H2','H3','H4','H5','H6',
+    2372-    'TABLE','THEAD','TBODY','TFOOT','TR','TH','TD','CAPTION','COLGROUP','COL'
+    2373-  ]);
+    2374:  // Dropped entirely, INCLUDING all descendants — active content, embedding
+    2375-  // vectors, and foreign-content roots (svg/math) whose subtrees can smuggle
+    2376-  // xlink:href=javascript: and other namespaced execution vectors.
+    2377-  const _FORBID_SUBTREE = new Set([
+    2378-    'SCRIPT','STYLE','IFRAME','OBJECT','EMBED','LINK','META','BASE','FORM','BUTTON',
+    --
+    2384-    'TD': ['align'], 'TH': ['align','scope'], 'COL': ['span'], 'COLGROUP': ['span'],
+    2385-    'OL': ['start']
+    2386-  };
+    2387-  // Only same-document-safe schemes survive. Relative/anchor URLs (no scheme)
+    2388:  // are allowed; anything with a disallowed scheme is dropped. HTML entities are
+    2389-  // decoded and control chars/whitespace stripped FIRST, so neither "java\tscript:"
+    2390-  // nor "&#106;avascript:" can smuggle a scheme past the check. (In the sanitizer
+    2391-  // the browser has already decoded attribute entities; this is defense in depth.)
+    2392-  function _safeUrl(url) {
+    --
+    Failed with exit code 141
+
+● Read agent install completion flow (shell)
+  │ tmp=$(mktemp) && gh api
+  │ 'repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html?ref=main' -H 'Accept:
+  │ application/vnd.github.raw+json' > "$tmp" && sed -n '1722,1764p' "$tmp"; rm -f "$tmp"
+  └ 43 lines…
+
+{"better":"Y","margin":"clear","why":"Y includes all three required promises in the mandated wording and accurately reflects the public UI's confirmation step, while X omits two promises and skips a required action."}
+
+
+
+Changes    +0 -0
+AI Credits 25.43 (53s)
+Tokens     ↑ 244.9k (215.0k cached) • ↓ 2.4k (1.6k reasoning)
+Resume     copilot --resume=8a12dc48-3041-4aef-aa49-93534319e89e

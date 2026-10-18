@@ -68,3 +68,5 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | agent 0 | baseline FirstHour | median 72 (72, 85, 65) | panel |
 | agent 1 | FirstHour carries the full message; step 6 ends on the line; same.py now checks it | side-by-side 3 of 3 prefer new | compare.sh agent-pass1; re-imported and called on the pinned Brainstem |
 | registry | FirstHour submitted to the registry the proper way (Issue #1460, validated, pending your approval) after a direct push was reverted | - | issue labels pending-review; live registry.json no longer lists it |
+| badge 0 | baseline badge | median 66 (66, 78, 64) | panel |
+| badge 1 | badge lines carry all three promise names and 'click OK'; same.py now checks them | side-by-side 3 of 3 prefer new | compare.sh badge-pass1 |

@@ -1,0 +1,23 @@
+{
+ "tag": "badge-pass1",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y includes all three required promises in the mandated wording and accurately reflects the public UI's confirmation step, while X omits two promises and skips a required action."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: X includes all three core promises from MESSAGE.md verbatim ('Learn it in an hour.', 'Run it on any computer.', 'Hand it to anyone.') and accurately notes the confirmation step ('click OK') when dropping an agent file onto the Brainstem window, whereas Y omits two of the three required promises."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: X carries the line plus all three promise names verbatim (Y has only 'Learn it in an hour', so it fails the repo's short-seed promise check), and its 'click OK' matches the Brainstem's real install confirmation and the other seeds, while Y's brevity gain doesn't make up for the missing promises and the skipped confirm step."
+  ]
+ ]
+}

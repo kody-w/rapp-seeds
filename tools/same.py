@@ -17,7 +17,7 @@ FULL = ["README.md", "llms.txt", "seeds/hour/index.html", "seeds/paste/README.md
         "seeds/agent/first_hour_agent.py"]
 SHORT = {"seeds/card/card.svg": ["Learn it", "in an hour", "Run it", "on any computer", "Hand it", "to anyone"],
          "seeds/short/script.md": [p for p, _ in PROMISES],
-         "seeds/badge/README.md": []}
+         "seeds/badge/README.md": [p for p, _ in PROMISES]}
 
 
 def plain(path):

@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/badge/README.md",
+ "tag": "badge-r1",
+ "reviews": [
+  {
+   "seed": "seeds/badge/README.md",
+   "scores": {
+    "1": 3,
+    "2": 6,
+    "3": 7,
+    "4": 5,
+    "5": 6,
+    "6": 8,
+    "7": 7,
+    "8": 9,
+    "9": 5,
+    "10": 10
+   },
+   "total": 66,
+   "weakest": "Line 1: It includes the line and only one promise headline, omitting the exact run-anywhere and hand-it-to-anyone promises.",
+   "fix": "Replace both copies of the prose beneath the badge with: \"Your AI, as files you own.\\n\\n**Learn it in an hour.** It thinks the way you do, so you can see how it works.\\n**Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder.\\n**Hand it to anyone.** It is just files. One agent is one file.\\n\\n[Start your first hour.](https://kody-w.github.io/rapp-seeds/seeds/hour/)\"",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/badge/README.md",
+   "scores": {
+    "1": 5,
+    "2": 7,
+    "3": 7,
+    "4": 9,
+    "5": 7,
+    "6": 8,
+    "7": 10,
+    "8": 9,
+    "9": 6,
+    "10": 10
+   },
+   "total": 78,
+   "weakest": "Line 1: The seed includes the main line and 'Learn it in an hour.' but omits the other two required promises ('Run it on any computer.' and 'Hand it to anyone.') and changes 'One agent is one file.' to 'This agent is one file.'",
+   "fix": "Include all three verbatim promises from MESSAGE.md in both the snippet and preview by replacing the two lines under the badge with: 'One agent is one file. Drag it onto your Brainstem window and it is ready on your next message.\\nYour AI, as files you own. [Learn it in an hour.](https://kody-w.github.io/rapp-seeds/) Run it on any computer. Hand it to anyone.'",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/badge/README.md",
+   "scores": {
+    "1": 4,
+    "2": 6,
+    "3": 5,
+    "4": 7,
+    "5": 7,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 5,
+    "10": 9
+   },
+   "total": 64,
+   "weakest": "Line 1: it carries the line but only one of the three promise names ('Learn it in an hour.'); 'Run it on any computer.' and 'Hand it to anyone.' are missing, and tools/same.py gives the badge an empty list (\"seeds/badge/README.md\": []) so nothing catches it.",
+   "fix": "In BOTH the code block and the preview, replace the two prose lines with:\nThis agent is one file. Drag it onto your Brainstem window, click OK, and it is ready on your next message.\nYour AI, as files you own. [Learn it in an hour.](https://kody-w.github.io/rapp-seeds/) Run it on any computer. Hand it to anyone.\nThis drops the unclear 'New to it?', adds the two missing promises, and adds the 'click OK' step. The Brainstem's drop handler asks 'Install X? This executes Python code on your machine.' and the hour page says to click OK, but the badge never mentions it. Then set the badge entry in tools/same.py to [p for p, _ in PROMISES] so the check enforces all three.",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 66,
+ "min": 64,
+ "n": 3
+}

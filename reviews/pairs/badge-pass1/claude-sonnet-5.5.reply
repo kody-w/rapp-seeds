@@ -1,0 +1,135 @@
+I'll start by reading the rubric, message, and both versions.
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read X.claude-sonnet-5.5.txt
+  │ reviews/pairs/badge-pass1/X.claude-sonnet-5.5.txt
+  └ 17 lines read
+
+● Read Y.claude-sonnet-5.5.txt
+  │ reviews/pairs/badge-pass1/Y.claude-sonnet-5.5.txt
+  └ 17 lines read
+
+Now let me check the repo context (word check, other seeds) and verify the drag/OK/next-message claim against the public sources.
+
+✗ Shallow clone rapp-installer for claim checking (shell)
+  │ cd /tmp && rm -rf rapp-installer-check && gh repo clone kody-w/rapp-installer
+  │ rapp-installer-check -- --depth 1 2>&1 | tail -2; ls rapp-installer-check | head -50
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● List repo structure and recent commits (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls && echo ---- && ls tools reviews
+  │ 2>/dev/null | head -50 && echo ---- && git --no-pager log --oneline | head -15
+  └ 56 lines…
+
+● Read the word check and same-message check (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && cat tools/words.py | head -80 && echo
+  │ ---- && cat tools/same.py | head -80
+  └ 105 lines…
+
+● List seeds, badge dir, pairs and earlier badge review (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls seeds seeds/badge reviews/pairs
+  │ reviews/pairs/badge-pass1 2>/dev/null; echo ----; cat reviews/badge-r1.json | head -60
+  └ 112 lines…
+
+Now let me verify the public claims: the install scripts, the repo, the live badge URL, and the drag-onto-window behavior.
+
+✗ Fetch installers and check live badge/site URLs (shell)
+  │ cd /tmp && curl -fsSL https://kody-w.github.io/rapp-installer/install.sh -o
+  │ /tmp/rapp-install.sh -w "install.sh HTTP %{http_code}, %{size_download} bytes\n"; curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.ps1 -o /tmp/rapp-install.ps1 -w "install.ps1
+  │ HTTP %{http_code}, %{size_download} bytes\n"; curl -sI
+  │ https://kody-w.github.io/rapp-seeds/seeds/badge/badge.svg | head -5; echo ----; curl -sI …
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/seeds/badge/badge.svg · url: "https://ko…
+  └ Here is the raw content:
+
+The live badge SVG and installers check out. Now the crux: does the Brainstem UI actually support "drag onto window → click OK → ready on next message"? Let me read the public Brainstem source.
+
+● Grep Brainstem UI source for drop/confirm handlers (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html 2>&1 |
+  │ grep -n -i -E "drop|confirm\(|executes Python|Install .*\?" | head -60
+  └ 56 lines…
+
+The drop handler exists with a `confirm()`. Let me read it fully to check the "OK" and "ready on your next message" parts.
+
+● Read Brainstem drop handler lines 1696-1790 (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html 2>&1 |
+  │ sed -n '1696,1790p'
+  └ 95 lines…
+
+The drop handler confirms drag → native "Install X? This executes Python code…" prompt (OK/Cancel) → import. Now let me verify "ready on your next message" in the server code.
+
+● Find agent import and load logic in brainstem.py (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py >
+  │ /dev/null 2>&1; curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py 2>&1
+  │ | grep -n -E "agents/import|def import_agent|def load_agents|load_agents\(|hot|reload|def …
+  └ 34 lines…
+
+● Read /agents/import route in brainstem.py (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py 2>&1 |
+  │ sed -n '3036,3125p'
+  └ 90 lines…
+
+● Read /chat route loading agents each call (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py 2>&1 |
+  │ sed -n '2246,2280p'
+  └ 35 lines…
+
+/ Search (grep)
+  │ "click OK|ready on your next message|Install .*\? This executes" in
+  │ {README.md,index.html,llms.txt,seeds/**/*.{md,html,py,svg},LEDGER.md}
+  └ 9 lines found
+
+● Run words check and same-message check on X and Y (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && for v in X Y; do echo "== $v: words.py
+  │ =="; python3 tools/words.py reviews/pairs/badge-pass1/$v.claude-sonnet-5.5.txt; done; echo;
+  │ python3 - <<'PY'
+  │ import html, re
+  │ from pathlib import Path…
+  └ 21 lines…
+
+Both pass the word check; Y fails the short-seed promise check (missing two promise names). Let me do a final diff for any subtle differences and confirm the shared link target is live.
+
+● Diff X vs Y, check root page, confirm OS support (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && diff
+  │ reviews/pairs/badge-pass1/X.claude-sonnet-5.5.txt
+  │ reviews/pairs/badge-pass1/Y.claude-sonnet-5.5.txt; echo "---- root page ----"; curl -fsSL
+  │ https://kody-w.github.io/rapp-seeds/ 2>&1 | sed -e 's/<[^>]*>/ /g' | tr -s ' \n' ' ' | head -c
+  │ 1500; echo; echo "---- OS support in install.sh / install.ps1 ----"; curl -fsSL …
+  └ 24 lines…
+
+{"better": "X", "margin": "clear", "why": "X carries the line plus all three promise names verbatim (Y has only 'Learn it in an hour', so it fails the repo's short-seed promise check), and its 'click OK' matches the Brainstem's real install confirmation and the other seeds, while Y's brevity gain doesn't make up for the missing promises and the skipped confirm step."}
+
+
+
+Changes    +0 -0
+AI Credits 38.83 (2m 9s)
+Tokens     ↑ 687.0k (624.7k cached, 62.3k written) • ↓ 17.0k (12.7k reasoning)
+Resume     copilot --resume=1d66cf70-a454-40f4-b5c9-cce4e973b89b
