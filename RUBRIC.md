@@ -5,6 +5,10 @@ Every seed is scored 0 to 10 on each line by three independent reviewers who did
 between runs, so a single score is not trusted. A seed ships at a median of **90 or more of 100** with
 no reviewer under 80, and the word check passes. Each night pass must raise the median or it is reverted.
 
+**How seeds ship today.** No seed has reached 90 yet (the best median is 78), and absolute scores swing between
+runs. So the bar in use is the ratchet: a change ships only when it wins a blind side-by-side against what is live,
+2 of 3 reviewers (`tools/compare.sh`), and `tools/words.py` and `tools/same.py` pass. 90 stays the target.
+
 | # | Criterion | 10 means |
 |---|---|---|
 | 1 | **Same message** | It carries the line and the three promises from MESSAGE.md, in those words. |
