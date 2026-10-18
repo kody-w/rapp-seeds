@@ -25,6 +25,10 @@ body:
     attributes: {label: "2. How many were taking the hour for the first time"}
     validations: {required: true}
   - type: input
+    id: never_coded_arrived
+    attributes: {label: "2b. Of those who arrived, how many had never written code"}
+    validations: {required: true}
+  - type: input
     id: copilot
     attributes: {label: "3. How many had Copilot ready when they arrived"}
     validations: {required: true}
