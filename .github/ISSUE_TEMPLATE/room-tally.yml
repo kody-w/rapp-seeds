@@ -27,6 +27,7 @@ body:
   - type: input
     id: copilot
     attributes: {label: "3. How many had Copilot ready when they arrived"}
+    validations: {required: true}
   - type: input
     id: finished
     attributes: {label: "4. How many finished all six steps within 60 minutes, closed it, opened it again and got their fact back"}
@@ -34,27 +35,32 @@ body:
   - type: input
     id: finished_first
     attributes: {label: "5. Of those who finished, how many were first-timers"}
+    validations: {required: true}
   - type: input
     id: never_coded
     attributes: {label: "6. Of those who finished, how many had never written code"}
+    validations: {required: true}
   - type: input
     id: want_host
     attributes: {label: "7. How many said they want to host a room (send them this page and the room guide)"}
+    validations: {required: true}
   - type: dropdown
     id: first_room
     attributes:
       label: "8. Hosts only: is this the first room you have hosted?"
       options: ["Yes", "No", "I did the hour alone"]
+    validations: {required: true}
   - type: dropdown
     id: brought
     attributes:
       label: "9. What brought you here?"
       options: ["Someone from RAPP asked me", "Another host", "I took the hour in a room", "I found it myself"]
+    validations: {required: true}
   - type: input
     id: hardest
     attributes: {label: "The hardest step (one or two words)"}
   - type: textarea
     id: week_later
     attributes:
-      label: "A week later (add as a comment): ask once in the room's group chat \"If you finished, are you still using it?\" Write how many said yes. Anyone who does not answer counts as no."
+      label: "A week later (add as a comment): text the finishers once: \"If you finished, are you still using it?\" Write how many said yes. Anyone who does not answer counts as no."
       placeholder: "Leave empty now. Come back in seven days and add a comment with the number."

@@ -1,0 +1,23 @@
+{
+ "tag": "room-weeklater",
+ "new_votes": 2,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X makes the seven-day check executable by establishing a contact path before people leave, whereas Y assumes a room group chat that the guide never creates."
+  ],
+  [
+   "gemini-4-argon",
+   "old",
+   "slight: Y is simpler and cleaner, avoiding collecting personal contact details while making the 'If you finished' question logical in a shared group chat."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The two versions are identical (and their installer and UI claims check out against the public sources) except for the last bullet, where Y makes the week-later check doable by asking finishers for a way to text them before they leave, while X relies on a \"room's group chat\" that the guide never sets up, at the cost of only a few extra plain words."
+  ]
+ ]
+}
