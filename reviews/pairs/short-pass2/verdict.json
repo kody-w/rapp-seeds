@@ -1,0 +1,23 @@
+{
+ "tag": "short-pass2",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y is clearer for a first-time reader and avoids X's false universal claim, matching the public implementation where agents are one-file tools for specific jobs rather than everything Brainstem can do."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: Saying 'Each job it can do for you is an agent' is more accurate to how Brainstem works than claiming 'Everything it can do is an agent' and aligns directly with MESSAGE.md's definition of an agent as one file that does one job."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: X explains 'agent' with the plain word 'job', as MESSAGE.md does, and every part of it can be checked against the repo, while Y's crisper 'Everything it can do is an agent' is a sweeping claim that the README's 'soul, tool-calling, conversation' contradicts (the app's own tour does say 'everything it can do')."
+  ]
+ ]
+}

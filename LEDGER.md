@@ -74,3 +74,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 16 | hour step 2: if it does not save it, say 'remember that, it matters to me' (the Brainstem's own tour gives the same advice, index.html 4253-4264) | side-by-side 2 of 3 prefer new (Gemini: reads as defensive) | compare.sh hour-pass16; found by Sol REFUTE pass |
 | paste 5 | the panel lists agent files, one Export per file (Sol REFUTE: one file can hold several agents) | side-by-side 3 of 3 prefer new | compare.sh paste-pass5 |
 | agent readme 1 | 'the six steps are in plain words, the rest is the short program around them' instead of 'read it' | side-by-side 3 of 3 prefer new | compare.sh agentreadme-pass1 |
+| short 2 | short 32-42 voice: 'Each job it can do for you is an agent' (Sol REFUTE: 'everything' was false) | side-by-side 3 of 3 prefer new | compare.sh short-pass2 |
