@@ -1,0 +1,20 @@
+# Rubric
+
+Every seed is scored 0 to 10 on each line by two independent reviewers who did not write it.
+A seed ships only when **both** reviewers give **90 or more of 100** and the word check passes.
+Each night pass must raise the lowest score or the change is reverted.
+
+| # | Criterion | 10 means |
+|---|---|---|
+| 1 | **Same message** | It carries the line and the three promises from MESSAGE.md, in those words. |
+| 2 | **Simple** | Someone who never met us understands every word in five seconds. No machinery. |
+| 3 | **All along** | A first-time person feels an obvious expectation finally met, not a novelty. |
+| 4 | **True today** | Every claim works today and can be checked. Nothing planned or promised. |
+| 5 | **One action** | One clear next step. Everything technical is behind "Details". |
+| 6 | **The hour** | It moves a non-technical person toward running their own Brainstem within an hour. |
+| 7 | **Open road** | Free and open for every future AI user. No pricing, no hype, no selling. |
+| 8 | **Native** | It feels made for its medium (a page reads like a page, a card fits a pocket). |
+| 9 | **Ambitious** | It speaks to everyone who will ever use AI, not a niche of developers. |
+| 10 | **Clean** | No private names, no work content, no forbidden words (tools/words.py passes). |
+
+Reviewer output: one score per line, the total, the single weakest line, and one concrete fix.
