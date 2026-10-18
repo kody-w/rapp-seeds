@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass14",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "slight: Y strengthens the central persistence promise with a specific, publicly verifiable restart-memory check in the linked conformance workflow while keeping the technical detail behind Details."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: X strengthens 'True today' and 'All along' in the builder details by noting in plain words that the public conformance suite also verifies the persistent memory promise across a restart (as implemented in conformance/grail/promise_memory.py and run in CI)."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The two are identical except that X adds, inside the collapsed Details, that the public suite also checks 'save one thing, restart, and it is still there', which I verified is true today (promise_memory.py in kody-w/rapp-1 conformance/grail, run in CI on every push, last run passing against the same Brainstem the installer ships) and so gives a skeptical expert checkable support for the core promise without touching what a non-technical reader sees."
+  ]
+ ]
+}

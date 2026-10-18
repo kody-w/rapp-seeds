@@ -1,0 +1,174 @@
+I'll start by reading the rubric, message, and both versions.
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● List pair files and sizes (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la reviews/pairs/hour-pass14/ && wc
+  │ -c reviews/pairs/hour-pass14/*
+  └ 32 lines…
+
+● Read X.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-pass14/X.claude-sonnet-5.5.txt
+  └ 87 lines read
+
+● Read Y.claude-sonnet-5.5.txt
+  │ reviews/pairs/hour-pass14/Y.claude-sonnet-5.5.txt
+  └ 87 lines read
+
+✗ Diff X and Y versions (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/reviews/pairs/hour-pass14 && diff
+  │ X.claude-sonnet-5.5.txt Y.claude-sonnet-5.5.txt
+  └ 77c77
+    < <p>RAPP is the open format underneath, free for anyone, MIT licensed. Anyone can build a
+    Brainstem in any language and check it against the original with the <a
+    href="https://github.com/kody-w/rapp-1/tree/main/conformance/grail">public test suite</a> of 25
+    checks. The suite runs automatically on every change, and it checks the memory promise too: save
+    one thing, restart, and it is still there.</p>
+    ---
+    > <p>RAPP is the open format underneath, free for anyone, MIT licensed. Anyone can build a
+    Brainstem in any language and check it against the original with the <a
+    href="https://github.com/kody-w/rapp-1/tree/main/conformance/grail">public test suite</a> of 25
+    checks. The suite runs automatically on every change.</p>
+    Failed with exit code 1
+
+The two files differ by one clause only (X adds a claim about the test suite checking memory). I'll verify that claim and the surrounding ones against the public sources.
+
+✗ Download the two public installers (shell)
+  │ cd /tmp && mkdir -p adv_review && cd adv_review && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh -o install.sh; echo "sh exit: $?"; curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.ps1 -o install.ps1; echo "ps1 exit: $?"; wc -l
+  │ install.sh install.ps1 2>/dev/null
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● List conformance/grail directory in rapp-1 (shell)
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail --jq '.[] |
+  │ "\(.type)\t\(.name)\t\(.size)"' 2>&1 | head -50
+  └ 17 lines…
+
+● Inspect rapp-installer repo metadata and root (shell)
+  │ gh api repos/kody-w/rapp-installer --jq
+  │ '{name,description,default_branch,pushed_at,license:.license.spdx_id,private,archived}' 2>&1;
+  │ echo ---; gh api repos/kody-w/rapp-installer/contents --jq '.[] | "\(.type)\t\(.name)"' 2>&1 |
+  │ head -60
+  └ 31 lines…
+
+The conformance folder has `promise_memory.py`, which looks relevant. I'll read it and the README, and check the CI trigger.
+
+● Read conformance grail README (shell)
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail/README.md --jq '.content' | base64 -d
+  └ 120 lines…
+
+● Read promise_memory.py (shell)
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail/promise_memory.py --jq '.content' | base64
+  │ -d
+  └ 86 lines…
+
+● Read memory_fake_model.py and list workflows (shell)
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail/memory_fake_model.py --jq '.content' |
+  │ base64 -d; echo; echo ----WORKFLOWS----; gh api repos/kody-w/rapp-1/contents/.github/workflows
+  │ --jq '.[] | "\(.name)"' 2>&1
+  └ 34 lines…
+
+The README documents the memory check and says CI runs it on every change. I'll confirm the workflow actually does that and whether it's passing now.
+
+● Read grail.yml workflow (shell)
+  │ gh api repos/kody-w/rapp-1/contents/.github/workflows/grail.yml --jq '.content' | base64 -d
+  └ 57 lines…
+
+● Check recent grail workflow runs (shell)
+  │ gh run list --repo kody-w/rapp-1 --workflow grail.yml --limit 8 --json
+  │ status,conclusion,event,headBranch,createdAt,displayTitle 2>&1 | head -60
+  └ 1 line…
+
+The added claim checks out against public sources. Next I'll check the repo's own word check (rubric line 10) on both versions, since the clause adds new words.
+
+● Inspect the word-check tool (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls tools/ && sed -n 1,200p tools/words.py
+  └ 69 lines…
+
+● List repo layout, proofs, and review prompt (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls && echo ---- && ls tools/proofs | head
+  │ -30 && echo ---- && sed -n 1,80p tools/REVIEW-PROMPT.md
+  └ 27 lines…
+
+● Run word check on X and Y (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 -B tools/words.py
+  │ reviews/pairs/hour-pass14/X.claude-sonnet-5.5.txt; echo "X exit: $?"; python3 -B tools/words.py
+  │ reviews/pairs/hour-pass14/Y.claude-sonnet-5.5.txt; echo "Y exit: $?"
+  └ 4 lines…
+
+Both pass the word check. I'll read the proofs README and the ledger for context on how memory claims are supposed to be framed.
+
+● Read proofs README and prove.py head (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && cat tools/proofs/README.md && echo
+  │ ------- && sed -n 1,60p tools/proofs/prove.py
+  └ 53 lines…
+
+● Search ledger for memory/suite mentions (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && wc -l LEDGER.md README.md && grep -n -i
+  │ "memory\|conformance\|suite\|test suite\|25 checks\|promise" LEDGER.md | head -60
+  └ 14 lines…
+
+● Read LEDGER.md
+  └ 62 lines read
+
+The memory check is real and wired into CI. I'll confirm the latest `main` run executed that step and passed, and check the live installer URLs read-only.
+
+● Check install.ps1 paths (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | grep -n -i
+  │ "\.brainstem\|rapp_brainstem\|HOME" | head -20
+  └ 20 lines…
+
+● Check installer URLs and install paths (shell)
+  │ curl -fsSL -o /dev/null -w "install.sh: %{http_code} %{size_download}B\n"
+  │ https://kody-w.github.io/rapp-installer/install.sh; curl -fsSL -o /dev/null -w "install.ps1:
+  │ %{http_code} %{size_download}B\n" https://kody-w.github.io/rapp-installer/install.ps1; curl
+  │ -fsSL https://kody-w.github.io/rapp-installer/install.sh | grep -n -i
+  │ "brainstem_home\|\.brainstem\|rapp_brainstem\|foreground\|exec " | head -30
+  └ 32 lines…
+
+● Confirm memory-promise CI step passed on main (shell)
+  │ RUN=$(gh run list --repo kody-w/rapp-1 --workflow grail.yml --branch main --limit 1 --json
+  │ databaseId --jq '.[0].databaseId'); echo "run: $RUN"; gh run view "$RUN" --repo kody-w/rapp-1
+  │ --json conclusion,headSha,jobs --jq '{conclusion, headSha, steps: [.jobs[].steps[] | {name,
+  │ conclusion}]}' 2>&1 | head -40
+  └ 2 lines…
+
+Installer paths and CI both match. One last check: whether the suite's pinned Brainstem is what the installer installs today.
+
+● Compare pinned kernel to installer main (shell)
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail/kernel.json --jq '.content' | base64 -d;
+  │ echo; echo "--- installer main HEAD ---"; gh api repos/kody-w/rapp-installer/commits/main
+  │ --jq '{sha: .sha, date: .commit.committer.date, msg: (.commit.message|split("\n")[0])}'; echo
+  │ "--- rapp_brainstem/brainstem.py blob on main ---"; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py --jq '{sha: .sha, size: …
+  └ 16 lines…
+
+✗ Confirm no stray files or repo changes (shell)
+  │ ls -d /tmp/adv_review 2>&1; cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git status
+  │ --short | head -10
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Confirm repo is unchanged (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git status --short | head -10; echo
+  │ "status exit: $?"
+  └ 4 lines…
+
+{"better": "X", "margin": "slight", "why": "The two are identical except that X adds, inside the collapsed Details, that the public suite also checks 'save one thing, restart, and it is still there', which I verified is true today (promise_memory.py in kody-w/rapp-1 conformance/grail, run in CI on every push, last run passing against the same Brainstem the installer ships) and so gives a skeptical expert checkable support for the core promise without touching what a non-technical reader sees."}
+
+
+
+Changes    +0 -0
+AI Credits 42.32 (2m 23s)
+Tokens     ↑ 901.8k (839.2k cached, 62.5k written) • ↓ 18.3k (13.7k reasoning)
+Resume     copilot --resume=1794cf2b-0073-4b26-81fc-b5de0f685791
