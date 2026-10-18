@@ -1,0 +1,23 @@
+{
+ "tag": "paste-pass2",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X names the exact live ManageMemory row and tells the reader to paste its export into the chat, while Y's \u201cmemory agent\u201d is ambiguous between two bundled memory agents and omits the handoff needed for explanation."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: X instructs the guide to have the user click Export next to the exact UI name (`ManageMemory`) and paste the file into the chat, which is essential both for explaining the file and for giving an external AI chat the actual `_agent.py` code pattern it needs to write a working agent in step 5."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: Y names the exact agent shown in the Installed Agents panel (ManageMemory, one of two shipped memory agents, so X's 'the memory agent' is ambiguous), has the user hand the guide the real exported file, and accurately says its one job is saving what you ask it to remember, at only a small cost in length."
+  ]
+ ]
+}

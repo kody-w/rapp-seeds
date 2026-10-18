@@ -1,0 +1,80 @@
+● skill(adversarial-review)
+
+I’m grounding the comparison in the rubric, both candidates, and the live installer sources.
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read X.gpt-5.6-sol.txt
+  │ reviews/pairs/paste-pass2/X.gpt-5.6-sol.txt
+  └ 46 lines read
+
+● Read Y.gpt-5.6-sol.txt
+  │ reviews/pairs/paste-pass2/Y.gpt-5.6-sol.txt
+  └ 45 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+The candidates differ only in whether the walkthrough names a specific memory agent, so I’m checking that exact UI and bundled-agent contract against the live repository.
+
+● Find live memory agent and UI files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -Ei
+  │ '(manage.*memory|memory.*agent|index\.html|app\.js|static|template)' | head -100
+  └ 9 lines…
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Check exact agent UI labels (shell)
+  │ tmp=$(mktemp) && curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html -o "$tmp"
+  │ && grep -nE 'Manage installed
+  │ agents|ManageMemory|Export|_agent\.py|drag|drop|agents-toggle|agent.*modal' "$tmp" | head -120
+  │ && rm -f "$tmp"
+  └ 67 lines…
+
+● Read live agent panel behavior (shell)
+  │ tmp=$(mktemp) && curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html -o "$tmp"
+  │ && sed -n '1104,1132p;1769,1850p;4248,4264p' "$tmp" && rm -f "$tmp"
+  └ 128 lines…
+
+The named agent is real and exactly labeled; I’m applying the repository’s word gate before fixing the margin.
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+/ Search (glob)
+  │ "**/*paste-pass2*"
+  └ No matches found
+
+● Run seed word gate (shell)
+  │ python3 tools/words.py reviews/pairs/paste-pass2/X.gpt-5.6-sol.txt
+  │ reviews/pairs/paste-pass2/Y.gpt-5.6-sol.txt
+  └ 1 line…
+
+{"better":"X","margin":"clear","why":"X names the exact live ManageMemory row and tells the reader to paste its export into the chat, while Y's “memory agent” is ambiguous between two bundled memory agents and omits the handoff needed for explanation."}
+
+
+
+Changes    +0 -0
+AI Credits 35.91 (1m 18s)
+Tokens     ↑ 381.0k (340.0k cached) • ↓ 3.0k (1.9k reasoning)
+Resume     copilot --resume=c56c154e-9366-4722-acb0-b7c6cfaa697a

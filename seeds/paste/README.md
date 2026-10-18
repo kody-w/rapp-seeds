@@ -34,9 +34,10 @@ The six steps:
 1. Get my Brainstem with the install line for my computer.
 2. Talk to it: help me ask it something real about my day.
 3. See what it can do: open the circled plus and tell me what each agent does.
-4. Read an agent: have me Export the memory agent and explain it to me in plain words.
-5. Make my own: help me pick a chore I repeat, then write a new agent just like the
-   memory agent for that chore. I save it as a file ending in _agent.py and drag it
+4. Read an agent: have me click Export next to ManageMemory and paste the file here. It is a
+   short program for one job: saving what I ask it to remember. Explain it in plain words.
+5. Make my own: help me pick a chore I repeat, then write a new agent just like
+   ManageMemory for that chore. I save it as a file ending in _agent.py and drag it
    onto my Brainstem window. Then I try it.
 6. Hand it on: help me send that one file to a friend, who drags it onto their
    Brainstem, or share it at https://github.com/kody-w/RAR.
