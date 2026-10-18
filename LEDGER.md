@@ -42,3 +42,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | paste 2 | paste step 4-5 mirror the hour page: Export ManageMemory, paste it here, explain in plain words | side-by-side 3 of 3 prefer new | tools/compare.sh paste-pass2; words.py 0 |
 | slides | 8-slide deck for evangelists, same message, speaker notes on N | new | all 8 rendered at 1280x720 and the last at phone width, read by eye; words.py 0 |
 | badge | README badge + two lines for agent authors, same message | new | SVG rendered at 4x and read by eye; 'next message' matches load_agents on every /chat; words.py 0 |
+| llms 1 | llms.txt carries the three promises verbatim as a numbered list | side-by-side 3 of 3 prefer new | tools/compare.sh llms-pass1; words.py 0 |

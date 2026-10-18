@@ -1,0 +1,23 @@
+{
+ "tag": "llms-pass1",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X preserves all three promises in the required words, including the explanation of how it thinks, while its numbered structure is substantially clearer for a first-time reader."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: X preserves the three promises from MESSAGE.md verbatim as a clear numbered list, whereas Y compresses them into the blockquote and omits key phrasing ('It thinks the way you do, so you can see how it works')."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: X carries the line and all three promises in MESSAGE.md's exact words as a scannable list, with the same claims otherwise (all of which I checked against the installers and source). Y squeezes them into one dense paragraph, drops 'It thinks the way you do, so you can see how it works', and says it 'runs your AI on your own computer' although Copilot writes the answers over the internet."
+  ]
+ ]
+}

@@ -1,0 +1,179 @@
+I'll start by reading the rubric, the message, and both seed versions.
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read Y.claude-sonnet-5.5.txt
+  │ reviews/pairs/llms-pass1/Y.claude-sonnet-5.5.txt
+  └ 24 lines read
+
+● Read X.claude-sonnet-5.5.txt
+  │ reviews/pairs/llms-pass1/X.claude-sonnet-5.5.txt
+  └ 27 lines read
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+Both files are nearly identical; the difference is only in the opening block. I'll check the repo tooling and then verify the claims against the public sources.
+
+✗ Download both public installers (shell)
+  │ cd /tmp && mkdir -p rapp_review && cd rapp_review && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh -o install.sh; echo "sh exit: $?"; curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.ps1 -o install.ps1; echo "ps1 exit: $?"; wc -l
+  │ install.sh install.ps1
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+✗ Repo layout and diff X vs Y (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager status --short | head -20;
+  │ echo ---; ls; echo ---; ls tools reviews reviews/pairs 2>/dev/null | head -60; echo ---; diff
+  │ <(cat reviews/pairs/llms-pass1/X.claude-sonnet-5.5.txt) <(cat
+  │ reviews/pairs/llms-pass1/Y.claude-sonnet-5.5.txt)
+  └ M llms.txt
+    ?? reviews/pairs/llms-pass1/
+    ?? reviews/raw/slides-r1.claude-sonnet-5.5.txt
+    ?? reviews/raw/slides-r1.gemini-4-argon.txt
+    ?? reviews/raw/slides-r1.gpt-5.6-sol.txt
+    ---
+    index.html
+    LEDGER.md
+    LICENSE
+    llms.txt
+    MESSAGE.md
+    README.md
+    reviews
+    RUBRIC.md
+    seeds
+    tools
+    ---
+    reviews:
+    hour-pass3.json
+    hour-pass5.json
+    hour-pass6.json
+    hour-pass7.json
+    hour-pass8.json
+    hour-pass9.json
+    hour-r1-sol.txt
+    hour-r2-sol.json
+    hour-r3-sol.json
+    pairs
+    paste-p1.json
+    paste-r1.json
+    raw
+    room-p1.json
+    room-r1.json
+
+    reviews/pairs:
+    hour-pass10
+    hour-pass9
+    llms-pass1
+    paste-pass2
+    room-pass1
+
+    tools:
+    __pycache__
+    compare.sh
+    REVIEW-PROMPT.md
+    review.sh
+    words.py
+    ---
+    3,9c3,6
+    < > The Brainstem is the small program on your computer that runs your AI. Your agents, its
+    < > instructions and its memory are plain files in one folder. RAPP is the open format
+    underneath,
+    < > MIT licensed.
+    <
+    < 1. Learn it in an hour. It thinks the way you do, so you can see how it works.
+    < 2. Run it on any computer. Mac, Windows or Linux. Its memory stays in your own folder.
+    < 3. Hand it to anyone. It is just files. One agent is one file.
+    ---
+    > > The Brainstem is a small program that runs your AI on your own computer, with your agents,
+    its
+    > > instructions and its memory as plain files in one folder. Learn it in an hour. Run it on any
+    > > computer (Mac, Windows or Linux; its memory stays in your own folder). Hand it to anyone: it
+    is
+    > > just files, and one agent is one file. RAPP is the open format underneath, MIT licensed.
+    Failed with exit code 1
+
+The diff confirms the only change is the opening block. I'll read the repo's review tooling and fetch the public sources through the fetch tool, since the direct download was refused.
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Read REVIEW-PROMPT.md
+  │ tools/REVIEW-PROMPT.md
+  └ 12 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+The installers confirm Mac/Linux/Windows support, the `~/.brainstem` folder, soul.md, agent `.py` files and Copilot sign-in. Next I'll read the rest of install.sh and the repo's license and README.
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md · max…
+  └ Here is the raw content:
+
+✗ Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE · max_l…
+  └ Error: Failed to fetch https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE -
+    status code 404
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · max_length: 20000, raw:…
+  └ Here is the raw content:
+
+The installers back the shared Start section. Next I'll check the claims that differ and the shared ones (MIT license, links) with read-only calls, and run the word check on both texts.
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/ · max_length: 8000, url: "https://kody-…
+  └ Contents of https://kody-w.github.io/rapp-seeds/:
+
+● Fetching web content https://github.com/kody-w/rapp-seeds/blob/main/seeds/paste/README.md · max_l…
+  └ Contents of https://github.com/kody-w/rapp-seeds/blob/main/seeds/paste/README...
+
+● Word check both versions; check repo licenses (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && for f in X Y; do echo "== $f"; python3
+  │ tools/words.py reviews/pairs/llms-pass1/$f.claude-sonnet-5.5.txt; done; echo; for r in
+  │ rapp-installer rapp-1 RAR rapp-seeds; do echo "== license $r"; gh api repos/kody-w/$r --jq
+  │ '{name:.name, license:(.license.spdx_id // "none"), private:.private, default:.default_branch}'
+  │ 2>&1 | head -3; done
+  └ 13 lines…
+
+● Read local_storage.py to confirm memory location (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py --jq '.content' 2>&1
+  │ | base64 -d 2>/dev/null | head -80
+  └ 80 lines…
+
+● List Brainstem source and agents directory (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem --jq '.[] | .type + " " + .name' 2>&1
+  │ | head -40; echo "--- agents"; gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents
+  │ --jq '.[] | .type + " " + .name' 2>&1 | head -30
+  └ 23 lines…
+
+/ Search (grep)
+  │ "thinks the way you do" (reviews/hour-pass9.json, reviews/paste-r1.json, reviews/room-r1.json,
+  │ reviews/hour-r3-sol.json, LEDGER.md)
+  └ 4 lines found
+
+● List pair directory contents (names only) (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls reviews/pairs/llms-pass1 | sed 's/^/
+  │ /'; echo; ls reviews/pairs/hour-pass10 reviews/pairs/paste-pass2 | head -30
+  └ 45 lines…
+
+✗ Check for leftover temp directory (shell)
+  │ ls -ld /tmp/rapp_review 2>&1 | head -2; ls -A /tmp/rapp_review 2>/dev/null | head
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+{"better": "X", "margin": "clear", "why": "X carries the line and all three promises in MESSAGE.md's exact words as a scannable list, with the same claims otherwise (all of which I checked against the installers and source). Y squeezes them into one dense paragraph, drops 'It thinks the way you do, so you can see how it works', and says it 'runs your AI on your own computer' although Copilot writes the answers over the internet."}
+
+
+
+Changes    +0 -0
+AI Credits 46.53 (2m 43s)
+Tokens     ↑ 606.9k (531.1k cached, 75.8k written) • ↓ 22.3k (18.8k reasoning)
+Resume     copilot --resume=d0c2b40f-2f4c-4470-88d5-36908a7c250f
