@@ -1,0 +1,80 @@
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 84 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Run words.py and check install.sh (shell)
+  │ python3 tools/words.py seeds/hour/index.html && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh | head -n 60
+  └ 61 lines…
+
+● Fetching web content https://github.com/kody-w/rapp-1/tree/main/conformance/grail · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/tree/main/conformance/grail:
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR"
+  └ Contents of https://github.com/kody-w/RAR:
+
+● Check paths in install.sh and install.ps1 (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | grep -E
+  │ "src|rapp_brainstem|agents|soul" && echo "--- PS1 ---" && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.ps1 | grep -E
+  │ "src|rapp_brainstem|agents|soul|BRAINSTEM"
+  └ 141 lines…
+
+● Fetching web content https://github.com/kody-w/rapp-installer/tree/main/rapp_brainstem · url: "ht…
+  └ Contents of https://github.com/kody-w/rapp-installer/tree/main/rapp_brainstem:
+
+● Check agents in rapp-installer and reload behavior in brainstem.py (shell)
+  │ curl -fsSL https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem/agents |
+  │ grep '"name"' && curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | grep
+  │ -n -C 5 "load_soul\|load_agents" | head -n 40
+  └ 45 lines…
+
+● Check load_soul implementation in brainstem.py (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '1480,1505p'
+  └ 25 lines…
+
+● Check load_agents file discovery in brainstem.py (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '1610,1675p'
+  └ 66 lines…
+
+● Check load_agents glob pattern in brainstem.py (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '1676,1740p'
+  └ 65 lines…
+
+● Check load_agents function in brainstem.py (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '1780,1830p'
+  └ 51 lines…
+
+● Check load_agents glob in brainstem.py (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '1831,1880p'
+  └ 49 lines…
+
+{"seed": "seeds/hour/index.html", "scores": {"1":10,"2":8,"3":9,"4":7,"5":8,"6":7,"7":9,"8":9,"9":9,"10":8}, "total": 84, "weakest": "Line 6 (and 4): Step 5 tells a non-technical user to ask 'any AI' to write an agent and drop it into the agents folder, which silently fails today because outside AIs do not know the BasicAgent/perform/metadata contract and load_agents() ignores any file not named *_agent.py.", "fix": "In Step 5 (line 60), instruct the learner to paste the agent from Step 4 as the pattern and save the result as *_agent.py — replace `<li><b>Make your own.</b><span>Ask any AI to write an agent for a chore you repeat. Drop the file into your agents folder. Your Brainstem uses it on your next message.</span></li>` with `<li><b>Make your own.</b><span>Paste <code>manage_memory_agent.py</code> into your Brainstem (or any AI) and ask it to write a new one like it for a chore you repeat. Save it in <code>agents/</code> ending in <code>_agent.py</code>, and your Brainstem uses it on your next message.</span></li>`."}
+
+
+
+Changes    +0 -0
+AI Credits 43.93 (1m 38s)
+Tokens     ↑ 1.4m (1.3m cached) • ↓ 1.3k (3.2k reasoning)
+Resume     copilot --resume=7d10f2a7-4d0f-4bef-b01c-5fdc0d83b295

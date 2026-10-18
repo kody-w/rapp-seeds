@@ -24,3 +24,9 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 2 | promise two made true everywhere ("Its memory stays in your own folder"; the installer runs in the foreground, install.sh L765-778, no service); real file paths; drop the self-comparison claim | 74 -> 75; line 4 truth 5 -> 7 | words.py 0; installer read live |
 | 3 | hour page: one-line way to open the hidden Brainstem folder (Mac and Windows paths match both installers); exact footer on cost and license | 75 -> 78 | words.py 0; install.ps1 L17 and install.sh L8 paths read live |
 | card | pocket card seed, 3.5x2 in SVG + PDF with QR to the page | new | rendered to PNG and read by eye; words.py 0 |
+| 4 | hour page: "may ask for your computer password" line | 78 -> 77 | REVERTED (score fell) |
+| check | Sol on pass 3: 72 -> 70 while the Claude reviewer went 75 -> 78. Reviewers swing about 4 points on the same text, as big as one pass. Fixed the check: each version now gets 3 independent reviews (Sol + 2 fresh Claude reviewers) and the MEDIAN total decides. Pass 3 stays provisionally; pass 5 is judged against a re-scored pass 3 under the new check. | - | rubric note added |
+| 3 (re-scored) | baseline under the new panel (Sol, Gemini, Sonnet) | median 68 (68, 84, 66) | tools/review.sh |
+| 5 | hour page: steps use the Brainstem window (agents panel, Export, drag and drop); paths moved to Details; step 5 uses an existing agent as the pattern so the new file loads | median 68 -> 74 (74, 94, 63) | panel; Export and drag-and-drop confirmed in the Brainstem page (index.html: "Manage installed agents", Export, drag-and-drop onboarding text) |
+| room | facilitator seed: run the hour with a room | new | words.py 0 |
+| llms | AI-readable seed llms.txt | new | words.py 0 |

@@ -1,0 +1,52 @@
+{
+ "seed": "seeds/hour/index.html",
+ "tag": "hour-pass5",
+ "reviews": [
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 6,
+    "3": 8,
+    "4": 5,
+    "5": 8,
+    "6": 6,
+    "7": 6,
+    "8": 9,
+    "9": 8,
+    "10": 8
+   },
+   "total": 74,
+   "weakest": "4: The linked code verifies the installer, local storage, import/export, and 25-check CI, but \"any computer,\" \"any AI,\" \"uses it on your next message,\" and \"works the same way\" overstate what is guaranteed today.",
+   "fix": "Replace steps 5-6 with: <li><b>Add one.</b><span>Click the registry button, choose an agent, and click Add. When it says Added, ask your Brainstem to do that agent's job.</span></li><li><b>Hand it on.</b><span>Open the agents button, click Export beside that agent, and send the file to a friend. They can drag it onto their Brainstem too.</span></li>",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 9,
+    "3": 9,
+    "4": 8,
+    "5": 10,
+    "6": 9,
+    "7": 10,
+    "8": 10,
+    "9": 9,
+    "10": 10
+   },
+   "total": 94,
+   "weakest": "Line 4 (True today): steps 3 and 4 tell the user to click 'the agents button' and 'Export next to the memory agent' to read 'plain instructions,' but the live Brainstem UI has an unlabeled plus-in-a-circle icon ('Manage installed agents'), lists two memory agents (ContextMemory and ManageMemory), and exports Python class code where only the description near the top is plain English.",
+   "fix": "In <ol class=\"hour\">, replace steps 3 and 4 (`<li><b>See what it can do.</b><span>Click the agents button at the top right of your Brainstem. Each one listed is an agent: one file that does one job.</span></li>` and `<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>`) with `<li><b>See what it can do.</b><span>Click the plus-in-a-circle icon (Manage installed agents) at the top right of your Brainstem. Each one listed is an agent: one file that does one job.</span></li>` and `<li><b>Read an agent.</b><span>Click Export next to ManageMemory and open the file in any text editor. Near the top, its description reads like plain instructions for one job.</span></li>`.",
+   "model": "gemini-4-argon"
+  },
+  {
+   "model": "claude-sonnet-5.5",
+   "total": 63,
+   "note": "rerun; first reply had no JSON"
+  }
+ ],
+ "median": 74,
+ "min": 63,
+ "n": 3
+}

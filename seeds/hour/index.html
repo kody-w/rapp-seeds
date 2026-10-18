@@ -60,16 +60,17 @@ footer{margin-top:48px;font-size:14px;color:var(--muted)}
 <ol class="hour">
 <li><b>Get your Brainstem.</b><span>Paste the line above. Sign in once with a GitHub account that has Copilot. It opens in your browser and runs while that Terminal window is open. Paste the same line any time to bring it back, memory and all.</span></li>
 <li><b>Talk to it.</b><span>Ask it something about your day. Your Brainstem, its agents and its memory stay on your computer. The model that writes the answers is Copilot, over the internet.</span></li>
-<li><b>Read who it is.</b><span>Open your Brainstem folder: in Terminal paste <code>open ~/.brainstem/src/rapp_brainstem</code> (Windows: <code>explorer $HOME\.brainstem\src\rapp_brainstem</code>). One plain page, <code>soul.md</code>, tells it how to behave. Change a sentence and watch its answers change.</span></li><!-- words-ok: file name a learner must find -->
-<li><b>Read an agent.</b><span>An agent is one file that does one job. Open <code>agents/manage_memory_agent.py</code> in the same folder and see how it remembers.</span></li>
-<li><b>Make your own.</b><span>Ask any AI to write an agent for a chore you repeat. Drop the file into your agents folder. Your Brainstem uses it on your next message.</span></li>
-<li><b>Hand it on.</b><span>Copy your agent to a friend, or share it in the <a href="https://github.com/kody-w/RAR">registry</a>. It works for them the same way.</span></li>
+<li><b>See what it can do.</b><span>Click the agents button at the top right of your Brainstem. Each one listed is an agent: one file that does one job.</span></li>
+<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>
+<li><b>Make your own.</b><span>Paste that file into any AI and ask for a new agent just like it, for a chore you repeat. Save the reply as a file ending in <code>_agent.py</code> and drag it onto your Brainstem window. It uses it on your next message.</span></li>
+<li><b>Hand it on.</b><span>Export your new agent and send the file to a friend. They drag it onto their Brainstem and it works the same way. Or share it in the <a href="https://github.com/kody-w/RAR">registry</a>.</span></li>
 </ol>
 
 <p class="moment">Tomorrow it is still there, on your computer, remembering. That is the moment people say: AI should have been like this all along.</p>
 
 <details>
 <summary>Details for builders</summary>
+<p>Go deeper: your Brainstem lives in one folder. On a Mac, paste <code>open ~/.brainstem/src/rapp_brainstem</code> into Terminal. On Windows, paste <code>explorer $HOME\.brainstem\src\rapp_brainstem</code> into PowerShell. The page <code>soul.md</code> tells it how to behave: change a sentence and its answers change. Agents live in <code>agents/</code>.</p><!-- words-ok: file names for builders -->
 <p>The Brainstem is one small program, and its source is public. It uses your GitHub Copilot sign-in for the model. Your agents, its page of instructions and its memory are plain files in one folder on your computer.</p>
 <p>RAPP is the open format underneath, free for anyone, MIT licensed. Anyone can build a Brainstem in any language and check it against the original with the <a href="https://github.com/kody-w/rapp-1/tree/main/conformance/grail">public test suite</a> of 25 checks. The suite runs automatically on every change.</p>
 <p>Source: <a href="https://github.com/kody-w/rapp-installer">the Brainstem</a> · <a href="https://github.com/kody-w/rapp-1">the open format</a> · <a href="https://github.com/kody-w/RAR">the registry</a></p>

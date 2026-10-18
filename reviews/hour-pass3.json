@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/hour/index.html",
+ "tag": "hour-pass3",
+ "reviews": [
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 5,
+    "3": 8,
+    "4": 5,
+    "5": 7,
+    "6": 6,
+    "7": 4,
+    "8": 9,
+    "9": 6,
+    "10": 8
+   },
+   "total": 68,
+   "weakest": "7: The page calls the road free for everyone while its only runnable path requires GitHub Copilot access with current eligibility and usage limits.",
+   "fix": "Replace the entire footer with: `<footer>RAPP is free, open, and MIT licensed. Brainstem runs on your computer but uses GitHub Copilot over the internet, so a GitHub account with Copilot access is required and GitHub's current usage limits apply.</footer>`",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 8,
+    "3": 9,
+    "4": 7,
+    "5": 8,
+    "6": 7,
+    "7": 9,
+    "8": 9,
+    "9": 9,
+    "10": 8
+   },
+   "total": 84,
+   "weakest": "Line 6 (and 4): Step 5 tells a non-technical user to ask 'any AI' to write an agent and drop it into the agents folder, which silently fails today because outside AIs do not know the BasicAgent/perform/metadata contract and load_agents() ignores any file not named *_agent.py.",
+   "fix": "In Step 5 (line 60), instruct the learner to paste the agent from Step 4 as the pattern and save the result as *_agent.py \u2014 replace `<li><b>Make your own.</b><span>Ask any AI to write an agent for a chore you repeat. Drop the file into your agents folder. Your Brainstem uses it on your next message.</span></li>` with `<li><b>Make your own.</b><span>Paste <code>manage_memory_agent.py</code> into your Brainstem (or any AI) and ask it to write a new one like it for a chore you repeat. Save it in <code>agents/</code> ending in <code>_agent.py</code>, and your Brainstem uses it on your next message.</span></li>`.",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 6,
+    "3": 6,
+    "4": 7,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 7,
+    "9": 6,
+    "10": 7
+   },
+   "total": 66,
+   "weakest": "5 (One action): the hero command is clear, but the main flow still carries machinery (open/explorer commands, hidden-folder paths, soul.md, a .py file name, and a Windows command with no Copy button) that belongs behind Details.",
+   "fix": "Move every command and file name out of the six steps into Details. Step 3 text -> 'Open your Brainstem folder and read the one page that tells it how to behave. Change a sentence and watch its answers change.' Step 4 text -> 'An agent is one file that does one job. Open the memory agent in your agents folder and see how it remembers.' First line of Details (keep the words-ok tag on it) -> 'Open the folder: on a Mac paste open ~/.brainstem/src/rapp_brainstem into Terminal; on Windows paste explorer $HOME\\.brainstem\\src\\rapp_brainstem into PowerShell; on Linux paste xdg-open ~/.brainstem/src/rapp_brainstem. The page is soul.md and the memory agent is agents/manage_memory_agent.py.'",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 68,
+ "min": 66,
+ "n": 3
+}

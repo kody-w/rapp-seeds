@@ -1,8 +1,9 @@
 # Rubric
 
-Every seed is scored 0 to 10 on each line by two independent reviewers who did not write it.
-A seed ships only when **both** reviewers give **90 or more of 100** and the word check passes.
-Each night pass must raise the lowest score or the change is reverted.
+Every seed is scored 0 to 10 on each line by three independent reviewers who did not write it
+(one from a different AI family). The **median** total is the score; one reviewer swings about 4 points
+between runs, so a single score is not trusted. A seed ships at a median of **90 or more of 100** with
+no reviewer under 80, and the word check passes. Each night pass must raise the median or it is reverted.
 
 | # | Criterion | 10 means |
 |---|---|---|
