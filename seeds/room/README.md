@@ -21,9 +21,9 @@ Everyone leaves with their own Brainstem and one agent they made.
 |---|---|---|---|
 | 0-5 | Open | "Today you leave with your own AI, as files you own." | Scan the card or open the page. |
 | 5-15 | Get your Brainstem | "One line. If it asks for your computer password, that is normal." | Paste the install line, sign in. |
-| 15-25 | Talk to it | "It lives on your computer. Copilot writes the answers over the internet." | Ask it something real about their day. |
-| 25-35 | See and read | "Every agent is one file that does one job." | Open the agents panel, export the memory agent, read it. |
-| 35-50 | Make your own | "Pick a chore you repeat. Use the memory agent as the pattern." | Ask any AI for a new agent like it, drag it onto the Brainstem, try it. |
+| 15-25 | Talk to it | "It lives on your computer. Copilot writes the answers over the internet." | Tell it one thing to remember about them, like a favorite coffee. Tomorrow they ask what it remembers. |
+| 25-35 | See and read | "Every agent is one file that does one job." | Click the circled plus, Export ManageMemory, paste it into any AI and ask for plain words. |
+| 35-50 | Make your own | "Pick a chore you repeat. Use ManageMemory as the pattern." | Ask any AI for a new agent like it, drag it onto the Brainstem, try it. |
 | 50-58 | Hand it on | "Send your agent to the person next to you." | Swap files, drag in a neighbor's agent, use it. |
 | 58-60 | Close | "Tomorrow it is still there, remembering. AI should have been like this all along." | Keep the card. |
 

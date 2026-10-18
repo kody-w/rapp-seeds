@@ -1,0 +1,23 @@
+{
+ "tag": "room-pass2",
+ "new_votes": 2,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y turns the core memory promise into a concrete test and gives exact, publicly verifiable UI steps while using AI to explain the exported agent instead of asking first-time users to decipher Python."
+  ],
+  [
+   "gemini-4-argon",
+   "old",
+   "clear: X uses plain, self-explanatory words ('the memory agent', 'read it') that honor MESSAGE.md's no-machinery rule and the promise that you can see how it works yourself, whereas Y introduces internal CamelCase jargon ('ManageMemory') and tells learners to paste the file into another AI to translate it into plain words."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: X's steps match the real Brainstem (the \u2295 button opens the Agents panel, each agent has Export, ManageMemory saves a fact locally that 'what do you remember' recalls tomorrow), so it delivers the 'still there, remembering' moment and a plain-words way to read an agent, while Y's 'ask about their day' shows nothing, 'the memory agent' is ambiguous because two memory agents ship, and 'read it' is not doable for a non-technical person."
+  ]
+ ]
+}
