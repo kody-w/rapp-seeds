@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Your AI, as files you own</title>
-<meta name="description" content="Learn it in an hour. Run it on any computer. Hand it to anyone. The Brainstem is free and open.">
+<meta name="description" content="Learn it in an hour. Run it on any computer. Hand it to anyone. Free, with the open RAPP format underneath.">
 <meta property="og:title" content="Your AI, as files you own">
 <meta property="og:description" content="Learn it in an hour. Run it on any computer. Hand it to anyone.">
 <style>
@@ -60,7 +60,7 @@ footer{margin-top:48px;font-size:14px;color:var(--muted)}
 <ol class="hour">
 <li><b>Get your Brainstem.</b><span>Paste the line above. Sign in once with a GitHub account that has Copilot. It opens in your browser and runs while that Terminal window is open. Paste the same line any time to bring it back, memory and all.</span></li>
 <li><b>Talk to it.</b><span>Ask it something about your day. Your Brainstem, its agents and its memory stay on your computer. The model that writes the answers is Copilot, over the internet.</span></li>
-<li><b>Read who it is.</b><span>One plain page tells it how to behave: <code>soul.md</code> in your <code>.brainstem/src/rapp_brainstem</code> folder. Change a sentence and watch its answers change.</span></li><!-- words-ok: file name a learner must find -->
+<li><b>Read who it is.</b><span>Open your Brainstem folder: in Terminal paste <code>open ~/.brainstem/src/rapp_brainstem</code> (Windows: <code>explorer $HOME\.brainstem\src\rapp_brainstem</code>). One plain page, <code>soul.md</code>, tells it how to behave. Change a sentence and watch its answers change.</span></li><!-- words-ok: file name a learner must find -->
 <li><b>Read an agent.</b><span>An agent is one file that does one job. Open <code>agents/manage_memory_agent.py</code> in the same folder and see how it remembers.</span></li>
 <li><b>Make your own.</b><span>Ask any AI to write an agent for a chore you repeat. Drop the file into your agents folder. Your Brainstem uses it on your next message.</span></li>
 <li><b>Hand it on.</b><span>Copy your agent to a friend, or share it in the <a href="https://github.com/kody-w/RAR">registry</a>. It works for them the same way.</span></li>
@@ -75,7 +75,7 @@ footer{margin-top:48px;font-size:14px;color:var(--muted)}
 <p>Source: <a href="https://github.com/kody-w/rapp-installer">the Brainstem</a> · <a href="https://github.com/kody-w/rapp-1">the open format</a> · <a href="https://github.com/kody-w/RAR">the registry</a></p>
 </details>
 
-<footer>Free and open for everyone who will ever use AI. Wildhaven Homes LLC.</footer>
+<footer>Free for everyone who will ever use AI. The format underneath, RAPP, is open and MIT licensed. Copilot is a GitHub service with its own plans. Wildhaven Homes LLC.</footer>
 </main>
 <script>
 document.getElementById('b').addEventListener('click',async()=>{const t=document.getElementById('c').textContent;try{await navigator.clipboard.writeText(t)}catch(e){const r=document.createRange();r.selectNode(document.getElementById('c'));getSelection().removeAllRanges();getSelection().addRange(r);document.execCommand('copy')}const b=document.getElementById('b');b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)});

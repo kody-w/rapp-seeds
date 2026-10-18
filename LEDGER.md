@@ -22,3 +22,5 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 |---|---|---|---|
 | 1 | hour page: say Copilot writes the answers over the internet; "source is public", not open source; drop the private Rust claim | reviewers 80 / 64 (baseline) -> 74 / pending | words.py 0; claims checked against the installer and the GitHub API |
 | 2 | promise two made true everywhere ("Its memory stays in your own folder"; the installer runs in the foreground, install.sh L765-778, no service); real file paths; drop the self-comparison claim | 74 -> 75; line 4 truth 5 -> 7 | words.py 0; installer read live |
+| 3 | hour page: one-line way to open the hidden Brainstem folder (Mac and Windows paths match both installers); exact footer on cost and license | 75 -> 78 | words.py 0; install.ps1 L17 and install.sh L8 paths read live |
+| card | pocket card seed, 3.5x2 in SVG + PDF with QR to the page | new | rendered to PNG and read by eye; words.py 0 |
