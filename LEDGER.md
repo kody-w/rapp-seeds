@@ -20,6 +20,7 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 - **Drafts await your yes.** X thread, LinkedIn, blog and Show HN drafts are in the private repo airaptr/seeds. Nothing is posted.
 - **The 60-second short needs real filming** on a personal machine with a personal Copilot sign-in. This Mac's Brainstem is the work one, so it was not used.
 - **Unverified with a live model:** that Copilot chooses to save a memory when asked (the restart proof uses a scripted model), and that a free Copilot plan works with the Brainstem.
+- **Approve FirstHour in the registry:** https://github.com/kody-w/RAR/issues/1460 is validated and waiting for your approval. I first pushed it straight to the registry's main branch, which skips that review; I reverted it within minutes (main is byte-identical to before for those paths), and CI shows two red "Verify changed agent receipts" runs from the push and the revert. Nothing else changed.
 - The session moved from Fable 5.1 to Opus 5.5 at about 22:15 ET; commits after that carry the Opus attribution.
 
 | Pass | Change | Score before -> after | Verification |
@@ -66,3 +67,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 15 | hour step 1: offer the FirstHour agent | side-by-side 0 of 3 | REVERTED (second action before agents are explained; FirstHour stays its own seed) |
 | agent 0 | baseline FirstHour | median 72 (72, 85, 65) | panel |
 | agent 1 | FirstHour carries the full message; step 6 ends on the line; same.py now checks it | side-by-side 3 of 3 prefer new | compare.sh agent-pass1; re-imported and called on the pinned Brainstem |
+| registry | FirstHour submitted to the registry the proper way (Issue #1460, validated, pending your approval) after a direct push was reverted | - | issue labels pending-review; live registry.json no longer lists it |

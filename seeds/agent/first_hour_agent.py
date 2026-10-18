@@ -8,7 +8,24 @@ Your AI, as files you own.
 2. Run it on any computer. Mac, Windows or Linux. Its memory stays in your own folder.
 3. Hand it to anyone. It is just files. One agent is one file.
 """
-from agents.basic_agent import BasicAgent
+try:
+    from agents.basic_agent import BasicAgent
+except ImportError:  # outside a Brainstem, for example the registry's own tests
+    from basic_agent import BasicAgent
+
+__manifest__ = {
+    "schema": "rapp-agent/1.0",
+    "name": "@kody-w/first_hour_agent",
+    "version": "1.0.0",
+    "display_name": "FirstHour",
+    "description": "Walks you through your first hour with your Brainstem, one step at a time.",
+    "author": "@kody-w",
+    "tags": ["first-hour", "learn", "getting-started"],
+    "category": "core",
+    "quality_tier": "community",
+    "requires_env": [],
+    "dependencies": ["@rapp/basic_agent"],
+}
 
 STEPS = [
     ("Get your Brainstem.",
