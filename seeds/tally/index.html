@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Room tally card</title>
+<meta name="description" content="One card per room: numbers only, no names.">
+<style>
+:root{--bg:#f7f5f0;--ink:#1c1f23;--muted:#5b636b;--line:#cfc9bb;--accent:#0f766e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111416;--ink:#eceae4;--muted:#9aa3aa;--line:#3a4045;--accent:#2dd4bf}}
+:root[data-theme="dark"]{--bg:#111416;--ink:#eceae4;--muted:#9aa3aa;--line:#3a4045;--accent:#2dd4bf}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:40px 16px}
+h1{font-size:30px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 20px}
+table{width:100%;border-collapse:collapse}
+td{border-bottom:1px solid var(--line);padding:12px 0;vertical-align:bottom}
+td.box{width:110px;border-bottom:2px solid var(--ink)}
+.note{color:var(--muted);font-size:15px;margin-top:18px}
+b{color:var(--accent)}
+@media print{:root{--bg:#fff;--ink:#000;--muted:#333;--line:#999;--accent:#000}body{font-size:13px}main{padding:0}h1{font-size:22px}td{padding:9px 0}}
+</style>
+</head>
+<body>
+<main>
+<h1>Room tally card</h1>
+<p class="sub">Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone. One card per room. Numbers only, never names.</p>
+<table>
+<tr><td>Date and place</td><td class="box"></td></tr>
+<tr><td>Your host number (any number you pick, the same every time)</td><td class="box"></td></tr>
+<tr><td>How many started the hour</td><td class="box"></td></tr>
+<tr><td>How many finished all six steps within 60 minutes</td><td class="box"></td></tr>
+<tr><td><b>Memory check:</b> at the start everyone told their Brainstem one fact; at the end they closed it, opened it again and asked. How many got the fact back?</td><td class="box"></td></tr>
+<tr><td>How many of those had never written code</td><td class="box"></td></tr>
+<tr><td>How many came because someone told them, or they looked up how to start with AI</td><td class="box"></td></tr>
+<tr><td>Who will host the next room (how many said yes)</td><td class="box"></td></tr>
+<tr><td>The hardest step today (one or two words)</td><td class="box"></td></tr>
+<tr><td>A week later: how many say they still use it (ask the room once)</td><td class="box"></td></tr>
+</table>
+<p class="note">Text the numbers to the person who asked you to host. That is all we count. Run the room with the <a href="../room/">room guide</a>.</p>
+</main>
+</body>
+</html>

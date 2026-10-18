@@ -1,0 +1,23 @@
+{
+ "tag": "room-pass5",
+ "new_votes": 2,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y turns the central persistence promise into a concrete close-and-reopen proof within the hour, supported by the installer's disk-backed memory, and the modest tally-card overhead improves verifiability without obscuring the message."
+  ],
+  [
+   "gemini-4-argon",
+   "old",
+   "clear: X instructs everyone at minute 56 to close and reopen their Brainstem without explaining how\u2014directly triggering the 'Brainstem window closed' failure mode in the troubleshooting section and clashing with the minute 15-25 line that they ask tomorrow\u2014while adding extra tally-card tracking machinery."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: Y replaces the untestable 'tomorrow it is still there' close with an in-room close-and-reopen memory check that matches what the installer does (re-running it restarts the Brainstem and keeps the memory folder) and teaches the reopen skill, which outweighs the small added tally-card chore and its slightly loose 'numbers only' wording."
+  ]
+ ]
+}

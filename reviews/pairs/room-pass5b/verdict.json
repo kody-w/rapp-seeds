@@ -1,0 +1,23 @@
+{
+ "tag": "room-pass5b",
+ "new_votes": 2,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X turns the persistence promise into a truthful, in-hour restart-and-recall check while adding a privacy-safe tally, making the outcome more concrete and verifiable despite slightly greater complexity."
+  ],
+  [
+   "gemini-4-argon",
+   "old",
+   "clear: Y stays simple and focused on the learner, whereas X adds unnecessary tally-card tracking, Mac-specific 'Terminal' jargon, and a rushed 4-minute reinstall step that contradicts the earlier 'Tomorrow they ask what it remembers' step."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: X ends the hour by having everyone close the Terminal window, re-paste the install line and see their saved fact come back, which both installers support (they keep .brainstem_data, skip re-sign-in and relaunch), so the 'tomorrow it is still there' moment is shown rather than just claimed, and that outweighs its extra machinery (tally card, tighter close, and a tally link that is 404 on the public site until pushed)."
+  ]
+ ]
+}

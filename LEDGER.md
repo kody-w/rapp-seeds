@@ -77,3 +77,5 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | short 2 | short 32-42 voice: 'Each job it can do for you is an agent' (Sol REFUTE: 'everything' was false) | side-by-side 3 of 3 prefer new | compare.sh short-pass2 |
 | registry 2 | FirstHour notarized in the registry (Issue #1460 approved, receipt written); agent README links it | - | issue CLOSED notarized; approve run 39128576523 success; live registry.json lists @kody-w/first_hour_agent |
 | 17 | hour Details: when Copilot writes an answer, the Brainstem sends it your message and the memories it needs (resolves the memory question; MESSAGE.md unchanged) | side-by-side 3 of 3 prefer new | compare.sh hour-pass17 |
+| tally | room tally card: numbers only, no names, one printed sheet | new | PDF 1 page, rendered and read; words.py 0 |
+| room 5 | room guide links the tally card; the hour ends with an in-room memory check (close the window, paste the line again, ask) | side-by-side 2 of 3 prefer new, three times (Gemini: adds counting, rushed close) | compare.sh room-pass5, 5b, 5c |
