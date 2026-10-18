@@ -16,6 +16,7 @@ This repository holds the seeds: the same message, in the same words, in every m
 |---|---|
 | [The hour](https://kody-w.github.io/rapp-seeds/seeds/hour/) | anyone, alone, in an hour |
 | [Paste](seeds/paste/README.md) | paste into any AI and it walks you through the hour |
+| [FirstHour agent](seeds/agent/README.md) | drag it onto your Brainstem and it teaches you the hour itself |
 | [Slides](https://kody-w.github.io/rapp-seeds/seeds/slides/) | presenting it to a room, notes on N |
 | [Room guide](seeds/room/README.md) | running the hour with a group |
 | [Card](seeds/card/card.pdf) | a pocket card with a QR code to the page |
