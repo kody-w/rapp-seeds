@@ -40,3 +40,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 10 | hour page step 4: Export ManageMemory, call it a short program for one job, paste it into any AI and ask for plain words | side-by-side 3 of 3 prefer new | tools/compare.sh hour-pass10; reviewers confirmed ManageMemory row and Export in the public Brainstem page |
 | room 1 | room guide opens with the line and all three promises verbatim from MESSAGE.md | median 70 -> 76.5 (2 of 3 replied); side-by-side 3 of 3 prefer new | tools/compare.sh room-pass1; words.py 0 |
 | paste 2 | paste step 4-5 mirror the hour page: Export ManageMemory, paste it here, explain in plain words | side-by-side 3 of 3 prefer new | tools/compare.sh paste-pass2; words.py 0 |
+| slides | 8-slide deck for evangelists, same message, speaker notes on N | new | all 8 rendered at 1280x720 and the last at phone width, read by eye; words.py 0 |
