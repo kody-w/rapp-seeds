@@ -39,12 +39,12 @@ Everyone leaves with their own Brainstem and one agent they made.
 
 ## After
 
-- Ask who wants to host a room of their own, and count the yes answers on the tally card. Pass their names on
-  to the person who asked you to host only if they ask you to; the card never has names.
-- Ask each person to send you one agent they made, as the file. Send them on to the person who asked you to host,
-  and they go into the registry for everyone: https://github.com/kody-w/RAR
-- Seven days later, ask once in the room's group chat: "If you finished, are you still using it?" Put how many
-  said yes on the tally card.
-- Text a photo of the tally card to the person who asked you to host.
+- Ask who wants to host a room of their own. Count the yes answers on the tally card and give them the card's link
+  and this guide; everything a host needs is public.
+- Ask each person to send you one agent they made, as the file, and share the ones the room likes in the registry:
+  https://github.com/kody-w/RAR
+- Post the tally card's numbers the same day: https://github.com/kody-w/rapp-seeds/issues/new?template=room-tally.yml
+- Seven days later, ask once in the room's group chat: "If you finished, are you still using it?" Add how many said
+  yes as a comment on your tally. No answer counts as no.
 
 The agents a room likes most become the next room's examples.
