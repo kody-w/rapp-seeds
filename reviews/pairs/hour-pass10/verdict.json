@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass10",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X names the actual ManageMemory agent and accurately describes its exported Python file, while Y ambiguously says \u201cthe memory agent\u201d despite two memory agents and falsely claims the code reads like plain instructions."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: Y accurately names the UI entry (ManageMemory), honestly describes the exported Python file as a short program rather than 'plain instructions,' and gives non-technical readers a practical way to read it by asking any AI to explain it in plain words."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The only difference is step 4, and Y's wording checks out against the public Brainstem (the Installed Agents list shows an exact \"ManageMemory\" row with Export, a 91-line file that saves what you ask it to remember) and gives non-coders a way to understand the file, while X's \"the memory agent\" matches two rows (ContextMemory and ManageMemory) and its claim that the Python file \"reads like plain instructions\" is overstated."
+  ]
+ ]
+}

@@ -37,3 +37,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 8 | hour page step 4: name ManageMemory, say the file is a short program | median 78 -> 68 (68, 92, 65) | REVERTED (median fell) |
 | 9 | hour page: define the Brainstem before the install line, and say how to open Terminal on a Mac | absolute median 78 -> 77 (inside noise); side-by-side 3 of 3 prefer new | check fixed: absolute medians drift about 5 points on unchanged text, so changes are now judged blind side by side (tools/compare.sh, keep at 2 of 3) |
 | room 0 | baseline room guide | median 70 (70, 85, 60) | panel |
+| 10 | hour page step 4: Export ManageMemory, call it a short program for one job, paste it into any AI and ask for plain words | side-by-side 3 of 3 prefer new | tools/compare.sh hour-pass10; reviewers confirmed ManageMemory row and Export in the public Brainstem page |
