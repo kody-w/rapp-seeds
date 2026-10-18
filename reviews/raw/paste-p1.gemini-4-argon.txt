@@ -1,0 +1,64 @@
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read README.md
+  │ seeds/paste/README.md
+  └ 45 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Run words.py check and fetch install.sh (shell)
+  │ python3 tools/words.py seeds/paste/README.md && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh | head -n 120
+  └ 122 lines…
+
+● Fetch install.ps1 and check RAR repo (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | head -n 120 && curl -I -s
+  │ https://github.com/kody-w/RAR | head -n 5
+  └ 125 lines…
+
+● Check the end of install.sh (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | tail -n 150
+  └ 150 lines…
+
+● Check Brainstem UI claims in index.html (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -E
+  │ "Manage installed agents|Export|_agent\.py" -C 2
+  └ 93 lines…
+
+● List files in rapp_brainstem/agents (shell)
+  │ curl -fsSL https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem/agents |
+  │ grep '"name"'
+  └ 5 lines…
+
+● Check hacker_news_agent.py and manage_memory_agent.py (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/agents/ha
+  │ cker_news_agent.py && echo "---" && curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-ins
+  │ taller/main/rapp_brainstem/agents/manage_memory_agent.py | head -n 60
+  └ 185 lines…
+
+● Check drag and drop and agents panel in index.html (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -E
+  │ "drag|drop|agents-panel" -C 6 | head -n 90
+  └ 90 lines…
+
+● Check context_memory_agent.py (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/agents/co
+  │ ntext_memory_agent.py | head -n 50
+  └ 50 lines…
+
+{"seed": "seeds/paste/README.md", "scores": {"1":10,"2":9,"3":9,"4":8,"5":9,"6":7,"7":10,"8":10,"9":9,"10":10}, "total": 91, "weakest": "Line 6 (The hour): Steps 4 and 5 tell a non-technical user to 'Export the memory agent', but the panel lists two memory files (context_memory_agent.py and manage_memory_agent.py) alongside hacker_news_agent.py, and clicking Export only downloads the file locally without telling the user to attach or paste it into the AI chat so the guide can read it and model the new agent on it.", "fix": "In steps 4 and 5, name an exact installed file (such as hacker_news_agent.py or manage_memory_agent.py) and tell the guide to have the user attach or paste the exported file into the chat — replace steps 4 and 5 with: '4. Read an agent: have me click Export on hacker_news_agent.py, attach or paste that file here, and explain it to me in plain words. 5. Make my own: help me pick a chore I repeat, then write a new one-file agent using the exact same BasicAgent pattern. Tell me how to save it with a name ending in _agent.py and drag it onto my Brainstem window to try it.'"}
+
+
+
+Changes    +0 -0
+AI Credits 41.22 (1m 25s)
+Tokens     ↑ 1.1m (964.2k cached) • ↓ 1.1k (3.1k reasoning)
+Resume     copilot --resume=c55a01a3-96c6-458c-ba30-2b7a9de92277

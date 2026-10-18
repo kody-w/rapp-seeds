@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/paste/README.md",
+ "tag": "paste-r1",
+ "reviews": [
+  {
+   "seed": "seeds/paste/README.md",
+   "scores": {
+    "1": 7,
+    "2": 2,
+    "3": 5,
+    "4": 6,
+    "5": 4,
+    "6": 6,
+    "7": 3,
+    "8": 8,
+    "9": 6,
+    "10": 10
+   },
+   "total": 57,
+   "weakest": "2: The seed exposes terminal commands, operating-system names, GitHub, Copilot, source code, folders, and agent files before a novice has a plain-language mental model, so it fails the five-second test.",
+   "fix": "Replace the visible six-step script with: \"# Your AI, as files you own.\\n\\n**Learn it in an hour.** It thinks the way you do, so you can see how it works.\\n**Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder.\\n**Hand it to anyone.** It is just files. One agent is one file.\\n\\nCopy this into any AI chat:\\n\\n```text\\nBe my guide for one hour. Help me get my Brainstem running on this computer. Use plain words, give me one step at a time, and wait for me to say \\\"done.\\\" First ask whether I use Mac, Windows, or Linux, then follow the current instructions at https://github.com/kody-w/rapp-installer.\\n```\" Move the current commands and six-step walkthrough under `<details><summary>Details</summary>...</details>`.",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/paste/README.md",
+   "scores": {
+    "1": 6,
+    "2": 7,
+    "3": 7,
+    "4": 5,
+    "5": 8,
+    "6": 6,
+    "7": 9,
+    "8": 8,
+    "9": 8,
+    "10": 9
+   },
+   "total": 73,
+   "weakest": "Line 4 (True today): pasting this prompt into an arbitrary AI chat fails at steps 3\u20135 because the prompt omits the install path (~/.brainstem/src/rapp_brainstem/), the memory agent filename (manage_memory_agent.py), and the *_agent.py BasicAgent contract required for a new agent file to work on the next message.",
+   "fix": "Include the exact folder path, filenames, and minimal BasicAgent template inside the paste block, and replace the meta-rubric footer ('Same message as every seed: ...') with the exact promises from MESSAGE.md: '**Your AI, as files you own.** **Learn it in an hour.** It thinks the way you do, so you can see how it works. **Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder. **Hand it to anyone.** It is just files. One agent is one file.' while adding to the prompt box: 'Files live in ~/.brainstem/src/rapp_brainstem/ (the behavior page is there, the memory agent is agents/manage_memory_agent.py, and every new agent is an agents/<name>_agent.py file subclassing BasicAgent from basic_agent with self.name, self.metadata, and def perform(self, **kwargs)).'",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/paste/README.md",
+   "scores": {
+    "1": 7,
+    "2": 6,
+    "3": 4,
+    "4": 6,
+    "5": 8,
+    "6": 6,
+    "7": 7,
+    "8": 7,
+    "9": 5,
+    "10": 9
+   },
+   "total": 65,
+   "weakest": "3: the page never delivers the moment from MESSAGE.md (it is still there tomorrow, on your own computer, remembering) and only ends by asking the reader to agree that AI 'should have been like this all along', so it reads as a developer tutorial, not an expectation finally met.",
+   "fix": "Rewrite the opening as one edit. Title and intro become '# Your AI, as files you own.' then 'Paste the box into any AI chat you already use. In about an hour it walks you, one step at a time, to your own Brainstem, the small program on your computer that runs your AI: you talk to it, read how it thinks, give it a new job, and hand that job to a friend as one file.' Replace the box's first paragraph with 'Be my guide for one hour. The idea: Your AI, as files you own. 1. Learn it in an hour. It thinks the way you do, so you can see how it works. 2. Run it on any computer. Mac, Windows or Linux. Its memory stays in your own folder. 3. Hand it to anyone. It is just files. One agent is one file. The tool is called the Brainstem. It is free, and its source is public: https://github.com/kody-w/rapp-installer Read that page first and do not guess. Be plain with me: the Brainstem and its files live on my computer, but GitHub Copilot, a service with its own plans, writes the answers over the internet.' Delete the footer, which uses the unexplained word 'seed'. This fixes the missing Copilot/internet disclosure that the sibling hour page already makes (line 4), the unqualified 'free' (line 7), the paraphrased message (line 1) and the opening that never says what the hour is for (lines 2, 3, 9).",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 65,
+ "min": 57,
+ "n": 3
+}

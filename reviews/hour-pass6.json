@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/hour/index.html",
+ "tag": "hour-pass6",
+ "reviews": [
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 6,
+    "3": 8,
+    "4": 4,
+    "5": 5,
+    "6": 7,
+    "7": 5,
+    "8": 9,
+    "9": 6,
+    "10": 7
+   },
+   "total": 67,
+   "weakest": "4: The exported memory agent is Python, not \u201cplain instructions,\u201d and the linked sources cannot guarantee that a file made by \u201cany AI\u201d will load or work for a friend.",
+   "fix": "Replace steps 4\u20136 with: <li><b>Add an agent.</b><span>Click the registry icon at the top right, choose one, and click Add. It becomes available on your next message.</span></li><li><b>Use it.</b><span>Ask Brainstem to use that agent for one real task.</span></li><li><b>Hand it on.</b><span>Click the agents icon, then Export next to that agent, and send the downloaded file to a friend. They can drag it onto their Brainstem.</span></li>",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 8,
+    "3": 9,
+    "4": 7,
+    "5": 8,
+    "6": 8,
+    "7": 9,
+    "8": 9,
+    "9": 8,
+    "10": 8
+   },
+   "total": 84,
+   "weakest": "Line 4 (True today): Steps 3 and 4 do not match the live rapp-installer UI or files\u2014the top-right control is an unlabeled \u2295 icon button (not an 'agents button'), the panel lists ContextMemory and ManageMemory (not a single 'memory agent'), and the exported .py file is ~120 lines of Python class code rather than 'plain instructions'.",
+   "fix": "Update Steps 3 and 4 in seeds/hour/index.html so they match the actual Brainstem UI and files today\u2014replace `<li><b>See what it can do.</b><span>Click the agents button at the top right of your Brainstem. Each one listed is an agent: one file that does one job.</span></li>\n<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>` with `<li><b>See what it can do.</b><span>Click the <b>\u2295</b> button at the top right of your Brainstem (Manage installed agents). Each one listed is an agent: one file that does one job.</span></li>\n<li><b>Read an agent.</b><span>Click <b>Export</b> next to <code>manage_memory_agent.py</code> and open the downloaded file in TextEdit or Notepad. You can see the whole job\u2014its description, its settings, and how it saves to your folder\u2014in one short file.</span></li>`.",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 5,
+    "3": 6,
+    "4": 6,
+    "5": 7,
+    "6": 7,
+    "7": 7,
+    "8": 7,
+    "9": 6,
+    "10": 8
+   },
+   "total": 68,
+   "weakest": "2: the product's own name, Brainstem, appears four times outside Details but is never explained (MESSAGE.md defines it), and Terminal, PowerShell, model, _agent.py, MIT, RAPP and 'Wildhaven Homes LLC' are also unexplained in the main flow, so a stranger cannot follow every word in five seconds.",
+   "fix": "In the start box, replace the line 'Open Terminal, paste this, press Enter.' with 'This installs your Brainstem, the small program on your computer that runs your AI. Open Terminal, paste this, press Enter.' This is MESSAGE.md's own definition, so the one word the whole page leans on is explained before anyone pastes a command.",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 68,
+ "min": 67,
+ "n": 3
+}

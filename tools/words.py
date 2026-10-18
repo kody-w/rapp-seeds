@@ -21,7 +21,7 @@ BANNED = {
     r"\bdistros?\b": "describe it plainly",
     r"\borganisms?\b": "describe it plainly",
     r"\beggs?\b": "describe what it does",
-    r"\bsoul(\.md)?\b": "say 'the one page that tells it who it is'",
+    r"\bsoul\b(?!\.md)": "say 'the one page that tells it who it is' (the file name soul.md is fine)",
     r"\bframes?\b": "describe what it does",
     r"\btwins?\b": "describe what it does",
     r"\bholos?\b": "describe what it does",

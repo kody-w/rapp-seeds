@@ -1,0 +1,57 @@
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Run words.py check and inspect install.sh (shell)
+  │ python3 tools/words.py seeds/hour/index.html && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh | head -n 40
+  └ 42 lines…
+
+● Verify public URLs and repo contents (shell)
+  │ curl -sI https://kody-w.github.io/rapp-installer/install.ps1 | head -n 5
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail --jq '.[].name'
+  │ gh api repos/kody-w/rapp-1/contents/.github/workflows --jq '.[].name'
+  │ gh api repos/kody-w/RAR --jq '.full_name, .private'
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem --jq '.[].name'
+  └ 41 lines…
+
+● Check grail README and brainstem index.html UI strings (shell)
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail/README.md -H "Accept:
+  │ application/vnd.github.raw" | head -n 40
+  │ echo "---"
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H "Accept:
+  │ application/vnd.github.raw" | grep -iE "Manage installed agents|Export|drop|_agent\.py" | head…
+  └ 72 lines…
+
+● Check agents in rapp-installer and how export button works in UI (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents --jq '.[].name'
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H "Accept:
+  │ application/vnd.github.raw" | grep -n -C 12 "export-btn"
+  └ 149 lines…
+
+● Inspect context_memory_agent.py and manage_memory_agent.py (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py -H
+  │ "Accept: application/vnd.github.raw" | head -n 45
+  │ echo "---"
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py -H
+  │ "Accept: application/vnd.github.raw" | head -n 45
+  └ 91 lines…
+
+{"seed": "seeds/hour/index.html", "scores": {"1":9,"2":8,"3":9,"4":7,"5":8,"6":8,"7":10,"8":10,"9":9,"10":9}, "total": 87, "weakest": "Line 4 (True today): Step 4 tells the reader to click Export next to 'the memory agent' and says the file 'reads like plain instructions for one job,' but the live Brainstem ships two memory agents (ContextMemory and ManageMemory) and the exported file is a Python class with imports and JSON schema rather than plain prose.", "fix": "In seeds/hour/index.html, define Brainstem in the lead-in and make Step 4 and Step 5 honest about what the exported agent file contains by replacing `<p class=\"lead\">Six steps, about ten minutes each. No coding.</p>` with `<p class=\"lead\">Your Brainstem is the small program on your computer that runs your AI. Six steps, about ten minutes each. No coding.</p>` and replacing `<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>` with `<li><b>Read an agent.</b><span>Click Export next to either memory agent (<code>ManageMemory</code> or <code>ContextMemory</code>) and open the file in any text editor. Right at the top, in plain English, it describes the one job that file does.</span></li>`."}
+
+
+
+Changes    +0 -0
+AI Credits 117.17 (1m 31s)
+Tokens     ↑ 959.6k (399.4k cached) • ↓ 1.1k (3.4k reasoning)
+Resume     copilot --resume=5d0f23ae-89f9-4923-a72f-88b4f23a8536

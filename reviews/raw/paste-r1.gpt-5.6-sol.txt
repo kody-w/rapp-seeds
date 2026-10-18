@@ -1,0 +1,88 @@
+● skill(adversarial-review)
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read README.md
+  │ seeds/paste/README.md
+  └ 34 lines read
+
+I’m checking the linked public surfaces and the repository’s exact word gate before scoring truth and cleanliness.
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+● Run seed forbidden-word check (shell)
+  │ python3 tools/words.py seeds/paste/README.md
+  └ 1 line…
+
+● Check installers for browser launch (shell)
+  │ printf '%s\n' 'install.sh:' && curl -fsSL https://kody-w.github.io/rapp-installer/install.sh |
+  │ grep -nEi 'browser|localhost|open |xdg-open|webbrowser' | tail -30; printf '%s\n' 'install.ps1:'
+  │ && curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | grep -nEi
+  │ 'browser|localhost|start-process|7071' | tail -30
+  └ 29 lines…
+
+● List relevant public Brainstem files (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E
+  │ '(^|/)(soul\.md|.*memory.*agent.*\.py|brainstem\.py|launcher.*|run.*\.py)$' | head -80
+  └ 4 lines…
+
+● Check linked repository status (shell)
+  │ gh api repos/kody-w/rapp-installer --jq '{license:.license.spdx_id,visibility:.visibility,archiv
+  │ ed:.archived,default_branch:.default_branch,updated_at:.updated_at}' && gh api repos/kody-w/RAR
+  │ --jq
+  │ '{license:.license.spdx_id,visibility:.visibility,archived:.archived,updated_at:.updated_at}'
+  └ 2 lines…
+
+The links are live, but I’m testing the most consequential operational claim: whether a newly dropped agent really becomes usable on the next message without a restart.
+
+● Fetching web content https://kody-w.github.io/rapp-installer/ · url: "https://kody-w.github.io/ra…
+  └ Contents of https://kody-w.github.io/rapp-installer/:
+
+● Fetching web content https://kody-w.github.io/RAR/ · url: "https://kody-w.github.io/RAR/", max_le…
+  └ Contents of https://kody-w.github.io/RAR/:
+
+● Check license and shipped agents (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -Ei
+  │ '(^|/)(license|copying)(\.|$)|agents/.+\.py$' | head -120
+  └ 5 lines…
+
+● Inspect public agent discovery behavior (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py | grep -nE -C 5
+  │ 'load_agents|discover|AGENTS_PATH|agents_dir|glob\(|rglob\(|reload|mtime|_agent\.py' | head -240
+  └ 240 lines…
+
+● Inspect public memory agents (shell)
+  │ gh api -H 'Accept: application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py | sed -n
+  │ '1,220p'; printf '\n--- manage memory ---\n'; gh api -H 'Accept:
+  │ application/vnd.github.raw+json'
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py | sed -n …
+  └ 275 lines…
+
+{"seed":"seeds/paste/README.md","scores":{"1":7,"2":2,"3":5,"4":6,"5":4,"6":6,"7":3,"8":8,"9":6,"10":10},"total":57,"weakest":"2: The seed exposes terminal commands, operating-system names, GitHub, Copilot, source code, folders, and agent files before a novice has a plain-language mental model, so it fails the five-second test.","fix":"Replace the visible six-step script with: \"# Your AI, as files you own.\\n\\n**Learn it in an hour.** It thinks the way you do, so you can see how it works.\\n**Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder.\\n**Hand it to anyone.** It is just files. One agent is one file.\\n\\nCopy this into any AI chat:\\n\\n```text\\nBe my guide for one hour. Help me get my Brainstem running on this computer. Use plain words, give me one step at a time, and wait for me to say \\\"done.\\\" First ask whether I use Mac, Windows, or Linux, then follow the current instructions at https://github.com/kody-w/rapp-installer.\\n```\" Move the current commands and six-step walkthrough under `<details><summary>Details</summary>...</details>`."}
+
+
+
+Changes    +0 -0
+AI Credits 43.63 (2m 5s)
+Tokens     ↑ 208.0k (169.5k cached) • ↓ 10.7k (9.2k reasoning)
+Resume     copilot --resume=1f96e06f-e7c1-4013-9dbe-d7813c61bc08

@@ -1,0 +1,61 @@
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read README.md
+  │ seeds/paste/README.md
+  └ 34 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Check words.py and verify public URLs (shell)
+  │ python3 tools/words.py seeds/paste/README.md && curl -fsSLI
+  │ https://github.com/kody-w/rapp-installer | head -n 5 && curl -fsSLI
+  │ https://kody-w.github.io/rapp-installer/install.sh | head -n 5 && curl -fsSLI
+  │ https://kody-w.github.io/rapp-installer/install.ps1 | head -n 5 && curl -fsSLI
+  │ https://github.com/kody-w/RAR | head -n 5
+  └ 21 lines…
+
+● Inspect install.sh contents (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | head -n 80
+  └ 80 lines…
+
+● Inspect rest of install.sh (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | tail -n +81
+  └ 13 lines…
+
+● Check tail of install.sh (shell)
+  │ tail -n 120 /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292978666-copilot-tool-output-4
+  │ 8129-52feb8f3-0a69-47bc-b46e-7ce8b63bf54e.txt
+  └ 120 lines…
+
+● List files in rapp-installer repo (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem --jq '.[].name' && gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents --jq '.[].name'
+  └ 22 lines…
+
+● Check rapp-installer README.md (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md | head -n 100
+  └ 100 lines…
+
+● Check rest of rapp-installer README.md (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md | tail -n +101
+  │ | head -n 80
+  └ 79 lines…
+
+● Check RAR README.md (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/RAR/main/README.md | head -n 60
+  └ 60 lines…
+
+{"seed": "seeds/paste/README.md", "scores": {"1":6,"2":7,"3":7,"4":5,"5":8,"6":6,"7":9,"8":8,"9":8,"10":9}, "total": 73, "weakest": "Line 4 (True today): pasting this prompt into an arbitrary AI chat fails at steps 3–5 because the prompt omits the install path (~/.brainstem/src/rapp_brainstem/), the memory agent filename (manage_memory_agent.py), and the *_agent.py BasicAgent contract required for a new agent file to work on the next message.", "fix": "Include the exact folder path, filenames, and minimal BasicAgent template inside the paste block, and replace the meta-rubric footer ('Same message as every seed: ...') with the exact promises from MESSAGE.md: '**Your AI, as files you own.** **Learn it in an hour.** It thinks the way you do, so you can see how it works. **Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder. **Hand it to anyone.** It is just files. One agent is one file.' while adding to the prompt box: 'Files live in ~/.brainstem/src/rapp_brainstem/ (the behavior page is there, the memory agent is agents/manage_memory_agent.py, and every new agent is an agents/<name>_agent.py file subclassing BasicAgent from basic_agent with self.name, self.metadata, and def perform(self, **kwargs)).'"}
+
+
+
+Changes    +0 -0
+AI Credits 145 (2m 1s)
+Tokens     ↑ 1.4m (681.2k cached) • ↓ 1.2k (4.8k reasoning)
+Resume     copilot --resume=7408ef59-937d-4959-bccd-e6507eb12328

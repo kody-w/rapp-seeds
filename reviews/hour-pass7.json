@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/hour/index.html",
+ "tag": "hour-pass7",
+ "reviews": [
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 7,
+    "3": 9,
+    "4": 6,
+    "5": 7,
+    "6": 8,
+    "7": 6,
+    "8": 9,
+    "9": 8,
+    "10": 8
+   },
+   "total": 78,
+   "weakest": "4: The sources confirm local storage and the 25-scenario suite, but the page promises tomorrow's memory after a generic chat even though conversations are not persisted and memory is saved only when the memory agent is invoked.",
+   "fix": "Replace step 2 with: <li><b>Prove its memory.</b><span>Tell it one fact about you and say <em>Remember that.</em> Click Clear, then ask <em>What do you remember?</em> The saved memory stays in your Brainstem folder; Copilot writes the answer over the internet.</span></li>",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 8,
+    "3": 9,
+    "4": 7,
+    "5": 8,
+    "6": 8,
+    "7": 10,
+    "8": 10,
+    "9": 9,
+    "10": 9
+   },
+   "total": 87,
+   "weakest": "Line 4 (True today): Step 4 tells the reader to click Export next to 'the memory agent' and says the file 'reads like plain instructions for one job,' but the live Brainstem ships two memory agents (ContextMemory and ManageMemory) and the exported file is a Python class with imports and JSON schema rather than plain prose.",
+   "fix": "In seeds/hour/index.html, define Brainstem in the lead-in and make Step 4 and Step 5 honest about what the exported agent file contains by replacing `<p class=\"lead\">Six steps, about ten minutes each. No coding.</p>` with `<p class=\"lead\">Your Brainstem is the small program on your computer that runs your AI. Six steps, about ten minutes each. No coding.</p>` and replacing `<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>` with `<li><b>Read an agent.</b><span>Click Export next to either memory agent (<code>ManageMemory</code> or <code>ContextMemory</code>) and open the file in any text editor. Right at the top, in plain English, it describes the one job that file does.</span></li>`.",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 5,
+    "3": 6,
+    "4": 4,
+    "5": 6,
+    "6": 6,
+    "7": 7,
+    "8": 7,
+    "9": 6,
+    "10": 6
+   },
+   "total": 62,
+   "weakest": "4 (True today): step 4 sends people to 'the memory agent' and says it 'reads like plain instructions', but the Brainstem ships two memory agents (ManageMemory and ContextMemory) and Export downloads Python that imports an 'Azure' storage name, while 'people say...', 'Free for everyone who will ever use AI', 'check it against the original' (the 25 checks cover only the /chat wire, 3 of 27 routes) and 'Wildhaven Homes LLC' (the repo LICENSE names Kody Wildfeuer) cannot be confirmed from any linked source.",
+   "fix": "Replace step 4 with: <li><b>Read an agent.</b><span>Click Export next to HackerNews. A file called <code>hacker_news_agent.py</code> downloads. Right-click it and open it with TextEdit (Mac) or Notepad (Windows). Near the top, one plain sentence says its one job: Fetches the top N stories from Hacker News.</span></li>  (HackerNews ships with the Brainstem, is self-contained, and has no 'Azure' in it. The memory agents are a poor first read: there are two, and their 'Azure' import makes a stranger doubt 'its memory stays in your own folder'.)",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 78,
+ "min": 62,
+ "n": 3
+}

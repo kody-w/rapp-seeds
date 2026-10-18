@@ -1,0 +1,156 @@
+● skill(adversarial-review)
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://github.com/kody-w/rapp-1/tree/main/conformance/grail · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/tree/main/conformance/grail:
+
+● Fetching web content https://github.com/kody-w/rapp-1 · url: "https://github.com/kody-w/rapp-1", …
+  └ Contents of https://github.com/kody-w/rapp-1:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/LICENSE · url: "https:/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/.github/workflows/grail…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+✗ Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE · url: …
+  └ Error: Failed to fetch https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE -
+    status code 404
+
+● List public Brainstem source paths (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E
+  │ '(^|/)(templates|static|web|ui|frontend|brainstem\.py|local_storage\.py|.*agent\.py|LICENSE|READ
+  │ ME)' | head -200
+  └ 9 lines…
+
+● Check licenses and conformance files (shell)
+  │ printf 'rapp-1: '; gh api repos/kody-w/rapp-1 --jq
+  │ '[.license.spdx_id,.default_branch,.archived] | @tsv'; printf 'installer: '; gh api
+  │ repos/kody-w/rapp-installer --jq '[.license.spdx_id,.default_branch,.archived] | @tsv'; printf
+  │ 'RAR: '; gh api repos/kody-w/RAR --jq '[.license.spdx_id,.default_branch,.archived] | @tsv';
+  │ gh api 'repos/kody-w/rapp-1/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E …
+  └ 23 lines…
+
+● Run forbidden word checker (shell)
+  │ python3 tools/words.py seeds/hour/index.html
+  └ 1 line…
+
+● Verify local memory storage (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py -H 'Accept:
+  │ application/vnd.github.raw+json' | rg -n -C 3
+  │ 'memory|folder|json|sqlite|brainstem_data|conversation|session' | head -220
+  └ 1 line…
+
+● Verify Brainstem UI claims (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | rg -n -C 3 'Manage installed
+  │ agents|Export|drag|drop|/agents|import-agent|upload|context_memory|memory agent|⊕' | head -240
+  └ 1 line…
+
+● Inspect bundled memory agents (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py -H
+  │ 'Accept: application/vnd.github.raw+json' | rg -n -C 3 'class|name|memory|export|metadata' |
+  │ head -180; printf '\n--- manage ---\n'; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py -H 'Accept:
+  │ application/vnd.github.raw+json' | rg -n -C 3 'class|name|memory|export|metadata' | head -180
+  └ 4 lines…
+
+● Web Search (MCP: github-mcp-server) · As of October 2026, does GitHub Copilot have a free pla… 17s
+  └ {"annotations":null,"bing_searches":[{"text":"GitHub Copilot free plan Octobe...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://docs.github.com/en/copilot/get-started/plans-for-github-copilot · ur…
+  └ Contents of https://docs.github.com/en/copilot/get-started/plans (redirected ...
+
+● Verify local memory storage (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -En -C 3
+  │ 'memory|folder|json|sqlite|brainstem_data|conversation|session' | head -240
+  └ 105 lines…
+
+● Verify Brainstem UI claims (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -En -C 3 'Manage installed
+  │ agents|Export|drag|drop|/agents|import-agent|upload|context_memory|memory agent|⊕' | head -280
+  └ 152 lines…
+
+● Inspect bundled memory agents (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py -H
+  │ 'Accept: application/vnd.github.raw+json' | grep -En -C 3 'class|name|memory|export|metadata'
+  │ | head -220; printf '\n--- manage ---\n'; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -En -C 3 'class|name|memory|export|metadata' | head …
+  └ 214 lines…
+
+● Fetching web content https://kody-w.github.io/rapp-installer/ · url: "https://kody-w.github.io/ra…
+  └ Contents of https://kody-w.github.io/rapp-installer/:
+
+● Fetching web content https://kody-w.github.io/RAR/ · url: "https://kody-w.github.io/RAR/", max_le…
+  └ Contents of https://kody-w.github.io/RAR/:
+
+● Check current Brainstem interface (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -En -C 4 'Manage installed
+  │ agents|Export|drag|drop|agents/import|agent-manager|⊕|plus|installed agents' | head -320
+  └ 320 lines…
+
+● Check memory agent labels (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | grep -En -C 5
+  │ 'memory|ContextMemory|ManageMemory|agent-file|filename' | head -240
+  └ 196 lines…
+
+● Check recent public CI status (shell)
+  │ gh api 'repos/kody-w/rapp-installer/actions/runs?branch=main&per_page=10' --jq '.workflow_runs[]
+  │ | [.name,.status,.conclusion,.created_at,.html_url] | @tsv' | head -10; printf '\nRAPP
+  │ conformance:\n'; gh api
+  │ 'repos/kody-w/rapp-1/actions/workflows/grail.yml/runs?branch=main&per_page=5' --jq
+  │ '.workflow_runs[] | [.status,.conclusion,.created_at,.html_url] | @tsv'
+  └ 15 lines…
+
+● Confirm agent import feedback (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html -H 'Accept:
+  │ application/vnd.github.raw+json' | sed -n '1722,1768p'
+  └ 46 lines…
+
+{"seed":"seeds/hour/index.html","scores":{"1":10,"2":7,"3":9,"4":6,"5":7,"6":8,"7":6,"8":9,"9":8,"10":8},"total":78,"weakest":"4: The sources confirm local storage and the 25-scenario suite, but the page promises tomorrow's memory after a generic chat even though conversations are not persisted and memory is saved only when the memory agent is invoked.","fix":"Replace step 2 with: <li><b>Prove its memory.</b><span>Tell it one fact about you and say <em>Remember that.</em> Click Clear, then ask <em>What do you remember?</em> The saved memory stays in your Brainstem folder; Copilot writes the answer over the internet.</span></li>"}
+
+
+
+Changes    +0 -0
+AI Credits 102.63 (3m 5s)
+Tokens     ↑ 490.1k (335.9k cached) • ↓ 13.7k (11.4k reasoning)
+Resume     copilot --resume=00625e1b-8de4-4c27-9610-ec5c807d6b3c

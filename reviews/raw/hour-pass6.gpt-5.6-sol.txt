@@ -1,0 +1,133 @@
+● skill(adversarial-review)
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+I’m checking the linked installer, format, registry, and conformance claims against their public sources, plus the repository’s word check.
+
+/ Search (glob)
+  │ "tools/words.py"
+  └ 1 file found
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://github.com/kody-w/rapp-1/tree/main/conformance/grail · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/tree/main/conformance/grail:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://github.com/kody-w/rapp-1 · url: "https://github.com/kody-w/rapp-1", …
+  └ Contents of https://github.com/kody-w/rapp-1:
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Check word policy and installer source (shell)
+  │ python3 tools/words.py seeds/hour/index.html; printf '\n-- install.sh launch/auth refs --\n';
+  │ gh api repos/kody-w/rapp-installer/contents/install.sh --jq .content | base64 --decode | rg -n
+  │ -C 3 'launch|localhost|open |xdg-open|gh auth|brainstem\(\)|main\(\)' | tail -n 140; printf
+  │ '\n-- install.ps1 launch/auth refs --\n'; gh api
+  │ repos/kody-w/rapp-installer/contents/install.ps1 --jq .content | base64 --decode | rg -n -C 3 …
+  └ 14 lines…
+
+● Inspect installer launch and UI paths (shell)
+  │ set -e; tmpdir=$(mktemp -d); gh api repos/kody-w/rapp-installer/contents/install.sh --jq
+  │ .content | base64 --decode > "$tmpdir/install.sh"; gh api
+  │ repos/kody-w/rapp-installer/contents/install.ps1 --jq .content | base64 --decode >
+  │ "$tmpdir/install.ps1"; printf '%s\n' '-- install.sh launch/auth refs --'; grep -nE -C 3
+  │ 'launch|localhost|open |xdg-open|gh auth|brainstem\(\)|main\(\)' "$tmpdir/install.sh" | tail …
+  └ 26 lines…
+
+● Read 1792292106522-copilot-tool-output-12869-6141a34b-a09f-4260-9f1c-8a73a583ab2f.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292106522-copilot-tool-output-12869-6141a34
+  │ b-a09f-4260-9f1c-8a73a583ab2f.txt
+  └ L1:320 (320 lines read)
+
+● Read 1792292106522-copilot-tool-output-12869-6141a34b-a09f-4260-9f1c-8a73a583ab2f.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292106522-copilot-tool-output-12869-6141a34
+  │ b-a09f-4260-9f1c-8a73a583ab2f.txt
+  └ L321:700 (255 lines read)
+
+● Inspect Brainstem feature implementation (shell)
+  │ printf '%s\n' '-- web assets --'; gh api
+  │ 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E
+  │ '(^|/)(templates|static)/|\.(html|js|css)$' | head -n 200; printf '%s\n' '-- relevant source
+  │ refs --'; tmpdir=$(mktemp -d); for p in rapp_brainstem/brainstem.py
+  │ rapp_brainstem/local_storage.py rapp_brainstem/agents/context_memory_agent.py …
+  └ 28 lines…
+
+● Read 1792292125988-copilot-tool-output-12869-7ac6f5d4-855d-4a86-b11a-a474265e7f4f.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292125988-copilot-tool-output-12869-7ac6f5d
+  │ 4-855d-4a86-b11a-a474265e7f4f.txt
+  └ L1:360 (360 lines read)
+
+● Read 1792292125988-copilot-tool-output-12869-7ac6f5d4-855d-4a86-b11a-a474265e7f4f.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292125988-copilot-tool-output-12869-7ac6f5d
+  │ 4-855d-4a86-b11a-a474265e7f4f.txt
+  └ L361:760 (282 lines read)
+
+● Verify agent UI and file sharing claims (shell)
+  │ set -e; tmpdir=$(mktemp -d); for p in rapp_brainstem/brainstem.py rapp_brainstem/index.html;
+  │ do gh api "repos/kody-w/rapp-installer/contents/$p" --jq .content | base64 --decode >
+  │ "$tmpdir/$(basename "$p")"; done; printf '%s\n' '-- backend agent routes --'; grep -nE -C 8
+  │ '@app\.(route|get|post|delete).*agents|def
+  │ .*agent|send_from_directory|export|import_agent|upload' "$tmpdir/brainstem.py" | head -n 500 …
+  └ 22 lines…
+
+● Read 1792292141485-copilot-tool-output-12869-fabe8461-df9a-48dc-9fc5-d2b3db5ddb20.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292141485-copilot-tool-output-12869-fabe846
+  │ 1-df9a-48dc-9fc5-d2b3db5ddb20.txt
+  └ L1:420 (420 lines read)
+
+● Read 1792292141485-copilot-tool-output-12869-fabe8461-df9a-48dc-9fc5-d2b3db5ddb20.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292141485-copilot-tool-output-12869-fabe846
+  │ 1-df9a-48dc-9fc5-d2b3db5ddb20.txt
+  └ L421:880 (378 lines read)
+
+● Read 1792292141485-copilot-tool-output-12869-fabe8461-df9a-48dc-9fc5-d2b3db5ddb20.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292141485-copilot-tool-output-12869-fabe846
+  │ 1-df9a-48dc-9fc5-d2b3db5ddb20.txt
+  └ L799:1043 (244 lines read)
+
+● Read exact agent UI and hot-load logic (shell)
+  │ set -e; tmpdir=$(mktemp -d); gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html --jq .content | base64 --decode
+  │ > "$tmpdir/index.html"; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py --jq .content | base64
+  │ --decode > "$tmpdir/brainstem.py"; printf '%s\n' '-- index agent list --'; sed -n '1760,1878p'…
+  └ 24 lines…
+
+● Read 1792292159597-copilot-tool-output-12869-83628e70-5148-4d54-b162-0f224b81928b.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292159597-copilot-tool-output-12869-83628e7
+  │ 0-5148-4d54-b162-0f224b81928b.txt
+  └ L1:430 (430 lines read)
+
+● Read 1792292159597-copilot-tool-output-12869-83628e70-5148-4d54-b162-0f224b81928b.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792292159597-copilot-tool-output-12869-83628e7
+  │ 0-5148-4d54-b162-0f224b81928b.txt
+  └ L431:650 (96 lines read)
+
+{"seed":"seeds/hour/index.html","scores":{"1":10,"2":6,"3":8,"4":4,"5":5,"6":7,"7":5,"8":9,"9":6,"10":7},"total":67,"weakest":"4: The exported memory agent is Python, not “plain instructions,” and the linked sources cannot guarantee that a file made by “any AI” will load or work for a friend.","fix":"Replace steps 4–6 with: <li><b>Add an agent.</b><span>Click the registry icon at the top right, choose one, and click Add. It becomes available on your next message.</span></li><li><b>Use it.</b><span>Ask Brainstem to use that agent for one real task.</span></li><li><b>Hand it on.</b><span>Click the agents icon, then Export next to that agent, and send the downloaded file to a friend. They can drag it onto their Brainstem.</span></li>"}
+
+
+
+Changes    +0 -0
+AI Credits 92.16 (2m 40s)
+Tokens     ↑ 1.1m (992.8k cached) • ↓ 10.6k (7.7k reasoning)
+Resume     copilot --resume=4bcab954-bad5-4cd7-8c25-6cb1c58a428e

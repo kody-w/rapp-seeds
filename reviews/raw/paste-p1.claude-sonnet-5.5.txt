@@ -1,0 +1,146 @@
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read README.md
+  │ seeds/paste/README.md
+  └ 45 lines read
+
+● Inspect repo layout and history (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager log --oneline | head -20
+  │ && ls -la && ls -la seeds tools 2>/dev/null | head -50
+  └ 38 lines…
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Read LEDGER.md
+  └ 33 lines read
+
+● Read REVIEW-PROMPT.md
+  │ tools/REVIEW-PROMPT.md
+  └ 12 lines read
+
+● Run word check on paste seed (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la reviews && python3 tools/words.py
+  │ seeds/paste/README.md; echo "exit: $?"
+  └ 13 lines…
+
+✗ Check repo visibility and license (shell)
+  │ cd /tmp && gh api repos/kody-w/rapp-installer --jq '{private, visibility, license: .license,
+  │ default_branch, description, stargazers_count, pushed_at, homepage}' 2>&1 | head -30; echo ---;
+  │ gh api repos/kody-w/RAR --jq '{private, visibility, license: .license, default_branch,
+  │ description, pushed_at, homepage}' 2>&1 | head -30
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+✗ Check linked URLs resolve (shell)
+  │ cd /tmp && for u in https://kody-w.github.io/rapp-installer/install.sh
+  │ https://kody-w.github.io/rapp-installer/install.ps1 https://github.com/kody-w/rapp-installer
+  │ https://github.com/kody-w/RAR https://github.com/kody-w/rapp-1; do printf "%s -> " "$u"; curl -s
+  │ -o /dev/null -L -w "%{http_code} %{content_type} %{size_download}\n" "$u"; done
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Check linked URLs resolve (shell)
+  │ for u in https://kody-w.github.io/rapp-installer/install.sh
+  │ https://kody-w.github.io/rapp-installer/install.ps1 https://github.com/kody-w/rapp-installer
+  │ https://github.com/kody-w/RAR; do printf "%s -> " "$u"; curl -s -o /dev/null -L -w "%{http_code}
+  │ %{content_type} %{size_download}\n" "$u"; done
+  └ 4 lines…
+
+● List installer repo root contents (shell)
+  │ gh api repos/kody-w/rapp-installer/contents --jq '.[] | "\(.type)\t\(.name)\t\(.size)"' 2>&1 |
+  │ head -60
+  └ 29 lines…
+
+● Check repo visibility and license (shell)
+  │ gh api repos/kody-w/rapp-installer --jq '{private, visibility, license: .license,
+  │ default_branch, description, stargazers_count, pushed_at, homepage, archived}' 2>&1 | head -30;
+  │ echo ---; gh api repos/kody-w/RAR --jq '{private, visibility, license: .license, default_branch,
+  │ description, pushed_at, homepage, archived}' 2>&1 | head -30
+  └ 3 lines…
+
+● Read installer README (shell)
+  │ gh api -H "Accept: application/vnd.github.raw" repos/kody-w/rapp-installer/contents/README.md
+  │ 2>&1 | head -200
+  └ 200 lines…
+
+● Read install.sh part 1 (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | sed -n '1,140p'
+  └ 140 lines…
+
+● Read install.sh part 2 (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | sed -n '140,330p'
+  └ 191 lines…
+
+● Read install.sh part 3 (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | sed -n '330,560p'
+  └ 231 lines…
+
+● Read install.sh part 4 (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | sed -n '556,820p'
+  └ 264 lines…
+
+● Read install.sh end and install.ps1 start (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | sed -n '820,900p'; echo ======;
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | sed -n '1,120p'
+  └ 144 lines…
+
+● Grep key behaviors in install.ps1 (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | grep -n -i -E
+  │ "Start-Process|Start-Job|localhost:7071|brainstem.py|device|login/device|Copilot
+  │ access|\.brainstem_data|soul|foreground|Wait-Process|Start-Sleep|exit|npx|schtasks|Scheduled|ser
+  │ vice|autostart|startup" | head -120
+  └ 120 lines…
+
+● Read install.ps1 launch section (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.ps1 | sed -n '860,1010p'
+  └ 151 lines…
+
+● List bundled agents (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/agents --jq '.[] |
+  │ "\(.type)\t\(.name)\t\(.size)"' 2>&1 | head -60
+  └ 5 lines…
+
+● List rapp_brainstem directory (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem --jq '.[] |
+  │ "\(.type)\t\(.name)\t\(.size)"' 2>&1 | head -80
+  └ 17 lines…
+
+● Read manage memory agent (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/manage_memory_agent.py 2>&1 | head
+  │ -120
+  └ 91 lines…
+
+● Grep brainstem UI for agent panel features (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html 2>&1 | grep -n -i -E "Manage
+  │ installed agents|Export|drag|drop|_agent\.py|circled|agents-btn|plus|\+</|title=" | head -120
+  └ 119 lines…
+
+● View brainstem header buttons markup (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html 2>&1 | sed -n '1080,1135p'
+  └ 56 lines…
+
+● Read RAR README (shell)
+  │ gh api -H "Accept: application/vnd.github.raw" repos/kody-w/RAR/contents/README.md 2>&1 | head
+  │ -150
+  └ 150 lines…
+
+● Check gitignore and local storage shim (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/.gitignore 2>&1; echo =====; gh api -H
+  │ "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py 2>&1 | head -80
+  └ 98 lines…
+

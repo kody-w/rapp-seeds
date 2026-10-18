@@ -1,0 +1,68 @@
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Run words.py and check linked URLs (shell)
+  │ python3 tools/words.py seeds/hour/index.html && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh | head -n 40 && curl -sI
+  │ https://github.com/kody-w/rapp-1/tree/main/conformance/grail | head -n 5 && curl -sI
+  │ https://github.com/kody-w/RAR | head -n 5
+  └ 52 lines…
+
+● Check Brainstem UI and conformance suite claims (shell)
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/web.html
+  │ | grep -iE "agents|export|memory|drag" | head -n 30 ; curl -fsSL
+  │ https://api.github.com/repos/kody-w/rapp-1/contents/conformance/grail | grep '"name"'
+  └ 14 lines…
+
+● Check rapp_brainstem files, grail README, and install.sh end (shell)
+  │ curl -fsSL https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem | grep
+  │ '"name"' ; curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-1/main/conformance/grail/README.md | head -n 30 ;
+  │ curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.sh | tail -n 50
+  └ 97 lines…
+
+● Check index.html and agents in rapp-installer (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep
+  │ -iE "agent|export|drop|drag" | head -n 40 ; curl -fsSL
+  │ https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem/agents | grep
+  │ '"name"'
+  └ 45 lines…
+
+● Verify exact button labels in index.html and count of checks in grail (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep
+  │ -n -C 5 -E "agents-btn|export-btn|header" ; curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-1/main/conformance/grail/scenarios.py | grep -c
+  │ "def " ; curl -fsSL …
+  └ 396 lines…
+
+● Check install.sh OS support and behavior (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | grep -n -C 15 "check_prereqs"
+  └ 75 lines…
+
+● Check agent list rendering in rapp_brainstem/index.html (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1800,1855p'
+  └ 56 lines…
+
+{"seed": "seeds/hour/index.html", "scores": {"1":10,"2":8,"3":9,"4":7,"5":8,"6":8,"7":9,"8":9,"9":8,"10":8}, "total": 84, "weakest": "Line 4 (True today): Steps 3 and 4 do not match the live rapp-installer UI or files—the top-right control is an unlabeled ⊕ icon button (not an 'agents button'), the panel lists ContextMemory and ManageMemory (not a single 'memory agent'), and the exported .py file is ~120 lines of Python class code rather than 'plain instructions'.", "fix": "Update Steps 3 and 4 in seeds/hour/index.html so they match the actual Brainstem UI and files today—replace `<li><b>See what it can do.</b><span>Click the agents button at the top right of your Brainstem. Each one listed is an agent: one file that does one job.</span></li>\n<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>` with `<li><b>See what it can do.</b><span>Click the <b>⊕</b> button at the top right of your Brainstem (Manage installed agents). Each one listed is an agent: one file that does one job.</span></li>\n<li><b>Read an agent.</b><span>Click <b>Export</b> next to <code>manage_memory_agent.py</code> and open the downloaded file in TextEdit or Notepad. You can see the whole job—its description, its settings, and how it saves to your folder—in one short file.</span></li>`."}
+
+
+
+Changes    +0 -0
+AI Credits 44.31 (1m 47s)
+Tokens     ↑ 1.3m (1.1m cached) • ↓ 1.4k (3.4k reasoning)
+Resume     copilot --resume=fc91457f-88db-4395-abcf-1627643e315f

@@ -30,3 +30,5 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 5 | hour page: steps use the Brainstem window (agents panel, Export, drag and drop); paths moved to Details; step 5 uses an existing agent as the pattern so the new file loads | median 68 -> 74 (74, 94, 63) | panel; Export and drag-and-drop confirmed in the Brainstem page (index.html: "Manage installed agents", Export, drag-and-drop onboarding text) |
 | room | facilitator seed: run the hour with a room | new | words.py 0 |
 | llms | AI-readable seed llms.txt | new | words.py 0 |
+| 6 | hour page step 2: "tell it something to remember", close, reopen, ask | median 74 -> 68 (67, 84, 68) | REVERTED (median fell) |
+| 7 | hour page: name the agents button exactly as it appears (circled plus, tooltip "Manage installed agents", index.html L1114) | median 74 -> 78 (78, 87, 62) | panel |
