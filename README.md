@@ -20,6 +20,7 @@ This repository holds the seeds: the same message, in the same words, in every m
 | [Room guide](seeds/room/README.md) | running the hour with a group |
 | [Card](seeds/card/card.pdf) | a pocket card with a QR code to the page |
 | [Short](seeds/short/script.md) | a 60-second vertical video script |
+| [Badge](seeds/badge/README.md) | the top of every shared agent's README |
 | [llms.txt](llms.txt) | AIs that read the web |
 
 MIT licensed. Copy any seed, change nothing in the message, put it anywhere.
