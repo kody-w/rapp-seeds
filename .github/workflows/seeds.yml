@@ -1,0 +1,11 @@
+name: Same message, simple words
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Simple words
+        run: python3 tools/words.py seeds/ && python3 tools/words.py llms.txt && python3 tools/words.py README.md
+      - name: Same message in every seed
+        run: python3 tools/same.py

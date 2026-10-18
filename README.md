@@ -8,7 +8,7 @@
 
 This repository holds the seeds: the same message, in the same words, in every medium.
 [MESSAGE.md](MESSAGE.md) is the message. [RUBRIC.md](RUBRIC.md) is how every seed is judged before it ships.
-`python3 tools/words.py seeds/` keeps the words simple. [LEDGER.md](LEDGER.md) records every change and its score.
+`python3 tools/words.py seeds/` keeps the words simple. `python3 tools/same.py` checks every seed carries the one message. CI runs both on every push. [LEDGER.md](LEDGER.md) records every change and its score.
 
 ## The seeds
 

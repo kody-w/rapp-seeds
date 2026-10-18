@@ -61,3 +61,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | paste 4 | paste facts + step 5 mirror pass 13 (Export downloads, drop confirms and renames, 'did not load' loop, a plain-text fallback for AIs that cannot hand over a file) | side-by-side 3 of 3 prefer new | compare.sh paste-pass4 |
 | room 4 | room table + troubleshooting mirror pass 13; drops the false 'must end in _agent.py' line (the importer renames) | side-by-side 3 of 3 prefer new | compare.sh room-pass4 |
 | 14 | hour Details: the public suite also checks the memory promise (save, restart, still there) | side-by-side 3 of 3 prefer new | compare.sh hour-pass14; kody-w/rapp-1 PR #53 merged, CI run 39097845241 printed PROMISE KEPT |
+| check | tools/same.py: every seed carries the line and three promises (9 of 9 ok; catches a one-word change, tested); CI runs words.py + same.py on every push | - | negative test on slides |
