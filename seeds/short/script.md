@@ -5,7 +5,7 @@ Vertical, 9:16, about 60 seconds. Real screen recordings only. Same message as e
 | Time | On screen | Voice |
 |---|---|---|
 | 0-4 | Big text: **Your AI, as files you own.** | "What if your AI was just files you own?" |
-| 4-12 | A Terminal window. One line is pasted. A browser opens on the Brainstem. | "One line, on a Mac, Windows or Linux computer. This is a Brainstem." |
+| 4-12 | A Terminal window. One line is pasted. A browser opens on the Brainstem. | "One line, on a Mac, Windows or Linux computer (all three being tested). This is a Brainstem." |
 | 12-22 | Typing: *Remember that my favorite coffee is a flat white.* | "Tell it something." |
 | 22-32 | The Terminal window closes. The line is pasted again. Typing: *What do you remember about me?* The answer names the flat white. | "Close it. Open it again. It remembers, because the memory is a file on your computer." |
 | 32-42 | The agents panel opens. Export is clicked on one agent. A short file is shown. | "Each job it can do for you is an agent. One file, one job. You can read it." |

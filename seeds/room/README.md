@@ -6,7 +6,7 @@ Everyone leaves with their own Brainstem and one agent they made.
 **The message, said first and last:** Your AI, as files you own.
 
 1. **Learn it in an hour.** It thinks the way you do, so you can see how it works.
-2. **Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder.
+2. **Run it on any computer.** Mac, Windows or Linux (being tested). Its memory stays in your own folder.
 3. **Hand it to anyone.** It is just files. One agent is one file.
 
 ## Before the room
@@ -27,7 +27,7 @@ Everyone leaves with their own Brainstem and one agent they made.
 | 25-35 | See and read | "Every agent is one file that does one job, like a neuron that fires when your message needs it." | Click the circled plus, Export ManageMemory, paste it into any AI and ask for plain words. |
 | 35-50 | Make your own | "Pick a chore you repeat. Use ManageMemory as the pattern." | Ask any AI for a new agent like it as a file to download, drag it onto the Brainstem, click OK, try it. |
 | 50-56 | Hand it on | "Send your agent to the person next to you." | Swap files, drag in a neighbor's agent, use it. |
-| 56-60 | Close | "Close the Terminal or PowerShell window, paste the install line again, and ask what it remembers. Tomorrow it is still there. AI should have been like this all along." | Close that window, paste the line again, ask, and see the fact come back. You count how many did on the tally card. |
+| 56-60 | Close | "Close the Terminal or PowerShell window, paste the install line again, and ask what it remembers. Tomorrow it is still there (being tested this week). AI should have been like this all along." | Close that window, paste the line again, ask, and see the fact come back. You count how many did on the tally card. |
 
 ## When something goes wrong
 

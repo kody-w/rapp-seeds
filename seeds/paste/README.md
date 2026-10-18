@@ -1,7 +1,7 @@
 # Your AI, as files you own.
 
 **Learn it in an hour.** It thinks the way you do, so you can see how it works.
-**Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder.
+**Run it on any computer.** Mac, Windows or Linux (being tested). Its memory stays in your own folder.
 **Hand it to anyone.** It is just files. One agent is one file.
 
 Copy everything in the box into any AI chat you already use. It walks you, one step at a time, to your own

@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 LINE = "Your AI, as files you own."
 PROMISES = [("Learn it in an hour.", "It thinks the way you do, so you can see how it works."),
-            ("Run it on any computer.", "Mac, Windows or Linux. Its memory stays in your own folder."),
+            ("Run it on any computer.", "Mac, Windows or Linux (being tested). Its memory stays in your own folder."),
             ("Hand it to anyone.", "It is just files. One agent is one file.")]
 FULL = ["README.md", "llms.txt", "seeds/hour/index.html", "seeds/paste/README.md",
         "seeds/room/README.md", "seeds/slides/index.html",
