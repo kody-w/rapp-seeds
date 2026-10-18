@@ -46,3 +46,4 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | short 1 | short 32-42: 'That memory is an agent', Export ManageMemory | side-by-side 0 of 3 | REVERTED (false: the memory is a file, the agent saves it) |
 | slides 0 | baseline slides | median 67 (67, 88, 66) | panel |
 | slides 1 | last slide: one big link, Copilot need visible, install lines behind Details | side-by-side 3 of 3 prefer new | tools/compare.sh slides-pass1; rendered closed and open; Details click does not change slide |
+| 11 | hour page: Windows gets how to open PowerShell and its own Copy button | side-by-side 3 of 3 prefer new | tools/compare.sh hour-pass11; both buttons clicked headless, clipboard read back exact line; phone render read |

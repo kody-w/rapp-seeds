@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass11",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y gives Windows beginners explicit launch instructions and a one-click copy path using the verified installer URL, without weakening any rubric-required message or claim."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: X gives non-technical Windows users the same step-by-step instructions to open PowerShell and a dedicated Copy button that Mac users get, whereas Y leaves Windows users without guidance on how to open PowerShell or a button to copy the command."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: Y gives Windows readers the same plain first step Mac readers get (press the Windows key, type PowerShell, paste, Enter) with its own Copy button, and install.ps1 supports it (stock-PowerShell launch, browser sign-in, foreground server, re-run restores), whereas X leaves Windows as a small unexplained 'use PowerShell' aside with no Copy button, which strands non-technical Windows users and weakens 'run it on any computer' and 'the hour'."
+  ]
+ ]
+}
