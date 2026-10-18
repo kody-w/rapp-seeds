@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/paste/README.md",
+ "tag": "paste-p1",
+ "reviews": [
+  {
+   "seed": "seeds/paste/README.md",
+   "scores": {
+    "1": 10,
+    "2": 3,
+    "3": 6,
+    "4": 7,
+    "5": 7,
+    "6": 8,
+    "7": 4,
+    "8": 9,
+    "9": 8,
+    "10": 10
+   },
+   "total": 72,
+   "weakest": "2: The visible page dumps shell commands, file paths, GitHub, Copilot, Python, Git, and six steps on a first-time nontechnical reader, so it is not understandable in five seconds.",
+   "fix": "Replace the two sentences before the code block with `Brainstem is the small program on your computer that runs your AI.\\n\\n<details>\\n<summary><strong>Copy this guide into your AI chat</strong></summary>` and add `</details>` immediately after the code block, hiding all machinery until the reader chooses the one action.",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/paste/README.md",
+   "scores": {
+    "1": 10,
+    "2": 9,
+    "3": 9,
+    "4": 8,
+    "5": 9,
+    "6": 7,
+    "7": 10,
+    "8": 10,
+    "9": 9,
+    "10": 10
+   },
+   "total": 91,
+   "weakest": "Line 6 (The hour): Steps 4 and 5 tell a non-technical user to 'Export the memory agent', but the panel lists two memory files (context_memory_agent.py and manage_memory_agent.py) alongside hacker_news_agent.py, and clicking Export only downloads the file locally without telling the user to attach or paste it into the AI chat so the guide can read it and model the new agent on it.",
+   "fix": "In steps 4 and 5, name an exact installed file (such as hacker_news_agent.py or manage_memory_agent.py) and tell the guide to have the user attach or paste the exported file into the chat \u2014 replace steps 4 and 5 with: '4. Read an agent: have me click Export on hacker_news_agent.py, attach or paste that file here, and explain it to me in plain words. 5. Make my own: help me pick a chore I repeat, then write a new one-file agent using the exact same BasicAgent pattern. Tell me how to save it with a name ending in _agent.py and drag it onto my Brainstem window to try it.'",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/paste/README.md",
+   "scores": {
+    "1": 9,
+    "2": 6,
+    "3": 5,
+    "4": 7,
+    "5": 6,
+    "6": 6,
+    "7": 7,
+    "8": 7,
+    "9": 6,
+    "10": 10
+   },
+   "total": 69,
+   "weakest": "Line 3 (All along): the moment appears only as a claim in the last line, and no step has the person tell it anything to remember or bring it back, so a first-timer meets a setup chore, not an expectation finally met.",
+   "fix": "In the box, replace step 2 with: '2. Talk to it: help me ask it something real about my day, then tell it one thing to remember.' Replace the final line with: 'When we finish, have me close the Terminal window, run the install line again, and ask it what I told it. Then remind me: tomorrow it is still there, on my computer, remembering.' I checked this in the Brainstem source: the memory agent saves to .brainstem_data in its folder, adds it to every reply, and re-running the install keeps it.",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 72,
+ "min": 69,
+ "n": 3
+}

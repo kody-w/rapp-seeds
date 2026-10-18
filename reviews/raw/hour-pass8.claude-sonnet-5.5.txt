@@ -1,0 +1,330 @@
+I'll start by reading the rubric, message, and the seed file.
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● List seed dir and file size (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la seeds/hour/ && wc -c
+  │ seeds/hour/index.html && wc -l seeds/hour/index.html
+  └ 6 lines…
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● List repo root, tools, recent history (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la && ls tools 2>/dev/null && git
+  │ --no-pager log --oneline | head -20
+  └ 25 lines…
+
+Let me check the word-check tool and the context files, then verify claims against the public sources.
+
+● Read LEDGER.md
+  └ 34 lines read
+
+● Read REVIEW-PROMPT.md
+  │ tools/REVIEW-PROMPT.md
+  └ 12 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Read README, llms.txt, root index, list reviews (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && cat README.md && echo ---- && cat
+  │ llms.txt && echo ---- && cat index.html && echo ---- && ls -la reviews seeds
+  └ 64 lines…
+
+Now let me run the word check and verify the linked claims against live public sources.
+
+● Run the word check on the seed (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 tools/words.py
+  │ seeds/hour/index.html; echo "exit=$?"
+  └ 2 lines…
+
+● Check every linked URL resolves (shell)
+  │ for u in https://kody-w.github.io/rapp-installer/install.sh
+  │ https://kody-w.github.io/rapp-installer/install.ps1 https://github.com/kody-w/RAR
+  │ https://github.com/kody-w/rapp-1/tree/main/conformance/grail
+  │ https://github.com/kody-w/rapp-installer https://github.com/kody-w/rapp-1
+  │ https://kody-w.github.io/rapp-seeds/; do printf '%s -> ' "$u"; curl -s -o /dev/null -L -w …
+  └ 8 lines…
+
+All links resolve and the word check passes. Now I'll verify the specific technical claims by reading the installer and Brainstem source.
+
+✗ Download installers and read the head of install.sh (shell)
+  │ mkdir -p /tmp/rev && cd /tmp/rev && curl -s -L --max-time 30
+  │ https://kody-w.github.io/rapp-installer/install.sh -o install.sh && curl -s -L --max-time 30
+  │ https://kody-w.github.io/rapp-installer/install.ps1 -o install.ps1 && wc -l install.sh
+  │ install.ps1 && head -60 install.sh
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+✗ Check installer repo license and top-level contents (shell)
+  │ cd /tmp/rev && gh api repos/kody-w/rapp-installer --jq '{license: .license, default_branch:
+  │ .default_branch, description: .description, private: .private, archived: .archived, pushed_at:
+  │ .pushed_at}' 2>&1 | head -30; echo ---; gh api repos/kody-w/rapp-installer/contents --jq
+  │ '.[].name' 2>&1 | head -60
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+✗ Check open format repo, conformance dir, registry repo (shell)
+  │ cd /tmp/rev && gh api repos/kody-w/rapp-1 --jq '{license: .license.spdx_id, description:
+  │ .description, pushed_at: .pushed_at}' 2>&1; echo ---; gh api
+  │ repos/kody-w/rapp-1/contents/conformance/grail --jq '.[].name' 2>&1 | head -60; echo ---; gh api
+  │ repos/kody-w/RAR --jq '{license: .license.spdx_id, description: .description, pushed_at:
+  │ .pushed_at}' 2>&1
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+Those shell commands were denied, so I'll use the built-in web fetch tool to read the public sources instead.
+
+● Fetching web content https://github.com/kody-w/rapp-1/tree/main/conformance/grail · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/tree/main/conformance/grail:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+Core claims on the 25-check suite and Copilot check out so far. Let me read the rest of install.sh (sign-in, browser-open, foreground run) and the CI workflow.
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · max_length: 17000, star…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/.github/workflows/grail…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+CI runs on every push (confirmed), and the installer flow matches step 1. Now I'll verify the Brainstem UI claims (the ⊕ button, Export, drag-and-drop, ManageMemory's docstring).
+
+● Read ManageMemory agent file head (shell)
+  │ curl -s -L --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brain
+  │ stem/agents/manage_memory_agent.py | head -60
+  └ 60 lines…
+
+● Grep Brainstem UI for agents button, Export, drag-drop (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -n
+  │ -i -E "Manage installed agents|>Export<|Export</button|drag|drop|circled|⊕|&#8853;|installed
+  │ agents" | head -60
+  └ 60 lines…
+
+● List bundled agents and repo license metadata (shell)
+  │ curl -s -L --max-time 30
+  │ "https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem/agents" | grep -E
+  │ '"name"' | head -40; echo ---; curl -s -L --max-time 30
+  │ "https://api.github.com/repos/kody-w/rapp-installer" | grep -E
+  │ '"license"|"private"|"archived"|"description"' | head
+  └ 10 lines…
+
+Let me look closer at the agents panel markup and how agents are listed/exported, plus how memory is stored.
+
+✗ Find agent list render and export code (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -n
+  │ -E "exportAgent|agent-export|Export agent|class=\"agent-|renderAgents|function
+  │ .*[Aa]gents?Panel|agent-item|agentExport|/agents/export|/agents/import|/agents/" | head -50
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Read agents button/panel markup (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1100,1135p'
+  └ 36 lines…
+
+● Check memory storage shim and version (shell)
+  │ curl -s -L --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brain
+  │ stem/utils/azure_file_storage.py | head -40; echo ----; curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/VERSION
+  └ 2 lines…
+
+● Read buttons above the agents button (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1072,1100p'
+  └ 29 lines…
+
+● Find agent list rendering JS and Export button (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -n
+  │ -E "agent-list-ul|agent-export|btn-export|>Export|Export<|agentExport|export-btn|\.agent-item|ag
+  │ ent-item" | head -30
+  └ 16 lines…
+
+● Read export click handler (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '4280,4330p'
+  └ 42 lines…
+
+● Read agent list render function (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1800,1870p'
+  └ 71 lines…
+
+Agent list shows the agent's name plus filename and an Export button — matches. Let me check the drop handler, per-message agent reload, and the registry's submission path.
+
+● Check per-message agent reload and soul reading (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | grep
+  │ -n -E "load_agents\(|def load_agents|def chat|agents = load|soul|read_text|hot|reload|export" |
+  │ head -60
+  └ 60 lines…
+
+● Read drag-and-drop handler (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1700,1775p'
+  └ 76 lines…
+
+● Read RAR registry README (shell)
+  │ curl -s -L --max-time 30 https://raw.githubusercontent.com/kody-w/RAR/main/README.md | head -120
+  └ 120 lines…
+
+Per-message reload of agents and soul is confirmed. Now let me check the format repo's license, the copyright holder name (the footer's "Wildhaven Homes LLC"), and the seed repo's own LICENSE.
+
+● Read start of Windows installer (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.ps1 | head -80
+  └ 79 lines…
+
+● Check licenses and copyright holder names (shell)
+  │ curl -s -L --max-time 30 "https://api.github.com/repos/kody-w/rapp-1" | grep -E
+  │ '"license"|"spdx_id"|"name": "MIT|"private"|"description"' | head; echo ---; curl -s -L
+  │ --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-1/main/LICENSE | head -5; echo
+  │ ---; head -5 /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/LICENSE; echo ---; curl -s -L
+  │ --max-time 30 "https://api.github.com/repos/kody-w/RAR" | grep -E …
+  └ 22 lines…
+
+Let me check whether "Wildhaven Homes LLC" appears in any of the page's linked public sources, and compare the Pages installer against the raw one.
+
+/ Search (grep)
+  │ "Wildhaven"
+  └ 24 lines found
+
+● Compare Pages vs raw installer hashes (shell)
+  │ curl -s -L --max-time 30 https://kody-w.github.io/rapp-installer/install.ps1 | md5; curl -s -L
+  │ --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.ps1 | md5;
+  │ curl -s -L --max-time 30 https://kody-w.github.io/rapp-installer/install.sh | md5; curl -s -L
+  │ --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.sh | md5
+  └ 4 lines…
+
+✗ Count Wildhaven mentions across linked public pages (shell)
+  │ for u in https://kody-w.github.io/rapp-installer/ https://github.com/kody-w/rapp-installer
+  │ https://github.com/kody-w/rapp-1 https://github.com/kody-w/RAR https://kody-w.github.io/RAR/
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md
+  │ https://raw.githubusercontent.com/kody-w/rapp-1/main/README.md; do printf '%s -> ' "$u"; curl -s
+  │ -L --max-time 30 "$u" | grep -c -i "wildhaven"; done
+  └ https://kody-w.github.io/rapp-installer/ -> 0
+    https://github.com/kody-w/rapp-installer -> 0
+    https://github.com/kody-w/rapp-1 -> 0
+    https://github.com/kody-w/RAR -> 2
+    https://kody-w.github.io/RAR/ -> 1
+    https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md -> 0
+    https://raw.githubusercontent.com/kody-w/rapp-1/main/README.md -> 0
+    Failed with exit code 1
+
+Wildhaven appears in the RAR repo/site but not in the installer or format repo. Let me see the context there.
+
+● Check Windows installer sign-in and launch flow (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.ps1 | grep -n -i -E
+  │ "device|Start-Process|localhost:7071|login/device|Copilot access|brainstem.py|Read-Host|winget"
+  │ | head -40
+  └ 37 lines…
+
+● See context of Wildhaven mentions in RAR (shell)
+  │ curl -s -L --max-time 30 https://kody-w.github.io/RAR/ | grep -i -o
+  │ ".\{160\}wildhaven.\{160\}" | head -3; echo ----; curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/RAR/main/README.md | grep -n -i "wildhaven" | head;
+  │ echo ----; curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/RAR/main/TRADEMARKS.md | grep -n -i "wildhaven" | …
+  └ 4 lines…
+
+Windows flow matches too. Now let me render the page to judge it as a first-time visitor would see it (desktop, mobile, dark mode).
+
+✗ Find an installed Chromium browser (shell)
+  │ ls /Applications | grep -i -E "chrome|edge|brave|chromium" ; ls "/Applications/Google
+  │ Chrome.app/Contents/MacOS/" 2>/dev/null
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+/ Search (glob)
+  │ "/Applications/*Chrome*.app/Contents/MacOS/*"
+  └ No matches found
+
+/ Search (glob)
+  │ "/Applications/*{Edge,Brave,Chromium}*.app/Contents/MacOS/*"
+  └ No matches found
+
+● Look for headless browser tooling (shell)
+  │ which playwright playwright-cli chromium chromium-browser google-chrome npx node python3
+  │ 2>/dev/null; ls ~/Library/Caches/ms-playwright 2>/dev/null | head
+  └ 14 lines…
+
+● Locate playwright modules and headless shell path (shell)
+  │ ls "$(npm root -g)" 2>/dev/null | head -30; ls "$(npm root -g)/@playwright" 2>/dev/null; ls
+  │ ~/Library/Caches/ms-playwright/chromium_headless_shell-1234/ 2>/dev/null
+  └ 20 lines…
+
+✗ Render desktop, mobile and dark screenshots headlessly (shell)
+  │ CH=~/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64
+  │ /chrome-headless-shell;
+  │ F=file:///Users/kodywildfeuer/Documents/GitHub/rapp-seeds/seeds/hour/index.html; "$CH"
+  │ --no-sandbox --disable-gpu --hide-scrollbars --screenshot=/tmp/seed-desktop.png
+  │ --window-size=1100,2300 "$F" 2>&1 | tail -2; "$CH" --no-sandbox --disable-gpu …
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+Rendering was blocked, so I'll compute the colour contrast for the page's palette directly (WCAG), since the Copy button is the page's one action.
+
+● Compute WCAG contrast ratios for palette (shell)
+  │ python3 - <<'EOF'
+  │ def lum(h):
+  │ h=h.lstrip('#'); r,g,b=[int(h[i:i+2],16)/255 for i in (0,2,4)]
+  │ f=lambda c: c/12.92 if c<=0.03928 else ((c+0.055)/1.055)**2.4
+  │ return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)…
+  └ 24 lines…
+
+Let me check what Export actually does on the server (download vs. inline view), since steps 4–6 depend on it.
+
+● Read agents export and import routes (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '2995,3050p'
+  └ 55 lines…
+
+● Inspect ManageMemory head and default soul.md (shell)
+  │ curl -s -L --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brain
+  │ stem/agents/manage_memory_agent.py | sed -n '1,14p' | cut -c1-200; echo; echo ---- soul head;
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/soul.md | head -12 |
+  │ cut -c1-200
+  └ 27 lines…
+
+● Verify memory is local via storage shim (shell)
+  │ curl -s -L --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py |
+  │ grep -n -E
+  │ "azure_file_storage|local_storage|_brainstem_data|\.brainstem_data|AzureFileStorageManager" |
+  │ head -20; echo ----; curl -s -L --max-time 30 …
+  └ 39 lines…
+

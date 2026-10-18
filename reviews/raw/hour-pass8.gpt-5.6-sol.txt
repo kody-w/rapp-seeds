@@ -1,0 +1,244 @@
+● skill(adversarial-review)
+
+I’m applying the rubric against the exact seed and then checking every linked claim that can be reached.
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+The visible copy is only half the test; I’m now checking the installer, runtime claims, conformance count, licensing, registry, and forbidden-word gate against live sources.
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Run forbidden-word check (shell)
+  │ python3 tools/words.py seeds/hour/index.html
+  └ 1 line…
+
+● Fetching web content https://github.com/kody-w/rapp-1/tree/main/conformance/grail · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/tree/main/conformance/grail:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://github.com/kody-w/rapp-1 · url: "https://github.com/kody-w/rapp-1", …
+  └ Contents of https://github.com/kody-w/rapp-1:
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+Several broad claims depend on the live UI rather than the linked READMEs, so I’m tracing the current public implementation for the named buttons, import flow, persistence, launch behavior, and account requirements.
+
+● Clone and search public implementation (shell)
+  │ target='/Users/kodywildfeuer/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files
+  │ /rapp-installer-review'; if [ -e "$target" ]; then echo 'target already exists'; exit 2; fi;
+  │ git clone --depth 1 --quiet https://github.com/kody-w/rapp-installer.git "$target" && cd
+  │ "$target" && printf '%s\n' '--- matching files ---' && rg -l -i 'Manage installed
+  │ agents|ManageMemory|drag|Export|drop|localhost:7071|browser|gh auth|Copilot' rapp_brainstem …
+  └ 3 lines…
+
+/ Search (glob)
+  │ "rapp_brainstem/**/*.{html,js,py,md}" in
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review
+  └ No matches found
+
+/ Search (grep)
+  │ "memory|\.brainstem_data|soul\.md|agents/" (~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19f
+  │ c27846cba/files/rapp-installer-review/rapp_brainstem)
+  └ 28 lines found
+
+/ Search (grep)
+  │ "Manage installed agents|ManageMemory|Export|drag|drop"
+  │ (~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review)
+  └ 28 lines found
+
+/ Search (grep)
+  │ "localhost:7071|webbrowser|open_browser|gh auth|Copilot"
+  │ (~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review)
+  └ 28 lines found
+
+● List directory ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer…
+  └ 17 files found
+
+/ Search (grep)
+  │ "Drag & Drop Agents|window.addEventListener\('drop'|agents/export|Export" (~/.copilot/session-st
+  │ ate/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_brainstem)
+  └ 18 lines found
+
+/ Search (grep)
+  │ "ManageMemory" (~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-install
+  │ er-review/rapp_brainstem)
+  └ 10 lines found
+
+/ Search (grep)
+  │ "Manage installed agents" (~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/r
+  │ app-installer-review/rapp_brainstem)
+  └ 1 line found
+
+/ Search (grep)
+  │ "webbrowser|localhost:7071|open\(|Start-Process|gh auth"
+  │ (~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review)
+  └ 28 lines found
+
+● Read manage_memory_agent.py
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/agents/manage_memory_agent.py
+  └ L1:180 (91 lines read)
+
+● Read index.html
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/index.html
+  └ L1095:1130 (35 lines read)
+
+● Read index.html
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/index.html
+  └ L4010:4310 (300 lines read)
+
+● Read index.html
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/index.html
+  └ L1690:1860 (171 lines read)
+
+● Read install.sh
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/instal
+  │ l.sh
+  └ L590:870 (254 lines read)
+
+● Read install.ps1
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/instal
+  │ l.ps1
+  └ L620:760 (141 lines read)
+
+● Read install.ps1
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/instal
+  │ l.ps1
+  └ L760:1040 (281 lines read)
+
+● Read local_storage.py
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/local_storage.py
+  └ L1:220 (220 lines read)
+
+● Read brainstem.py
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/brainstem.py
+  └ L2880:3045 (166 lines read)
+
+● Read test_local_agents.py
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/tests/test_local_agents.py
+  └ L580:700 (121 lines read)
+
+/ Search (grep)
+  │ "def _load_agent|glob\(|\*_agent\.py|_discover|agents_path|AGENTS_PATH" (~/.copilot/session-stat
+  │ e/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_brainstem/brainstem.py)
+  └ 14 lines found
+
+● Read brainstem.py
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/brainstem.py
+  └ L1620:1875 (256 lines read)
+
+● Read brainstem.py
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/brainstem.py
+  └ L3038:3135 (98 lines read)
+
+/ Search (grep)
+  │ "conversation_history|localStorage|history|session" (~/.copilot/session-state/b3f8fdd1-8610-44c7
+  │ -8794-19fc27846cba/files/rapp-installer-review/rapp_brainstem/index.html)
+  └ 54 lines found
+
+/ Search (grep)
+  │ "MIT License|Copyright" in LICENSE*
+  │ (~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review)
+  └ No matches found
+
+The implementation confirms the basic path, but the decisive question is whether the page’s absolute promises survive edge cases: cross-machine portability, “any AI,” and whether the linked 25-check suite actually covers the whole Brainstem it is presented as validating.
+
+● Read README.md
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/README.md
+  └ L1:240 (240 lines read)
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/.github/workflows/grail…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+/ Search (grep)
+  │ "rapp/1|RAPP/1|frame|egg|canonical|content address|rappid" (~/.copilot/session-state/b3f8fdd1-86
+  │ 10-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_brainstem)
+  └ 33 lines found
+
+● Fetching web content https://kody-w.github.io/rapp-installer/ · url: "https://kody-w.github.io/ra…
+  └ Contents of https://kody-w.github.io/rapp-installer/:
+
+✗ Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE · url: …
+  └ Error: Failed to fetch https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE -
+    status code 404
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/conformance/grail/kerne…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/LICENSE · url: "https:/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Read VERSION
+  │ ~/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review/rapp_b
+  │ rainstem/VERSION
+  └ 1 line read
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Check current public revision (shell)
+  │ git -C '/Users/kodywildfeuer/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/r
+  │ app-installer-review' rev-parse HEAD && git -C '/Users/kodywildfeuer/.copilot/session-state/b3f8
+  │ fdd1-8610-44c7-8794-19fc27846cba/files/rapp-installer-review' log -1 --format='%cI %s'
+  └ 2 lines…
+
+● Fetching web content https://api.github.com/repos/kody-w/rapp-installer/commits/main · url: "http…
+  └ Content type application/json; charset=utf-8 cannot be simplified to markdown...
+
+● Check Grail workflow runs (shell)
+  │ GH_PAGER=cat gh run list -R kody-w/rapp-1 -w grail.yml --limit 5 --json
+  │ status,conclusion,createdAt,event,headSha,url --jq '.[] |
+  │ [.createdAt,.event,.status,.conclusion,.headSha,.url] | @tsv'
+  └ 5 lines…
+
+● Fetching web content https://github.com/kody-w/rapp-1/actions/workflows/grail.yml · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/actions/workflows/grail.yml:
+
+● Check installer workflow runs (shell)
+  │ GH_PAGER=cat gh run list -R kody-w/rapp-installer --limit 8 --json
+  │ workflowName,status,conclusion,createdAt,headSha,url --jq '.[] |
+  │ [.createdAt,.workflowName,.status,.conclusion,.headSha,.url] | @tsv'
+  └ 8 lines…
+
+● Inspect Grail validation output (shell)
+  │ GH_PAGER=cat gh run view 39089169569 -R kody-w/rapp-1 --log | grep -E '25 of
+  │ 25|25/25|scenario|mutant|statements|branches|routes|caught|PASS' | tail -80
+  └ 8 lines…
+
+● Clean review clone and verify tree (shell)
+  │ rm -rf '/Users/kodywildfeuer/.copilot/session-state/b3f8fdd1-8610-44c7-8794-19fc27846cba/files/r
+  │ app-installer-review' && git --no-pager status --short
+  └ 6 lines…
+
+{"seed":"seeds/hour/index.html","scores":{"1":10,"2":5,"3":8,"4":4,"5":7,"6":7,"7":4,"8":9,"9":6,"10":8},"total":68,"weakest":"4 — “any computer,” “any AI,” “works the same way,” and “free for everyone” overstate what the linked implementation and limited 25-scenario test suite prove.","fix":"Insert immediately before <section class=\"start\">: <p class=\"lead\"><strong>Before you start:</strong> You need internet access and a GitHub account with Copilot access. The installer supports current macOS, Windows 10/11 with winget, and Linux with apt or dnf. Memory files stay local, but recalled content is sent to Copilot to answer you. Shared or AI-generated agents are Python programs and may need review, fixes, or extra packages.</p>"}
+
+
+
+Changes    +0 -0
+AI Credits 101.54 (2m 53s)
+Tokens     ↑ 981.5k (879.6k cached) • ↓ 12.8k (8.8k reasoning)
+Resume     copilot --resume=b3f8fdd1-8610-44c7-8794-19fc27846cba

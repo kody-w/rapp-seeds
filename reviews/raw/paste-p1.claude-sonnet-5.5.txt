@@ -144,3 +144,108 @@
   │ repos/kody-w/rapp-installer/contents/rapp_brainstem/local_storage.py 2>&1 | head -80
   └ 98 lines…
 
+● Render paste README via GitHub markdown API (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && gh api markdown -f mode=markdown -F
+  │ text=@seeds/paste/README.md --jq '.' 2>&1 | head -60
+  └ 1 line…
+
+● Render paste README via GitHub markdown API (raw) (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && gh api markdown -f mode=markdown -F
+  │ text=@seeds/paste/README.md 2>&1 | head -60
+  └ 41 lines…
+
+● View memory-file constants and tour selection (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html 2>&1 | sed -n
+  │ '3728,3745p;4136,4160p;1800,1860p'
+  └ 104 lines…
+
+● View guided tour steps (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html 2>&1 | sed -n '4030,4135p'
+  └ 106 lines…
+
+● Read context memory agent head (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/agents/context_memory_agent.py 2>&1 | sed -n
+  │ '1,60p'
+  └ 60 lines…
+
+● Read default soul.md (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/soul.md 2>&1 | head -120
+  └ 77 lines…
+
+● Find learn_new agent in RAR (shell)
+  │ gh api "search/code?q=learn_new+repo:kody-w/RAR+filename:learn_new_agent.py" --jq '.items[] |
+  │ .path' 2>&1 | head; echo ----; gh api repos/kody-w/RAR/contents/agents/@rapp --jq '.[].name'
+  │ 2>&1 | grep -i -E "learn|agent_builder|builder" | head
+  └ 5 lines…
+
+● Read learn_new agent header (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ "repos/kody-w/RAR/contents/agents/@rapp/learn_new_agent.py" 2>&1 | sed -n '1,70p'
+  └ 70 lines…
+
+● Check agent export route behavior (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py 2>&1 | grep -n -E
+  │ "agents/export|Content-Disposition|def
+  │ export_agent|as_attachment|send_file|\.endswith\(\"_agent\.py\"\)|_agent\.py" | head -40
+  └ 17 lines…
+
+● Check header controls alignment CSS (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html 2>&1 | grep -n -E
+  │ "^\s*\.controls|\.header|header \{|margin-left: ?auto|justify-content: ?space-between" | head
+  │ -20
+  └ 9 lines…
+
+● View drag-and-drop handler (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html 2>&1 | sed -n '1700,1770p'
+  └ 71 lines…
+
+● Search docs for Copilot plan or license statements (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/README.md 2>&1 | grep -n -i -E
+  │ "free|copilot (pro|free|individual|business)|subscription|plan|cost|price|license" | head -30;
+  │ echo -----; gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/skill.md 2>&1 | grep -n -i -E "copilot free|free …
+  └ 16 lines…
+
+● Web Search (MCP: github-mcp-server) · GitHub Copilot Free plan monthly chat limits 2026 what … 11s
+  └ {"annotations":null,"bing_searches":[{"text":"GitHub Copilot Free plan chat l...
+
+● Fetching web content https://github.com/features/copilot/plans · url: "https://github.com/feature…
+  └ Contents of https://github.com/features/copilot/plans:
+
+● Verify memory storage shim and context injection (shell)
+  │ gh api -H "Accept: application/vnd.github.raw"
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py 2>&1 | grep -n -E
+  │ "azure_file_storage|local_storage|LocalStorageManager|system_context\(|\.brainstem_data" | head
+  │ -30
+  └ 7 lines…
+
+● Confirm no repo changes made (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager status --short | head -20
+  └ 7 lines…
+
+● Read README.md
+  │ seeds/paste/README.md
+  └ 45 lines read
+
+● Check seed file modification time and diff stat (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la --time-style=full-iso
+  │ seeds/paste/README.md 2>/dev/null || stat -f "%Sm %N" seeds/paste/README.md; date; git
+  │ --no-pager diff --stat -- seeds/paste/README.md
+  └ 4 lines…
+
+{"seed": "seeds/paste/README.md", "scores": {"1":9,"2":6,"3":5,"4":7,"5":6,"6":6,"7":7,"8":7,"9":6,"10":10}, "total": 69, "weakest": "Line 3 (All along): the moment appears only as a claim in the last line, and no step has the person tell it anything to remember or bring it back, so a first-timer meets a setup chore, not an expectation finally met.", "fix": "In the box, replace step 2 with: '2. Talk to it: help me ask it something real about my day, then tell it one thing to remember.' Replace the final line with: 'When we finish, have me close the Terminal window, run the install line again, and ask it what I told it. Then remind me: tomorrow it is still there, on my computer, remembering.' I checked this in the Brainstem source: the memory agent saves to .brainstem_data in its folder, adds it to every reply, and re-running the install keeps it."}
+
+
+
+Changes    +0 -0
+AI Credits 130.3 (8m 51s)
+Tokens     ↑ 3.2m (3.1m cached, 141.1k written) • ↓ 64.4k (57.4k reasoning)
+Resume     copilot --resume=659760dc-dc0f-46a5-85d8-36443ada3245

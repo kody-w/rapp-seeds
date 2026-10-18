@@ -1,0 +1,60 @@
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Run words.py and check install.sh (shell)
+  │ python3 tools/words.py seeds/hour/index.html && curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh | head -n 40
+  └ 42 lines…
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://github.com/kody-w/rapp-1/tree/main/conformance/grail · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/tree/main/conformance/grail:
+
+● Verify install.ps1 and UI strings in rapp_brainstem/index.html (shell)
+  │ curl -fsSLI https://kody-w.github.io/rapp-installer/install.ps1 | head -n 5 && curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -E
+  │ "Manage installed agents|ManageMemory|Export|_agent\.py|8853|⊕" | head -n 20
+  └ 25 lines…
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR"
+  └ Contents of https://github.com/kody-w/RAR:
+
+● Check how agents are listed in the panel and what manage_memory_agent.py contains (shell)
+  │ curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -A
+  │ 35 "async function loadAgentsList" && curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-i
+  │ nstaller/main/rapp_brainstem/agents/manage_memory_agent.py | head -n 30
+  └ 66 lines…
+
+● Check install.sh end and drag-and-drop in index.html (shell)
+  │ curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | tail -n 100 && curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -n
+  │ -C 15 "dragover\|drop"
+  └ 13 lines…
+
+● Read 1792293606697-copilot-tool-output-76317-999331c9-eaf8-4f6a-a054-b9ca82635011.txt
+  │ /var/folders/kr/3w4vbrls2gxbtxrfx8gl82y40000gn/T/1792293606697-copilot-tool-output-76317-999331c
+  │ 9-eaf8-4f6a-a054-b9ca82635011.txt
+  └ L1:140 (140 lines read)
+
+{"seed": "seeds/hour/index.html", "scores": {"1":10,"2":9,"3":9,"4":8,"5":9,"6":8,"7":10,"8":10,"9":9,"10":10}, "total": 92, "weakest": "6 (and 4): Step 4 and Step 5 tell a non-technical Mac user to use TextEdit and save an AI reply as a file ending in _agent.py, which in practice fails when TextEdit defaults to Rich Text (.rtf) or when the AI wraps code in markdown backticks.", "fix": "In Step 5, make the creation step foolproof for non-technical users by replacing the span in <li><b>Make your own.</b>...</li> with: <span>Paste that file into any AI and ask: \"Write me a new agent just like this for [a chore you repeat] — give me only raw Python code with no markdown backticks, or a downloadable _agent.py file.\" Drag the plain-text <code>_agent.py</code> file onto your Brainstem window and it can use it on your next message.</span>"}
+
+
+
+Changes    +0 -0
+AI Credits 39.13 (1m 13s)
+Tokens     ↑ 974.3k (825.4k cached) • ↓ 1.1k (2.2k reasoning)
+Resume     copilot --resume=8e5cdb47-abb3-4920-9ebc-80b4bcace6ea

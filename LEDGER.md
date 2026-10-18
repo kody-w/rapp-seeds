@@ -32,3 +32,5 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | llms | AI-readable seed llms.txt | new | words.py 0 |
 | 6 | hour page step 2: "tell it something to remember", close, reopen, ask | median 74 -> 68 (67, 84, 68) | REVERTED (median fell) |
 | 7 | hour page: name the agents button exactly as it appears (circled plus, tooltip "Manage installed agents", index.html L1114) | median 74 -> 78 (78, 87, 62) | panel |
+| paste 0 | baseline paste seed | median 65 (57, 73, 65) | panel |
+| paste 1 | paste carries the message, every fact an outside AI needs (folder, button, drag rule, password, Copilot), and the click-based steps; word check allows the soul.md file name, still bans the bare word | 65 -> 72 (72, 91, 69) | panel; words.py still flags a bare "soul" (tested) |
