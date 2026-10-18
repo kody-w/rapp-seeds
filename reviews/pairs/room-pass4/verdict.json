@@ -1,0 +1,23 @@
+{
+ "tag": "room-pass4",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y matches the current confirmation and import-error flow while replacing X's false claim that uploaded filenames must already end in _agent.py."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: X matches the live Brainstem drag-and-drop flow\u2014which auto-appends `_agent.py` on import, prompts a confirmation dialog requiring 'OK', and reports 'only .py' or 'did not load as an agent' errors\u2014whereas Y falsely blames missing `_agent.py` suffixes when dragging onto the window."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: Y's added steps and troubleshooting match the public Brainstem source (an OK confirm, then the 'Only .py agent files are supported' or 'did not load as an agent' alerts), while X's claim that the file name must end in `_agent.py` is false because the importer renames any .py to `_agent.py` itself, and X never says the AI must hand over a downloadable file."
+  ]
+ ]
+}

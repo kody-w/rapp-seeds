@@ -24,7 +24,7 @@ Everyone leaves with their own Brainstem and one agent they made.
 | 5-15 | Get your Brainstem | "One line. If it asks for your computer password, that is normal." | Paste the install line, sign in. |
 | 15-25 | Talk to it | "It lives on your computer. Copilot writes the answers over the internet." | Tell it one thing to remember about them, like a favorite coffee. Tomorrow they ask what it remembers. |
 | 25-35 | See and read | "Every agent is one file that does one job." | Click the circled plus, Export ManageMemory, paste it into any AI and ask for plain words. |
-| 35-50 | Make your own | "Pick a chore you repeat. Use ManageMemory as the pattern." | Ask any AI for a new agent like it, drag it onto the Brainstem, try it. |
+| 35-50 | Make your own | "Pick a chore you repeat. Use ManageMemory as the pattern." | Ask any AI for a new agent like it as a file to download, drag it onto the Brainstem, click OK, try it. |
 | 50-58 | Hand it on | "Send your agent to the person next to you." | Swap files, drag in a neighbor's agent, use it. |
 | 58-60 | Close | "Tomorrow it is still there, remembering. AI should have been like this all along." | Keep the card. |
 
@@ -32,7 +32,8 @@ Everyone leaves with their own Brainstem and one agent they made.
 
 - **Install stops:** have them paste what they see into any AI with the words "help me fix this Brainstem install".
 - **Sign-in fails:** check the GitHub account has Copilot turned on.
-- **Their agent does not appear:** the file name must end in `_agent.py`. Drag it onto the window again.
+- **It says the agent did not load:** paste that message into the AI that wrote it and ask for a fix, then drag the new file on.
+- **It says only .py files are supported:** the file was saved as text. Ask the AI how to save it with a name ending in .py.
 - **The Brainstem window closed:** paste the install line again. Memory is still there.
 
 ## After
