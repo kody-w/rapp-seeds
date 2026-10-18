@@ -37,4 +37,4 @@ Everyone leaves with their own Brainstem and one agent they made.
 ## After
 
 Ask each person to share one agent in the registry: https://github.com/kody-w/RAR
-The best agents from a room become the next room's examples.
+The agents a room likes most become the next room's examples.
