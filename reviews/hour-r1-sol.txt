@@ -1,0 +1,25 @@
+  │ gh api repos/kody-w/rapp-1/contents/conformance/grail/vectors.json -H 'Accept:
+  │ application/vnd.github.raw+json' | python3 -c 'import json,sys; d=json.load(sys.stdin);
+  │ print("keys", sorted(d)); [(print(k, len(v))) for k,v in d.items() if isinstance(v,list)]'
+  └ 2 lines…
+
+● Confirm format and Brainstem licensing (shell)
+  │ printf '%s\n' '--- rapp-1 LICENSE ---'; gh api repos/kody-w/rapp-1/contents/LICENSE -H 'Accept:
+  │ application/vnd.github.raw+json' | head -25; printf '%s\n' '--- installer license references
+  │ ---'; gh api repos/kody-w/rapp-installer/git/trees/main?recursive=1 --jq '.tree[].path' | grep
+  │ -Ei '(^|/)(license|copying|notice)(\.|$)|pyproject|setup\.cfg|setup\.py' | head -40
+  └ 23 lines…
+
+● Inspect Grail CI job coverage (shell)
+  │ gh run view 39089169569 -R kody-w/rapp-1 --json jobs --jq '.jobs[] | [.name,.conclusion] | @tsv'
+  └ 1 line…
+
+{"seed":"seeds/hour/index.html","scores":{"1":10,"2":6,"3":7,"4":3,"5":7,"6":5,"7":4,"8":8,"9":6,"10":8},"total":64,"weakest":"4: The page says the AI lives locally and Brainstem is open-source, but inference uses remote GitHub Copilot, the installer has no license, and the cited Rust result is private rather than publicly checkable.","fix":"Replace \"Ask it something about your day. It answers like any AI, but it lives on your computer.\" with \"Ask it something about your day. The Brainstem and its memory run on your computer; GitHub Copilot provides the answer over the internet and requires a GitHub account with Copilot access.\""}
+
+
+
+Changes    +0 -0
+AI Credits 55.67 (2m 46s)
+Tokens     ↑ 283.9k (228.4k cached) • ↓ 12.2k (9.5k reasoning)
+Resume     copilot --resume=3c7346a0-bf54-4e38-94ab-f83a7ebdb762
+zsh: command not found: _roar

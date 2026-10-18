@@ -16,3 +16,9 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 
 ## For Kody
 - The IETF upload is staged in the open Chrome tab. The final Upload click was blocked by the safety classifier as a real-world submission; it needs your one click.
+- **The Brainstem core has no license.** kody-w/rapp-installer has no LICENSE file and no license line in its README (checked 2026-10-17 22:40 via the GitHub API and contents). The open format, kody-w/rapp-1, is MIT. Until the core carries a license, seeds say "its source is public", never "open source". Adding a LICENSE file to the core is a core change, so it is yours to decide.
+
+| Pass | Change | Score before -> after | Verification |
+|---|---|---|---|
+| 1 | hour page: say Copilot writes the answers over the internet; "source is public", not open source; drop the private Rust claim | reviewers 80 / 64 (baseline) -> 74 / pending | words.py 0; claims checked against the installer and the GitHub API |
+| 2 | promise two made true everywhere ("Its memory stays in your own folder"; the installer runs in the foreground, install.sh L765-778, no service); real file paths; drop the self-comparison claim | 74 -> 75; line 4 truth 5 -> 7 | words.py 0; installer read live |
