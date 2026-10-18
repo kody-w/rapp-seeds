@@ -1,0 +1,98 @@
+● skill(adversarial-review)
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read README.md
+  │ seeds/room/README.md
+  └ 36 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● List directory seeds/card
+  └ 3 files found
+
+/ Search (grep)
+  │ "agents panel|export the memory agent|drag it onto|_agent\.py|Copilot turned on|Brainstem
+  │ window"
+  └ 68 lines found
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/ · url: "https://kody-w.github.io/rapp-s…
+  └ Contents of https://kody-w.github.io/rapp-seeds/:
+
+● Run forbidden word check (shell)
+  │ python3 tools/words.py seeds/room/README.md
+  └ 1 line…
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+● Read README.md
+  │ seeds/card/README.md
+  └ 8 lines read
+
+● Fetching web content https://kody-w.github.io/RAR/ · url: "https://kody-w.github.io/RAR/", max_le…
+  └ Contents of https://kody-w.github.io/RAR/:
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/seeds/hour/ · url: "https://kody-w.githu…
+  └ Contents of https://kody-w.github.io/rapp-seeds/seeds/hour/:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● List relevant installer sources (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E
+  │ '(^install\.(sh|ps1)$|README\.md$|rapp_brainstem/.+(index|app|server|agent|memory).*(py|html|js)
+  │ $)' | head -n 120
+  └ 10 lines…
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Here is the raw content:
+
+● Find Brainstem UI sources (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -E
+  │ '^rapp_brainstem/(templates|static|ui|web|brainstem|local_storage|agents)/' | head -n 200
+  └ 6 lines…
+
+● List Brainstem source tree (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep
+  │ '^rapp_brainstem/' | head -n 220
+  └ 34 lines…
+
+● Verify agent and memory behavior (shell)
+  │ for f in rapp_brainstem/index.html rapp_brainstem/brainstem.py rapp_brainstem/local_storage.py;
+  │ do echo "--- $f"; gh api "repos/kody-w/rapp-installer/contents/$f" --jq '.content' | base64
+  │ --decode | grep -nE 'Manage installed agents|Export|drag|drop|_agent\.py|export|import-agent|age
+  │ nts/import|AzureFileStorage|\.brainstem_data|memory' | head -n 120; done
+  └ 165 lines…
+
+● Check built-in agent creation flow (shell)
+  │ gh api repos/kody-w/rapp-installer/contents/rapp_brainstem/index.html --jq '.content' | base64
+  │ --decode | sed -n '4100,4165p'; echo '--- backend creation routes'; gh api
+  │ repos/kody-w/rapp-installer/contents/rapp_brainstem/brainstem.py --jq '.content' | base64
+  │ --decode | grep -nE 'create.*agent|agent.*create|surgery|teach|interview' | head -n 100
+  └ 67 lines…
+
+● Verify learn-new agent exists (shell)
+  │ gh api 'search/code?q=learn_new_agent.py+repo:kody-w/RAR' --jq '.items[] | [.path,.html_url] |
+  │ @tsv' | head -n 20
+  └ 20 lines…
+
+{"seed":"seeds/room/README.md","scores":{"1":10,"2":5,"3":8,"4":4,"5":4,"6":7,"7":6,"8":9,"9":7,"10":10},"total":70,"weakest":"4: The core creation promise is not reliably true today because \"the memory agent\" is ambiguous and an arbitrary AI-generated Python file may not be valid, saved correctly, or loadable.","fix":"Replace the 25-50 minute rows with:\n| 25-35 | See and read | \"Every agent is one file that does one job.\" | Open the agents panel, click Export beside HackerNews (`hacker_news_agent.py`), and open the downloaded file. |\n| 35-50 | Make your own | \"Pick a chore you repeat.\" | Click the registry book, search `learn new`, add `@rapp/learn_new`, then tell your Brainstem: \"Learn a new agent called MyChore that [describe the chore].\" Open the agents panel and confirm the new `_agent.py` file appears. |"}
+
+
+
+Changes    +0 -0
+AI Credits 68.53 (1m 53s)
+Tokens     ↑ 399.2k (297.0k cached) • ↓ 7.9k (6.3k reasoning)
+Resume     copilot --resume=53369c9e-c8b3-41cd-88ef-86df3464757e

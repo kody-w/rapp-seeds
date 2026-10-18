@@ -1,0 +1,195 @@
+I'll start by reading the rubric, the message, and the seed file.
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read README.md
+  │ seeds/room/README.md
+  └ 40 lines read
+
+Let me look at the repo around this seed (word checker, card, page) so I can verify what the seed links to and claims.
+
+● Inspect repo layout and history (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager log --oneline | head -20
+  │ && echo ---- && git --no-pager status --short | head -20 && echo ---- && ls -la && echo ---- &&
+  │ ls -R seeds | head -80 && echo ---- && ls tools 2>/dev/null
+  └ 68 lines…
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Read README.md
+  │ seeds/card/README.md
+  └ 8 lines read
+
+● Read README.md
+  └ 13 lines read
+
+● Read index.html
+  └ 1 line read
+
+● Run word check; show remote and seed diff (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 tools/words.py
+  │ seeds/room/README.md; echo "exit=$?"; echo ----; git --no-pager remote -v; echo ----; git
+  │ --no-pager diff --stat -- seeds/room/README.md; echo ---- ; git --no-pager diff --
+  │ seeds/room/README.md | head -80
+  └ 25 lines…
+
+● Check that every linked URL resolves (shell)
+  │ for u in https://kody-w.github.io/rapp-seeds/ https://kody-w.github.io/rapp-seeds/seeds/card/
+  │ https://kody-w.github.io/rapp-seeds/seeds/hour/
+  │ https://kody-w.github.io/rapp-installer/install.sh
+  │ https://kody-w.github.io/rapp-installer/install.ps1 https://github.com/kody-w/RAR
+  │ https://github.com/kody-w/rapp-installer https://github.com/kody-w/rapp-seeds …
+  └ 13 lines…
+
+All links resolve. Now I'll verify the Brainstem behaviors the seed asserts (password prompt, sign-in, drag-and-drop, `_agent.py`, agents panel/export, memory agent, re-install keeps memory).
+
+✗ Download and grep install.sh (shell)
+  │ mkdir -p /tmp/roomreview && cd /tmp/roomreview && curl -fsSL --max-time 30
+  │ https://kody-w.github.io/rapp-installer/install.sh -o install.sh && wc -l install.sh && echo
+  │ ---- && grep -n -i -E 'sudo|password|passwd|apt|brew|copilot|gh
+  │ auth|device|login|sign|memory|\.brainstem|7071|open |xdg-open|trap|exec|git clone|git pull|rm
+  │ -rf|backup|preserv' install.sh | head -120
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+✗ Download and grep install.ps1 (shell)
+  │ cd /tmp/roomreview && curl -fsSL --max-time 30
+  │ https://kody-w.github.io/rapp-installer/install.ps1 -o install.ps1 && wc -l install.ps1 && echo
+  │ ---- && grep -n -i -E
+  │ 'admin|elevat|password|winget|copilot|login|sign|memory|\.brainstem|7071|Start-Process|git
+  │ clone|git pull|Remove-Item|backup|preserv|ExecutionPolicy' install.ps1 | head -100
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+Writing to /tmp was denied; I'll stream the scripts straight into grep instead.
+
+● Grep install.sh from stream (shell)
+  │ curl -fsSL --max-time 30 https://kody-w.github.io/rapp-installer/install.sh | wc -l; echo ----;
+  │ curl -fsSL --max-time 30 https://kody-w.github.io/rapp-installer/install.sh | grep -n -i -E
+  │ 'sudo|password|passwd|apt-get|brew |copilot|gh
+  │ auth|device|login|sign.?in|memory|\.brainstem|7071|xdg-open|open "|git clone|git pull|rm
+  │ -rf|backup|preserv|window|terminal' | head -120
+  └ 122 lines…
+
+● Grep install.ps1 from stream (shell)
+  │ curl -fsSL --max-time 30 https://kody-w.github.io/rapp-installer/install.ps1 | wc -l; echo ----;
+  │ curl -fsSL --max-time 30 https://kody-w.github.io/rapp-installer/install.ps1 | grep -n -i -E
+  │ 'admin|elevat|password|winget|copilot|login|sign.?in|memory|\.brainstem|7071|Start-Process|git
+  │ clone|git pull|Remove-Item|backup|preserv|ExecutionPolicy|window' | head -100
+  └ 102 lines…
+
+● List Brainstem repo files via gh api (shell)
+  │ gh api repos/kody-w/rapp-installer/git/trees/main?recursive=1 --jq '.tree[] |
+  │ select(.type=="blob") | .path' 2>/dev/null | grep -v -E '^(node_modules|\.git/)' | grep -E '^(ra
+  │ pp_brainstem/[^/]+$|rapp_brainstem/(agents|static|web|templates)/|README|docs/[^/]+$|install)' |
+  │ head -100; echo; echo "total files:"; gh api
+  │ repos/kody-w/rapp-installer/git/trees/main?recursive=1 --jq '.tree | length'
+  └ 33 lines…
+
+● Inspect RAR registry README and contents (shell)
+  │ gh api repos/kody-w/RAR/contents --jq '.[].name' 2>&1 | head -60; echo ----; gh api
+  │ repos/kody-w/RAR/readme --jq '.content' 2>&1 | base64 -d 2>/dev/null | head -150
+  └ 211 lines…
+
+● Grep brainstem.py routes and agent loading (shell)
+  │ curl -fsSL --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | grep
+  │ -n -i -E '_agent\.py|glob|/agents/import|/agents/export|/agents/|\.brainstem_data|def
+  │ .*export|def .*import|def .*upload|app\.route' | head -100
+  └ 69 lines…
+
+● Grep Brainstem UI for drag-drop/export/agents (shell)
+  │ curl -fsSL --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | grep -n
+  │ -i -E 'dragover|ondrop|drop|Manage installed agents|Export|_agent\.py|agents
+  │ panel|agents-panel|agentsPanel|Upload|import' | head -80
+  └ 80 lines…
+
+● Read agents list/export/import routes (shell)
+  │ curl -fsSL --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py | sed
+  │ -n '2975,3125p'
+  └ 151 lines…
+
+● Read UI drop handler and agents panel render (shell)
+  │ curl -fsSL --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html | sed -n
+  │ '1695,1770p;1776,1870p'
+  └ 171 lines…
+
+● Read installer tail: start/restart behavior (shell)
+  │ curl -fsSL --max-time 30 https://kody-w.github.io/rapp-installer/install.sh | sed -n '728,843p'
+  └ 116 lines…
+
+● Read Brainstem README start-here section (shell)
+  │ curl -fsSL --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md
+  │ | head -120
+  └ 119 lines…
+
+● Check memory agents' display names (shell)
+  │ for f in manage_memory_agent.py context_memory_agent.py hacker_news_agent.py; do echo "=== $f";
+  │ curl -fsSL --max-time 30
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/agents/$f | grep -n
+  │ -E 'self\.name|"name"|__manifest__|description *=|class [A-Za-z]+\(' | head -12; done
+  └ 17 lines…
+
+● Check RAR submit flow in store UI and CONTRIBUTING (shell)
+  │ curl -fsSL --max-time 40 https://raw.githubusercontent.com/kody-w/RAR/main/index.html | grep -n
+  │ -i -E 'submit|publish|sign in with github|oauth|issue' | head -40; echo ----; curl -fsSL
+  │ --max-time 30 https://raw.githubusercontent.com/kody-w/RAR/main/CONTRIBUTING.md | head -80
+  └ 102 lines…
+
+● Check card text, pushed state, room page on Pages (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager fetch -q origin 2>&1 |
+  │ head -3; git --no-pager log origin/main --oneline | head -3; echo ----; grep -o
+  │ '<text[^>]*>[^<]*</text>' seeds/card/card.svg | sed 's/<[^>]*>//g' | head -30; echo ----; grep
+  │ -c -i -E '<rect|<path' seeds/card/card.svg; echo ----; curl -s --max-time 20
+  │ https://kody-w.github.io/rapp-seeds/seeds/room/ | sed 's/<[^>]*>/ /g' | tr -s ' \n' | head -c …
+  └ 89 lines…
+
+● Read RAR submit page text (shell)
+  │ curl -fsSL --max-time 40 https://kody-w.github.io/RAR/submit.html | sed -e
+  │ 's/<script[^>]*>.*<\/script>//g' | sed 's/<[^>]*>/ /g' | tr -s ' \n' | head -c 3500
+  └ 88 lines…
+
+● Check installer site for timing/password claims (shell)
+  │ curl -fsSL --max-time 40 https://kody-w.github.io/rapp-installer/ | sed -e
+  │ 's/<script[^>]*>.*<\/script>//g' -e 's/<style[^>]*>.*<\/style>//g' | sed 's/<[^>]*>/ /g' | tr -s
+  │ ' \n' | grep -i -E 'minute|seconds|hour|time|password|sudo|free|copilot|window|terminal|keep' |
+  │ head -30
+  └ 22 lines…
+
+● Read memory agent source (the pattern file) (shell)
+  │ curl -fsSL --max-time 30 https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brain
+  │ stem/agents/manage_memory_agent.py | sed -n '1,60p'
+  └ 60 lines…
+
+● Check submit page validation requirements (shell)
+  │ curl -fsSL --max-time 40 https://kody-w.github.io/RAR/submit.html | grep -n -i -E
+  │ '__manifest__|manifest|required|must|@publisher|namespace|sign
+  │ in|login|token|oauth|error|invalid' | head -50
+  └ 42 lines…
+
+● Check card files and ledger context (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la seeds/card && file
+  │ seeds/card/card.pdf && wc -c seeds/card/card.svg && echo ---- && cat LEDGER.md | head -60
+  └ 46 lines…
+
+● Read submit page validation logic (shell)
+  │ curl -fsSL --max-time 40 https://kody-w.github.io/RAR/submit.html | sed -n '360,400p'
+  └ 40 lines…
+

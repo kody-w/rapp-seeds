@@ -1,0 +1,23 @@
+{
+ "tag": "hour-pass9",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "slight: Y defines Brainstem in the prescribed plain words and tells a first-time Mac user exactly how to perform the verified installer action, outweighing its small increase in length."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: Y defines 'Brainstem' using the exact plain-language definition from MESSAGE.md before using the term in Step 1, and walks a non-technical first-time user through how to open Terminal rather than assuming they already know."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "slight: The two pages differ only in the start card, and Y's version defines Brainstem in MESSAGE.md's words and tells a Mac first-timer how to open Terminal, while X leaves Brainstem undefined for the whole visible page; both statements check out against the installer and pass words.py, and the cost is only some extra length and Mac-only detail."
+  ]
+ ]
+}

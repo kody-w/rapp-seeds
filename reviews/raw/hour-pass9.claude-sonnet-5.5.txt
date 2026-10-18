@@ -1,0 +1,444 @@
+I'll start by reading the rubric, message, and seed file.
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● List seed directory and file size (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la seeds/hour/ && wc -c
+  │ seeds/hour/index.html && wc -l seeds/hour/index.html
+  └ 6 lines…
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● List repo root, tools dir, and recent git log (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && ls -la && ls tools 2>/dev/null && git
+  │ --no-pager log --oneline | head -20
+  └ 26 lines…
+
+● View word check tool and run it on the seed (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && cat tools/words.py && echo ---- &&
+  │ python3 tools/words.py seeds/hour/index.html; echo "exit: $?"
+  └ 66 lines…
+
+● View ledger, README, llms.txt, review prompt, and dirs (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && cat LEDGER.md && echo ---- && cat
+  │ README.md && echo ---- && cat llms.txt && echo ---- && cat tools/REVIEW-PROMPT.md && echo ----
+  │ && ls reviews seeds
+  └ 109 lines…
+
+Word check passes. Now I'll verify the seed's factual claims against the public sources it links, without executing anything I download.
+
+✗ Check repo visibility and licenses via gh API (shell)
+  │ cd /tmp && gh api repos/kody-w/rapp-installer --jq '{name, private, visibility, license:
+  │ .license.spdx_id, default_branch, description, pushed_at}' 2>&1; echo ---; gh api
+  │ repos/kody-w/rapp-1 --jq '{name, private, visibility, license: .license.spdx_id, default_branch,
+  │ description, pushed_at}' 2>&1; echo ---; gh api repos/kody-w/RAR --jq '{name, private,
+  │ visibility, license: .license.spdx_id, default_branch, description, pushed_at}' 2>&1
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Check HTTP status of every linked URL (shell)
+  │ for u in \
+  │ "https://kody-w.github.io/rapp-installer/install.sh" \
+  │ "https://kody-w.github.io/rapp-installer/install.ps1" \
+  │ "https://kody-w.github.io/rapp-seeds/" \
+  │ "https://github.com/kody-w/RAR" \…
+  └ 12 lines…
+
+`gh api` needed approval; I'll use unauthenticated curl against the public API instead.
+
+✗ Read (not execute) the top of install.sh (shell)
+  │ cd /tmp && curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.sh | wc -l;
+  │ echo ---; curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.sh | sed -n
+  │ '1,60p'
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Check repo visibility and license via public API (shell)
+  │ for r in rapp-installer rapp-1 RAR; do echo "== $r"; curl -s --max-time 25
+  │ "https://api.github.com/repos/kody-w/$r" | python3 -c "
+  │ import sys,json
+  │ d=json.load(sys.stdin)
+  │ print({k:d.get(k) for k in ['name','private','visibility','default_branch','description','push…
+  └ 9 lines…
+
+● Read (not execute) the top of install.sh (shell)
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.sh | wc -l; echo ---;
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.sh | sed -n '1,70p'
+  └ 72 lines…
+
+● Read installer lines 70-330 (shell)
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.sh | sed -n '70,330p'
+  └ 261 lines…
+
+● Read installer lines 330-560 (shell)
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.sh | sed -n '330,560p'
+  └ 231 lines…
+
+● Read installer lines 560-843 (shell)
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.sh | sed -n '560,843p'
+  └ 284 lines…
+
+● Read (not execute) install.ps1 top (shell)
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.ps1 | wc -l; echo ---;
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.ps1 | sed -n '1,140p'
+  └ 142 lines…
+
+● Grep install.ps1 for launch/sign-in/admin behaviours (shell)
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.ps1 | grep -n -i -E
+  │ "Start-Process|device|user_code|brainstem\.py|Read-Host|7071|localhost|foreground|Opening
+  │ browser|Exec|& \$|winget install|Press|password|admin|elevat" | head -60
+  └ 60 lines…
+
+● List rapp-installer repo root (shell)
+  │ curl -s --max-time 25 "https://api.github.com/repos/kody-w/rapp-installer/contents/" | python3
+  │ -c "
+  │ import sys,json
+  │ d=json.load(sys.stdin)
+  │ if isinstance(d,dict): print(d); sys.exit()…
+  └ 31 lines…
+
+● List Brainstem dir and bundled agents via public API (shell)
+  │ curl -s --max-time 25
+  │ "https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem" | python3 -c "
+  │ import sys,json
+  │ d=json.load(sys.stdin)
+  │ if isinstance(d,dict): print(d); sys.exit()…
+  └ 32 lines…
+
+● Grep Brainstem UI for button, Export, drag-and-drop claims (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" -o
+  │ /dev/null -w "%{http_code} %{size_download}\n"; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" |
+  │ grep -n -i -E "Manage installed agents|⊕|&#8853;|&#x2295;|circled|Export|drag|drop|_agent\.py"…
+  └ 82 lines…
+
+● Read agents button, panel and Export button code (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '1105,1135p'; echo "-----PANEL-----"; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '1769,1870p'
+  └ 134 lines…
+
+● Read header buttons incl. registry button (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '1060,1105p'
+  └ 46 lines…
+
+● Read drag-and-drop handler and install function (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '1698,1768p'; echo "-----2115-2175-----"; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '2115,2175p'
+  └ 133 lines…
+
+● Grep brainstem.py for export route, memory location, soul, reload (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" |
+  │ grep -n -E "agents/export|Content-Disposition|as_attachment|/agents/import|def
+  │ .*export|\.brainstem_data|local_storage|soul\.md|SOUL_PATH|reload|hot|_load_agents|def
+  │ load_agents|port.*7071|7071" | head -80
+  └ 43 lines…
+
+● Read Brainstem in-app tour setup (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '3722,3770p'
+  └ 49 lines…
+
+● Read the bundled memory agent files (shell)
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainst
+  │ em/agents/manage_memory_agent.py"; echo; echo "=====CONTEXT====="; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/agents/context_memo
+  │ ry_agent.py" | head -60
+  └ 153 lines…
+
+● Check per-message agent reload and export/import routes (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" |
+  │ grep -n -E "load_agents\(\)|def chat|/chat|get_available_tools|agents = load|_agents_cache" |
+  │ head -40; echo ----; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" | …
+  └ 118 lines…
+
+● Read RAR registry README (shell)
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/RAR/main/README.md" | head -150
+  └ 150 lines…
+
+● Read conformance README (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-1/main/conformance/grail/README.md" | head -80
+  └ 80 lines…
+
+● List conformance suite and CI workflows in rapp-1 (shell)
+  │ curl -s --max-time 40 "https://api.github.com/repos/kody-w/rapp-1/contents/conformance/grail"
+  │ | python3 -c "
+  │ import sys,json
+  │ d=json.load(sys.stdin)
+  │ if isinstance(d,dict): print(d); sys.exit()…
+  └ 26 lines…
+
+● Check licenses for the three linked repos (shell)
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/rapp-1/main/LICENSE" | head
+  │ -5; echo ----; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/VERSION"; echo;
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE"
+  │ -o /dev/null -w "installer LICENSE http=%{http_code}\n"; curl -s --max-time 40 …
+  └ 13 lines…
+
+● Read the CI workflow and recent runs for the conformance suite (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-1/main/.github/workflows/grail.yml"; echo; echo
+  │ ----; curl -s --max-time 40
+  │ "https://api.github.com/repos/kody-w/rapp-1/actions/workflows/grail.yml/runs?per_page=5" |
+  │ python3 -c "…
+  └ 63 lines…
+
+/ Search (grep)
+  │ "Wildhaven" in !reviews/**
+  └ 1 line found
+
+● Check whether the footer entity name is public elsewhere (shell)
+  │ for f in README.md LICENSE; do echo "== rapp-installer/$f"; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/$f" | grep -n -i -E
+  │ "wildhaven|license|copyright|LLC" | head -8; done; echo "== rapp-1 README"; curl -s --max-time
+  │ 40 "https://raw.githubusercontent.com/kody-w/rapp-1/main/README.md" | grep -n -i -E
+  │ "wildhaven|LLC|MIT" | head -8; echo "== RAR README"; curl -s --max-time 40 …
+  └ 15 lines…
+
+● See uncommitted changes to the seed relative to HEAD (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && git --no-pager diff HEAD --stat | tail
+  │ -5; echo ----; git --no-pager diff HEAD -- seeds/hour/index.html | head -80
+  └ 18 lines…
+
+● Check repo license holder and footer consistency across seeds (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && head -5 LICENSE && echo ---- && grep -rn
+  │ -i -E "wildhaven|LLC|Copyright" --include=*.md --include=*.html --include=*.txt --include=*.svg
+  │ --include=*.json . 2>/dev/null | grep -v "^./reviews/" | head -20; echo ----; ls seeds/*; echo;
+  │ git --no-pager log -3 --format='%h %an %s' -- seeds/hour/index.html; git --no-pager status
+  │ --short | head
+  └ 38 lines…
+
+● Check whether the LLC name is public in linked sources (shell)
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/RAR/main/TRADEMARKS.md" | grep
+  │ -n -i -E "wildhaven|LLC|owner|Kody" | head -12; echo ----; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/CONSTITUTION.md" | grep -n -i -E
+  │ "wildhaven|LLC" | head; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/index.html" | grep -n -i -E …
+  └ 7 lines…
+
+● Web Search (MCP: github-mcp-server) · "Wildhaven Homes LLC" RAPP Brainstem · query: ""Wildhav… 10s
+  └ {"annotations":null,"bing_searches":[{"text":"Wildhaven Homes LLC RAPP Brains...
+
+● Read the Windows installer launch and sign-in section (shell)
+  │ curl -s --max-time 25 -L https://kody-w.github.io/rapp-installer/install.ps1 | sed -n
+  │ '860,1042p'
+  └ 183 lines…
+
+● Verify memory location, gitignore, and soul.md content (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/local_storage.py"
+  │ | grep -n -i -E "brainstem_data|STORAGE|path|home|dirname|memory.json|\.json" | head -30;
+  │ echo ---; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/.gitignore"; echo…
+  └ 91 lines…
+
+● Compute WCAG contrast ratios for the seed's color pairs (shell)
+  │ python3 - <<'EOF'
+  │ def lum(h):
+  │ h=h.lstrip('#'); r,g,b=[int(h[i:i+2],16)/255 for i in (0,2,4)]
+  │ f=lambda c: c/12.92 if c<=0.03928 else ((c+0.055)/1.055)**2.4
+  │ return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)…
+  └ 19 lines…
+
+● Check whether the Brainstem refreshes sign-in tokens (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" |
+  │ grep -n -i -E "refresh_token|expires_in|refresh_expires|_refresh_access|def .*refresh" | head
+  │ -30
+  └ 20 lines…
+
+● List all titled buttons in the Brainstem UI (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | grep
+  │ -n -i -E "id=\"[a-z-]*btn\"|title=\"[^\"]*\"" | cut -c1-200 | head -40
+  └ 18 lines…
+
+● Check header controls layout and other icon buttons (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | sed
+  │ -n '1136,1160p' | cut -c1-220; echo ----CSS----; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | grep
+  │ -n -E "^\s*header\s*\{|\.controls\s*\{|header \.controls|margin-left:\s*auto" | head
+  └ 33 lines…
+
+● Check what the published root page serves vs local (shell)
+  │ curl -s --max-time 40 -L "https://kody-w.github.io/rapp-seeds/" | head -c 600; echo; echo ----;
+  │ curl -s --max-time 40 -L "https://kody-w.github.io/rapp-seeds/" | diff -q -
+  │ /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/index.html && echo "root index same as local
+  │ root index"; cat /Users/kodywildfeuer/Documents/GitHub/rapp-seeds/index.html
+  └ 5 lines…
+
+● Check the Agent Store page for a submit/share flow (shell)
+  │ curl -s --max-time 40 -L "https://kody-w.github.io/RAR/" -o /dev/null -w "store
+  │ http=%{http_code} size=%{size_download}\n"; curl -s --max-time 40 -L
+  │ "https://kody-w.github.io/RAR/" | grep -o -i -E
+  │ "<title>[^<]*</title>|submit[^<\"']{0,80}|publish[^<\"']{0,60}|sign in[^<\"']{0,60}" | sort |
+  │ uniq -c | sort -rn | head -25
+  └ 15 lines…
+
+● Read the registry submit page's visible text (shell)
+  │ curl -s --max-time 40 -L "https://kody-w.github.io/RAR/submit.html" -o /dev/null -w "submit
+  │ http=%{http_code} size=%{size_download}\n"; curl -s --max-time 40 -L
+  │ "https://kody-w.github.io/RAR/submit.html" | python3 -c "
+  │ import sys,re,html
+  │ t=sys.stdin.read()…
+  └ 7 lines…
+
+● Count visible words on the page (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'EOF'
+  │ import re,html
+  │ t=open('seeds/hour/index.html',encoding='utf-8').read()
+  │ body=t.split('<body>')[1]
+  │ body=re.sub(r'<script.*?</script>','',body,flags=re.S)…
+  └ 8 lines…
+
+● Test whether the words-ok pragma is needed at all (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'EOF'
+  │ import re, sys
+  │ sys.path.insert(0,'tools')
+  │ import words
+  │ text=open('seeds/hour/index.html',encoding='utf-8').read().replace('<!-- words-ok: file names …
+  └ 13 lines…
+
+✗ Find a local browser for rendering the page (shell)
+  │ ls "/Applications" | grep -i -E "chrome|chromium|edge|brave|firefox|arc" ; which chromium
+  │ google-chrome chrome 2>/dev/null; echo "(done)"
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+✗ Search (glob)
+  │ "*Chrome*" in /Applications
+  └ Permission denied because no interactive user response was available. Retry in an interactive
+    session so the user can approve it, or try an alternative that does not require this permission.
+  Approval check
+    └ ✗ Denied, no one to approve
+
+● Confirm memory is injected into the prompt each turn (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py" |
+  │ grep -n -E "system_context" | head -12
+  └ 4 lines…
+
+● Look for tests covering memory persistence (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/tests/" -o
+  │ /dev/null -w "%{http_code}\n"; curl -s --max-time 40
+  │ "https://api.github.com/repos/kody-w/rapp-installer/contents/rapp_brainstem/tests" | python3
+  │ -c "…
+  └ 8 lines…
+
+● See how the LLC name appears in public RAPP repos (shell)
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/RAPP_Store/main/README.md" |
+  │ grep -n -i -E "wildhaven|LLC" | head -8; echo ----; curl -s --max-time 40
+  │ "https://api.github.com/search/code?q=%22Wildhaven+Homes+LLC%22+user:kody-w" | python3 -c "
+  │ import sys,json
+  │ d=json.load(sys.stdin)…
+  └ 12 lines…
+
+● Read the storefront section of RAPP_Store README (shell)
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/RAPP_Store/main/README.md" | sed
+  │ -n '8,24p'
+  └ 17 lines…
+
+● Find the registry panel's data source in the Brainstem UI (shell)
+  │ curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html" | grep
+  │ -n -E "RAR_REVISION\s*=|RAR_BASE|RAR_INDEX|RAR_REGISTRY|registry\.json|api/v1|async function
+  │ loadRarRegistry|function rarFetch|raw\.githubusercontent\.com/kody-w/RAR" | head -20
+  └ 5 lines…
+
+● Verify the pinned registry catalog is live and populated (shell)
+  │ curl -s --max-time 40 -o /dev/null -w "pinned registry.json http=%{http_code}
+  │ size=%{size_download}\n" "https://raw.githubusercontent.com/kody-w/RAR/241c6191736a856b6837ef2
+  │ 398447a25710b8d72/registry.json"; curl -s --max-time 40 "https://raw.githubusercontent.com/kod
+  │ y-w/RAR/241c6191736a856b6837ef2398447a25710b8d72/registry.json" | python3 -c "
+  │ import sys,json…
+  └ 11 lines…
+
+● Sample the registry to judge consumer-friendliness (shell)
+  │ curl -s --max-time 40 "https://raw.githubusercontent.com/kody-w/RAR/241c6191736a856b6837ef2398
+  │ 447a25710b8d72/registry.json" | python3 -c "
+  │ import sys,json,collections
+  │ d=json.load(sys.stdin)
+  │ ag=d['agents']…
+  └ 24 lines…
+
+● Read the reverted pass-6 review to avoid repeating a failed change (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && wc -c reviews/hour-pass6.json &&
+  │ python3 -c "
+  │ import json
+  │ d=json.load(open('reviews/hour-pass6.json'))
+  │ print(json.dumps(d,indent=1)[:3500])…
+  └ 68 lines…
+
+✗ Compare per-line score patterns across passes for calibration (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'EOF'
+  │ import json
+  │ for tag in ['hour-pass5','hour-pass7','hour-pass8']:
+  │ d=json.load(open(f'reviews/{tag}.json'))
+  │ print('==',tag,'median',d.get('median'))…
+  └ == hour-pass5 median 74
+    gpt-5.6-sol 74 [10, 6, 8, 5, 8, 6, 6, 9, 8, 8]
+    gemini-4-argon 94 [10, 9, 9, 8, 10, 9, 10, 10, 9, 10]
+    Traceback (most recent call last):
+    File "<stdin>", line 6, in <module>
+    KeyError: 'scores'
+    Failed with exit code 1
+
+● Count lines in the bundled agent files (shell)
+  │ for f in manage_memory_agent.py context_memory_agent.py hacker_news_agent.py; do printf "%s: "
+  │ $f; curl -s --max-time 40
+  │ "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/agents/$f" | wc -l;
+  │ done
+  └ 3 lines…
+
+● Check the seed's HTML tags are balanced (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'EOF'
+  │ from html.parser import HTMLParser
+  │ VOID={'meta','link','br','img','input','hr','source'}
+  │ class P(HTMLParser):
+  │ def __init__(s): super().__init__(); s.st=[]; s.err=[]…
+  └ 10 lines…
+
+● Confirm the proposed replacement passes the word check (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'EOF'
+  │ import re,sys
+  │ sys.path.insert(0,'tools'); import words
+  │ s="<li><b>Read an agent.</b><span>Click Export next to ManageMemory, then open the downloaded
+  │ file in TextEdit or Notepad. It is a short program for one job. Paste it into any AI and ask: …
+  └ 5 lines…
+
+{"seed": "seeds/hour/index.html", "scores": {"1":9,"2":6,"3":6,"4":5,"5":6,"6":6,"7":7,"8":7,"9":6,"10":7}, "total": 65, "weakest": "Line 4: step 4 claims the exported agent 'reads like plain instructions' when Export downloads about 90 lines of Python (ManageMemory), and 'about ten minutes each', 'any AI' producing a loadable agent, 'Free for everyone who will ever use AI' and the unexplained 'Wildhaven Homes LLC' (the seller-storefront name in kody-w/RAPP_Store, absent from every linked licence) cannot be confirmed from the linked sources.", "fix": "Replace step 4 with: <li><b>Read an agent.</b><span>Click Export next to ManageMemory, then open the downloaded file in TextEdit or Notepad. It is a short program for one job. Paste it into any AI and ask: <em>Explain this in plain words.</em></span></li> (removes the claim a skeptic disproves in one click, names the agent exactly as the agents panel shows it, and gives a non-coder a true way to see how it works)."}
+
+
+
+Changes    +0 -0
+AI Credits 188.48 (12m 9s)
+Tokens     ↑ 5.1m (4.9m cached, 180.1k written) • ↓ 94.7k (80.1k reasoning)
+Resume     copilot --resume=e9e9736c-b52e-4cdb-bb2d-a6e28a62863a

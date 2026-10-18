@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/room/README.md",
+ "tag": "room-r1",
+ "reviews": [
+  {
+   "seed": "seeds/room/README.md",
+   "scores": {
+    "1": 10,
+    "2": 5,
+    "3": 8,
+    "4": 4,
+    "5": 4,
+    "6": 7,
+    "7": 6,
+    "8": 9,
+    "9": 7,
+    "10": 10
+   },
+   "total": 70,
+   "weakest": "4: The core creation promise is not reliably true today because \"the memory agent\" is ambiguous and an arbitrary AI-generated Python file may not be valid, saved correctly, or loadable.",
+   "fix": "Replace the 25-50 minute rows with:\n| 25-35 | See and read | \"Every agent is one file that does one job.\" | Open the agents panel, click Export beside HackerNews (`hacker_news_agent.py`), and open the downloaded file. |\n| 35-50 | Make your own | \"Pick a chore you repeat.\" | Click the registry book, search `learn new`, add `@rapp/learn_new`, then tell your Brainstem: \"Learn a new agent called MyChore that [describe the chore].\" Open the agents panel and confirm the new `_agent.py` file appears. |",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/room/README.md",
+   "scores": {
+    "1": 8,
+    "2": 8,
+    "3": 9,
+    "4": 8,
+    "5": 7,
+    "6": 9,
+    "7": 9,
+    "8": 9,
+    "9": 8,
+    "10": 10
+   },
+   "total": 85,
+   "weakest": "Line 5: Technical troubleshooting (like `_agent.py` file suffixes and Copilot sign-in checks) sits in the main body instead of behind 'Details', while the install command itself is missing and two different end-of-page actions compete.",
+   "fix": "Spell out the full three promises from MESSAGE.md in the opening block and wrap the troubleshooting and raw install commands inside a `<details><summary>Details</summary>...</details>` section at the bottom, replacing `**The message, said first and last:** Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone.` with `**The message, said first and last:** **Your AI, as files you own.** **Learn it in an hour.** It thinks the way you do, so you can see how it works. **Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder. **Hand it to anyone.** It is just files. One agent is one file.` and wrapping the `## When something goes wrong` section (plus the Mac/Linux and Windows install lines from MESSAGE.md) inside `<details><summary>Details</summary>...</details>`.",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/room/README.md",
+   "scores": {
+    "1": 6,
+    "2": 5,
+    "3": 5,
+    "4": 6,
+    "5": 5,
+    "6": 6,
+    "7": 6,
+    "8": 7,
+    "9": 5,
+    "10": 9
+   },
+   "total": 60,
+   "weakest": "Line 3 (All along): the moment is only announced at minute 58 as something that happens tomorrow, so nobody in the room sees memory work, and the message promised 'first and last' is never actually said last.",
+   "fix": "Make memory visible in the room. In the 15-25 row, set 'What they do' to: Tell it one thing about your day and ask it to remember it. Shorten 'Hand it on' to 50-55. Replace the Close row with two rows: | 55-58 | Prove it | \"Close the window. Paste the line again. Now ask what it remembers.\" | Close the Terminal window, paste the install line again, click \"What do you remember?\". | and | 58-60 | Close | \"Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone. Tomorrow it is still there, remembering. AI should have been like this all along.\" | Keep the card. |",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 70,
+ "min": 60,
+ "n": 3
+}

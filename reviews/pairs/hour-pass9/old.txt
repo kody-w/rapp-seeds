@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your AI, as files you own</title>
+<meta name="description" content="Learn it in an hour. Run it on any computer. Hand it to anyone. Free, with the open RAPP format underneath.">
+<meta property="og:title" content="Your AI, as files you own">
+<meta property="og:description" content="Learn it in an hour. Run it on any computer. Hand it to anyone.">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1c1f23;--muted:#5b636b;--line:#e4e0d6;--accent:#0f766e;--soft:#0f766e14;--code:#f1eee6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111416;--card:#1a1e21;--ink:#eceae4;--muted:#9aa3aa;--line:#2a2f33;--accent:#2dd4bf;--soft:#2dd4bf1a;--code:#15191b}}
+:root[data-theme="dark"]{--bg:#111416;--card:#1a1e21;--ink:#eceae4;--muted:#9aa3aa;--line:#2a2f33;--accent:#2dd4bf;--soft:#2dd4bf1a;--code:#15191b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:56px 16px 80px}
+h1{font-size:clamp(34px,7vw,52px);line-height:1.1;margin:0 0 20px;letter-spacing:-.02em}
+.promises{list-style:none;padding:0;margin:0 0 36px}
+.promises li{padding:10px 0;border-bottom:1px solid var(--line)}
+.promises b{color:var(--accent)}
+.start{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.start p{margin:0 0 12px}
+.cmd{display:flex;gap:8px;align-items:stretch}
+code{font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+.cmd code{flex:1;background:var(--code);padding:12px 14px;border-radius:10px;overflow-x:auto;white-space:nowrap}
+button{font:600 16px/1 inherit;font-family:inherit;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:0 18px;cursor:pointer}
+.win{margin-top:10px;font-size:15px;color:var(--muted)}
+.win code{background:var(--code);padding:2px 6px;border-radius:6px}
+h2{font-size:24px;margin:52px 0 8px}
+.lead{color:var(--muted);margin:0 0 18px}
+ol.hour{padding:0;margin:0;list-style:none;counter-reset:s}
+ol.hour li{counter-increment:s;position:relative;padding:14px 0 14px 56px;border-bottom:1px solid var(--line)}
+ol.hour li::before{content:counter(s);position:absolute;left:0;top:14px;width:38px;height:38px;border-radius:50%;background:var(--soft);color:var(--accent);font-weight:700;display:grid;place-items:center}
+ol.hour b{display:block}
+ol.hour span{color:var(--muted);font-size:16px}
+.moment{margin:48px 0 0;padding:22px;border-left:4px solid var(--accent);background:var(--soft);border-radius:0 12px 12px 0;font-size:20px}
+details{margin-top:48px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:16px}
+summary{cursor:pointer;font-weight:600;color:var(--ink)}
+a{color:var(--accent)}
+footer{margin-top:48px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>Your AI, as files you own.</h1>
+<ul class="promises">
+<li><b>Learn it in an hour.</b> It thinks the way you do, so you can see how it works.</li>
+<li><b>Run it on any computer.</b> Mac, Windows or Linux. Its memory stays in your own folder.</li>
+<li><b>Hand it to anyone.</b> It is just files. One agent is one file.</li>
+</ul>
+
+<section class="start" aria-label="Start">
+<p>Open Terminal, paste this, press Enter.</p>
+<div class="cmd"><code id="c">curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | bash</code><button id="b" type="button">Copy</button></div>
+<p class="win">On Windows, use PowerShell: <code>irm https://kody-w.github.io/rapp-installer/install.ps1 | iex</code></p>
+</section>
+
+<h2>Your first hour</h2>
+<p class="lead">Six steps, about ten minutes each. No coding.</p>
+<ol class="hour">
+<li><b>Get your Brainstem.</b><span>Paste the line above. Sign in once with a GitHub account that has Copilot. It opens in your browser and runs while that Terminal window is open. Paste the same line any time to bring it back, memory and all.</span></li>
+<li><b>Talk to it.</b><span>Ask it something about your day. Your Brainstem, its agents and its memory stay on your computer. The model that writes the answers is Copilot, over the internet.</span></li>
+<li><b>See what it can do.</b><span>Click the circled plus &#8853; at the top right of your Brainstem (it says <em>Manage installed agents</em> when you point at it). Each one listed is an agent: one file that does one job.</span></li>
+<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>
+<li><b>Make your own.</b><span>Paste that file into any AI and ask for a new agent just like it, for a chore you repeat. Save the reply as a file ending in <code>_agent.py</code> and drag it onto your Brainstem window. It uses it on your next message.</span></li>
+<li><b>Hand it on.</b><span>Export your new agent and send the file to a friend. They drag it onto their Brainstem and it works the same way. Or share it in the <a href="https://github.com/kody-w/RAR">registry</a>.</span></li>
+</ol>
+
+<p class="moment">Tomorrow it is still there, on your computer, remembering. That is the moment people say: AI should have been like this all along.</p>
+
+<details>
+<summary>Details for builders</summary>
+<p>Go deeper: your Brainstem lives in one folder. On a Mac, paste <code>open ~/.brainstem/src/rapp_brainstem</code> into Terminal. On Windows, paste <code>explorer $HOME\.brainstem\src\rapp_brainstem</code> into PowerShell. The page <code>soul.md</code> tells it how to behave: change a sentence and its answers change. Agents live in <code>agents/</code>.</p><!-- words-ok: file names for builders -->
+<p>The Brainstem is one small program, and its source is public. It uses your GitHub Copilot sign-in for the model. Your agents, its page of instructions and its memory are plain files in one folder on your computer.</p>
+<p>RAPP is the open format underneath, free for anyone, MIT licensed. Anyone can build a Brainstem in any language and check it against the original with the <a href="https://github.com/kody-w/rapp-1/tree/main/conformance/grail">public test suite</a> of 25 checks. The suite runs automatically on every change.</p>
+<p>Source: <a href="https://github.com/kody-w/rapp-installer">the Brainstem</a> · <a href="https://github.com/kody-w/rapp-1">the open format</a> · <a href="https://github.com/kody-w/RAR">the registry</a></p>
+</details>
+
+<footer>Free for everyone who will ever use AI. The format underneath, RAPP, is open and MIT licensed. Copilot is a GitHub service with its own plans. Wildhaven Homes LLC.</footer>
+</main>
+<script>
+document.getElementById('b').addEventListener('click',async()=>{const t=document.getElementById('c').textContent;try{await navigator.clipboard.writeText(t)}catch(e){const r=document.createRange();r.selectNode(document.getElementById('c'));getSelection().removeAllRanges();getSelection().addRange(r);document.execCommand('copy')}const b=document.getElementById('b');b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)});
+</script>
+</body>
+</html>

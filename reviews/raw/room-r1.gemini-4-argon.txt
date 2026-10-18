@@ -1,0 +1,31 @@
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read README.md
+  │ seeds/room/README.md
+  └ 36 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Run words.py check and verify public links and relative paths (shell)
+  │ python3 tools/words.py seeds/room/README.md && curl -sI https://kody-w.github.io/rapp-seeds/ |
+  │ head -n 5 && curl -sI https://github.com/kody-w/RAR | head -n 5 && ls -la seeds/card/
+  └ 17 lines…
+
+/ Search (glob)
+  │ "seeds/**/*"
+  └ 7 files found
+
+{"seed": "seeds/room/README.md", "scores": {"1":8,"2":8,"3":9,"4":8,"5":7,"6":9,"7":9,"8":9,"9":8,"10":10}, "total": 85, "weakest": "Line 5: Technical troubleshooting (like `_agent.py` file suffixes and Copilot sign-in checks) sits in the main body instead of behind 'Details', while the install command itself is missing and two different end-of-page actions compete.", "fix": "Spell out the full three promises from MESSAGE.md in the opening block and wrap the troubleshooting and raw install commands inside a `<details><summary>Details</summary>...</details>` section at the bottom, replacing `**The message, said first and last:** Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone.` with `**The message, said first and last:** **Your AI, as files you own.** **Learn it in an hour.** It thinks the way you do, so you can see how it works. **Run it on any computer.** Mac, Windows or Linux. Its memory stays in your own folder. **Hand it to anyone.** It is just files. One agent is one file.` and wrapping the `## When something goes wrong` section (plus the Mac/Linux and Windows install lines from MESSAGE.md) inside `<details><summary>Details</summary>...</details>`."}
+
+
+
+Changes    +0 -0
+AI Credits 82.71 (55s)
+Tokens     ↑ 532.0k (127.9k cached) • ↓ 604 (2.1k reasoning)
+Resume     copilot --resume=f90c98e1-9468-4790-820f-ddce7a1beac8

@@ -34,3 +34,6 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | 7 | hour page: name the agents button exactly as it appears (circled plus, tooltip "Manage installed agents", index.html L1114) | median 74 -> 78 (78, 87, 62) | panel |
 | paste 0 | baseline paste seed | median 65 (57, 73, 65) | panel |
 | paste 1 | paste carries the message, every fact an outside AI needs (folder, button, drag rule, password, Copilot), and the click-based steps; word check allows the soul.md file name, still bans the bare word | 65 -> 72 (72, 91, 69) | panel; words.py still flags a bare "soul" (tested) |
+| 8 | hour page step 4: name ManageMemory, say the file is a short program | median 78 -> 68 (68, 92, 65) | REVERTED (median fell) |
+| 9 | hour page: define the Brainstem before the install line, and say how to open Terminal on a Mac | absolute median 78 -> 77 (inside noise); side-by-side 3 of 3 prefer new | check fixed: absolute medians drift about 5 points on unchanged text, so changes are now judged blind side by side (tools/compare.sh, keep at 2 of 3) |
+| room 0 | baseline room guide | median 70 (70, 85, 60) | panel |

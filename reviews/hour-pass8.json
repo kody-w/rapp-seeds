@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/hour/index.html",
+ "tag": "hour-pass8",
+ "reviews": [
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 5,
+    "3": 8,
+    "4": 4,
+    "5": 7,
+    "6": 7,
+    "7": 4,
+    "8": 9,
+    "9": 6,
+    "10": 8
+   },
+   "total": 68,
+   "weakest": "4 \u2014 \u201cany computer,\u201d \u201cany AI,\u201d \u201cworks the same way,\u201d and \u201cfree for everyone\u201d overstate what the linked implementation and limited 25-scenario test suite prove.",
+   "fix": "Insert immediately before <section class=\"start\">: <p class=\"lead\"><strong>Before you start:</strong> You need internet access and a GitHub account with Copilot access. The installer supports current macOS, Windows 10/11 with winget, and Linux with apt or dnf. Memory files stay local, but recalled content is sent to Copilot to answer you. Shared or AI-generated agents are Python programs and may need review, fixes, or extra packages.</p>",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 9,
+    "3": 9,
+    "4": 8,
+    "5": 9,
+    "6": 8,
+    "7": 10,
+    "8": 10,
+    "9": 9,
+    "10": 10
+   },
+   "total": 92,
+   "weakest": "6 (and 4): Step 4 and Step 5 tell a non-technical Mac user to use TextEdit and save an AI reply as a file ending in _agent.py, which in practice fails when TextEdit defaults to Rich Text (.rtf) or when the AI wraps code in markdown backticks.",
+   "fix": "In Step 5, make the creation step foolproof for non-technical users by replacing the span in <li><b>Make your own.</b>...</li> with: <span>Paste that file into any AI and ask: \"Write me a new agent just like this for [a chore you repeat] \u2014 give me only raw Python code with no markdown backticks, or a downloadable _agent.py file.\" Drag the plain-text <code>_agent.py</code> file onto your Brainstem window and it can use it on your next message.</span>",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 5,
+    "3": 5,
+    "4": 6,
+    "5": 7,
+    "6": 6,
+    "7": 7,
+    "8": 7,
+    "9": 6,
+    "10": 7
+   },
+   "total": 65,
+   "weakest": "2: Brainstem, the thing the pasted command installs, is never defined outside the collapsed Details (its first visible use is step 1, after the command), and Terminal, PowerShell, Copilot and _agent.py are also unexplained, so a stranger cannot follow every word.",
+   "fix": "In the Start box replace <p>Open Terminal, paste this, press Enter.</p> with <p>This installs your Brainstem, the small program on your computer that runs your AI. On a Mac, press Cmd+Space, type Terminal and press Enter, then paste this and press Enter.</p> (MESSAGE.md's own definition, and it tells a first-timer how to reach Terminal.)",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 68,
+ "min": 65,
+ "n": 3
+}

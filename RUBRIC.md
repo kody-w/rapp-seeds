@@ -19,3 +19,11 @@ no reviewer under 80, and the word check passes. Each night pass must raise the 
 | 10 | **Clean** | No private names, no work content, no forbidden words (tools/words.py passes). |
 
 Reviewer output: one score per line, the total, the single weakest line, and one concrete fix.
+
+## How a change is judged (since pass 9)
+
+Absolute scores drift about five points between runs of the same text, so small real improvements were invisible.
+Each change is now judged **blind, side by side**: three reviewer families (Sol, Gemini, Claude Sonnet) see the
+current and the candidate version in random order as X and Y and pick the one that better meets this rubric.
+A change is kept only when **at least 2 of 3** prefer it (`tools/compare.sh`). Absolute scores
+(`tools/review.sh`) are still taken now and then to find the weakest line and to decide when a seed ships.

@@ -328,3 +328,21 @@ Let me check what Export actually does on the server (download vs. inline view),
   │ head -20; echo ----; curl -s -L --max-time 30 …
   └ 39 lines…
 
+Let me programmatically confirm the verbatim match of the line and the three promises, and check how the page's visible text uses/defines the three allowed words.
+
+● Verify verbatim message match and term usage (shell)
+  │ cd /Users/kodywildfeuer/Documents/GitHub/rapp-seeds && python3 - <<'EOF'
+  │ import re,html
+  │ msg=open('MESSAGE.md',encoding='utf-8').read()
+  │ page=open('seeds/hour/index.html',encoding='utf-8').read()
+  │ body=re.sub(r'<script.*?</script>|<style.*?</style>|<head>.*?</head>','',page,flags=re.S)…
+  └ 38 lines…
+
+{"seed": "seeds/hour/index.html", "scores": {"1":9,"2":5,"3":5,"4":6,"5":7,"6":6,"7":7,"8":7,"9":6,"10":7}, "total": 65, "weakest": "2: Brainstem, the thing the pasted command installs, is never defined outside the collapsed Details (its first visible use is step 1, after the command), and Terminal, PowerShell, Copilot and _agent.py are also unexplained, so a stranger cannot follow every word.", "fix": "In the Start box replace <p>Open Terminal, paste this, press Enter.</p> with <p>This installs your Brainstem, the small program on your computer that runs your AI. On a Mac, press Cmd+Space, type Terminal and press Enter, then paste this and press Enter.</p> (MESSAGE.md's own definition, and it tells a first-timer how to reach Terminal.)"}
+
+
+
+Changes    +0 -0
+AI Credits 111.67 (7m 8s)
+Tokens     ↑ 2.4m (2.2m cached, 125.4k written) • ↓ 58.0k (47.6k reasoning)
+Resume     copilot --resume=da11e12d-bb6a-487c-bba5-f1cce71b7fa7

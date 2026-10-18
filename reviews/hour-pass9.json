@@ -1,0 +1,66 @@
+{
+ "seed": "seeds/hour/index.html",
+ "tag": "hour-pass9",
+ "reviews": [
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 10,
+    "2": 7,
+    "3": 9,
+    "4": 6,
+    "5": 7,
+    "6": 7,
+    "7": 5,
+    "8": 9,
+    "9": 8,
+    "10": 9
+   },
+   "total": 77,
+   "weakest": "7: The page calls the experience free and open for everyone, but the runnable Brainstem requires GitHub Copilot access and has no published license, so only the underlying RAPP format is demonstrably open.",
+   "fix": "Replace the entire footer with: <footer>RAPP is free for anyone to use, change, and share under the MIT License. Brainstem's source is public. Running this version requires GitHub Copilot access, a separate service with its own limits and plans.</footer>",
+   "model": "gpt-5.6-sol"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 8,
+    "3": 9,
+    "4": 7,
+    "5": 9,
+    "6": 8,
+    "7": 9,
+    "8": 9,
+    "9": 8,
+    "10": 10
+   },
+   "total": 86,
+   "weakest": "4: Step 4 tells a non-technical user to click Export next to \"the memory agent\" and says the file \"reads like plain instructions,\" but the live UI lists two separate Python files (ContextMemory and ManageMemory) containing Python classes and AzureFileStorageManager code, and the Details claim that the 25-check Grail suite checks a Brainstem against the original overstates a wire suite that covers only 3 of 27 routes (/chat, /health, /version).",
+   "fix": "Replace Step 4 (`<li><b>Read an agent.</b><span>Click Export next to the memory agent and open the file. It reads like plain instructions for one job.</span></li>`) with `<li><b>Read an agent.</b><span>Click Export next to <em>ManageMemory</em> (<code>manage_memory_agent.py</code>) and open it in a text editor. At the top is a plain-English description of the one job it does, followed by the code that saves your notes.</span></li>` and narrow the test-suite sentence in `<details>` to `Anyone can build a Brainstem in any language and check its core chat wire against the original with the <a href=\"https://github.com/kody-w/rapp-1/tree/main/conformance/grail\">public test suite</a> of 25 checks.`",
+   "model": "gemini-4-argon"
+  },
+  {
+   "seed": "seeds/hour/index.html",
+   "scores": {
+    "1": 9,
+    "2": 6,
+    "3": 6,
+    "4": 5,
+    "5": 6,
+    "6": 6,
+    "7": 7,
+    "8": 7,
+    "9": 6,
+    "10": 7
+   },
+   "total": 65,
+   "weakest": "Line 4: step 4 claims the exported agent 'reads like plain instructions' when Export downloads about 90 lines of Python (ManageMemory), and 'about ten minutes each', 'any AI' producing a loadable agent, 'Free for everyone who will ever use AI' and the unexplained 'Wildhaven Homes LLC' (the seller-storefront name in kody-w/RAPP_Store, absent from every linked licence) cannot be confirmed from the linked sources.",
+   "fix": "Replace step 4 with: <li><b>Read an agent.</b><span>Click Export next to ManageMemory, then open the downloaded file in TextEdit or Notepad. It is a short program for one job. Paste it into any AI and ask: <em>Explain this in plain words.</em></span></li> (removes the claim a skeptic disproves in one click, names the agent exactly as the agents panel shows it, and gives a non-coder a true way to see how it works).",
+   "model": "claude-sonnet-5.5"
+  }
+ ],
+ "median": 77,
+ "min": 65,
+ "n": 3
+}

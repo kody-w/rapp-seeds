@@ -1,0 +1,133 @@
+● skill(adversarial-review)
+
+I’m reading the rubric, framing message, and seed together before checking every linked claim.
+
+● Read RUBRIC.md
+  └ 21 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read index.html
+  │ seeds/hour/index.html
+  └ 85 lines read
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Content type application/x-sh cannot be simplified to markdown. Here is the r...
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Content type application/octet-stream cannot be simplified to markdown. Here ...
+
+● Fetching web content https://github.com/kody-w/rapp-1/tree/main/conformance/grail · url: "https:/…
+  └ Contents of https://github.com/kody-w/rapp-1/tree/main/conformance/grail:
+
+● Fetching web content https://github.com/kody-w/rapp-installer · url: "https://github.com/kody-w/r…
+  └ Contents of https://github.com/kody-w/rapp-installer:
+
+● Fetching web content https://github.com/kody-w/RAR · url: "https://github.com/kody-w/RAR", max_le…
+  └ Contents of https://github.com/kody-w/RAR:
+
+● Fetching web content https://github.com/kody-w/rapp-1 · url: "https://github.com/kody-w/rapp-1", …
+  └ Contents of https://github.com/kody-w/rapp-1:
+
+/ Search (glob)
+  │ "tools/words.py"
+  └ 1 file found
+
+/ Search (grep)
+  │ "Manage installed agents|Export|drag|drop|context_memory|memory agent|_agent\.py" in **/*
+  └ 42 files found
+
+● List Brainstem implementation files (shell)
+  │ gh api repos/kody-w/rapp-installer/git/trees/main?recursive=1 --jq '.tree[].path' | grep -E
+  │ 'rapp_brainstem/(static|templates|brainstem.py|local_storage.py|agents/|tests/)' | head -200
+  └ 18 lines…
+
+I’m now attacking the factual and usability claims, especially the install path, one-hour flow, portability, and “free for everyone” language.
+
+● Run forbidden-word check (shell)
+  │ python3 tools/words.py seeds/hour/index.html
+  └ 1 line…
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/LICENSE · url: "https:/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-1/main/.github/workflows/grail…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Search Brainstem UI claims (shell)
+  │ for q in '"Manage installed agents"' '"Export"' '"drop"' '"context_memory"'; do echo "--- $q";
+  │ gh search code "$q" --repo kody-w/rapp-installer --limit 20 --json path,textMatches --jq '.[] |
+  │ [.path, (.textMatches[]?.fragment // "")] | @tsv'; done
+  └ 5 lines…
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+✗ Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE · url: …
+  └ Error: Failed to fetch https://raw.githubusercontent.com/kody-w/rapp-installer/main/LICENSE -
+    status code 404
+
+● Inspect installer launch behavior (shell)
+  │ tmp=$(mktemp); trap 'rm -f "$tmp"' EXIT; curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.sh -o "$tmp"; grep -n -E
+  │ '^main\(|check_for_upgrade|start|brainstem|open|localhost|launch' "$tmp" | tail -80
+  └ 71 lines…
+
+● Inspect Windows launch behavior (shell)
+  │ tmp=$(mktemp); trap 'rm -f "$tmp"' EXIT; curl -fsSL
+  │ https://kody-w.github.io/rapp-installer/install.ps1 -o "$tmp"; grep -n -E
+  │ 'Check-ForUpgrade|Start|brainstem|localhost|browser|Launch|Main' "$tmp" | tail -100
+  └ 78 lines…
+
+● Inspect agent UI implementation (shell)
+  │ tmp=$(mktemp); trap 'rm -f "$tmp"' EXIT; curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html -o
+  │ "$tmp"; grep -n -E 'Manage installed agents|Export|agents/import|Drag & Drop
+  │ Agents|context_memory|memory' "$tmp" | head -80
+  └ 20 lines…
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Read agent panel and import code (shell)
+  │ tmp=$(mktemp); trap 'rm -f "$tmp"' EXIT; curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/index.html -o
+  │ "$tmp"; sed -n '1095,1145p;1690,1765p;1805,1865p' "$tmp"
+  └ 188 lines…
+
+● Inspect agent API routes (shell)
+  │ tmp=$(mktemp); trap 'rm -f "$tmp"' EXIT; curl -fsSL
+  │ https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py -o
+  │ "$tmp"; grep -n -E '@app\.(get|post).*agents|def .*agent|agents/export|agents/import|send_file'
+  │ "$tmp" | head -100
+  └ 16 lines…
+
+● Fetching web content https://api.github.com/repos/kody-w/rapp-1 · url: "https://api.github.com/re…
+  └ Content type application/json; charset=utf-8 cannot be simplified to markdown...
+
+● Fetching web content https://api.github.com/repos/kody-w/rapp-installer · url: "https://api.githu…
+  └ Content type application/json; charset=utf-8 cannot be simplified to markdown...
+
+● Check Brainstem repository licensing (shell)
+  │ gh api 'repos/kody-w/rapp-installer/git/trees/main?recursive=1' --jq '.tree[].path' | grep -Ei
+  │ '(^|/)(license|copying)(\.|$)' || true
+  └ No Content
+
+{"seed":"seeds/hour/index.html","scores":{"1":10,"2":7,"3":9,"4":6,"5":7,"6":7,"7":5,"8":9,"9":8,"10":9},"total":77,"weakest":"7: The page calls the experience free and open for everyone, but the runnable Brainstem requires GitHub Copilot access and has no published license, so only the underlying RAPP format is demonstrably open.","fix":"Replace the entire footer with: <footer>RAPP is free for anyone to use, change, and share under the MIT License. Brainstem's source is public. Running this version requires GitHub Copilot access, a separate service with its own limits and plans.</footer>"}
+
+
+
+Changes    +0 -0
+AI Credits 64.11 (2m 7s)
+Tokens     ↑ 446.0k (371.7k cached) • ↓ 9.8k (7.9k reasoning)
+Resume     copilot --resume=2b603ba3-cf46-46c8-b5e1-697e8b3be3e9
