@@ -1,0 +1,57 @@
+● skill(adversarial-review)
+
+I’m grounding the score in the rubric, intended message, and the rendered seed before verifying its cited claims.
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read index.html
+  │ seeds/slides/index.html
+  └ 100 lines read
+
+The copy makes several operational claims beyond the linked scripts, so I’m checking the landing page and both installers rather than crediting them at face value.
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/ · url: "https://kody-w.github.io/rapp-s…
+  └ Contents of https://kody-w.github.io/rapp-seeds/:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.ps1 · url: "https://kody-w.g…
+  └ Here is the raw content:
+
+● Fetching web content https://kody-w.github.io/rapp-installer/install.sh · url: "https://kody-w.gi…
+  └ Here is the raw content:
+
+The public start URL currently exposes only a link, not the promised walkthrough, so I’m checking the linked hour page, deployed slides, installer documentation, and the repository’s forbidden-word gate.
+
+/ Search (glob)
+  │ "**/words.py"
+  └ 1 file found
+
+✗ Fetching web content https://kody-w.github.io/rapp-seeds/seeds/slides/ · url: "https://kody-w.git…
+  └ Error: Failed to fetch https://kody-w.github.io/rapp-seeds/seeds/slides/ - status code 404
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/README.md · url…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/…
+  └ Content type text/plain; charset=utf-8 cannot be simplified to markdown. Here...
+
+● Fetching web content https://kody-w.github.io/rapp-seeds/seeds/hour/ · url: "https://kody-w.githu…
+  └ Contents of https://kody-w.github.io/rapp-seeds/seeds/hour/:
+
+The core platform and install routes are publicly documented, but the slides still need the exact repository word-policy result before line 10 can earn credit.
+
+● Check slide seed forbidden words (shell)
+  │ python3 tools/words.py seeds/slides/index.html
+  └ 1 line…
+
+{"seed":"seeds/slides/index.html","scores":{"1":10,"2":7,"3":9,"4":4,"5":3,"6":6,"7":4,"8":8,"9":6,"10":10},"total":67,"weakest":"5: The final slide presents a website plus two shell commands, exposing technical machinery instead of giving one unmistakable next step.","fix":"Replace the final slide with exactly: <section class=\"slide\" data-say=\"Give people one action. The guide has every step.\"><h2>Start here.</h2><p><a href=\"https://kody-w.github.io/rapp-seeds/seeds/hour/\">Open the one-hour guide.</a></p></section>"}
+
+
+
+Changes    +0 -0
+AI Credits 35 (1m 45s)
+Tokens     ↑ 200.9k (169.0k cached) • ↓ 7.7k (6.9k reasoning)
+Resume     copilot --resume=5094f4b1-24b9-4fab-b851-85f6fde457bb

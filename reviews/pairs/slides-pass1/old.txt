@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your AI, as files you own</title>
+<meta name="description" content="Eight slides anyone can present: your AI, as files you own.">
+<style>
+:root{--bg:#f7f5f0;--ink:#1c1f23;--muted:#5b636b;--line:#e4e0d6;--accent:#0f766e;--soft:#0f766e14;--code:#f1eee6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111416;--ink:#eceae4;--muted:#9aa3aa;--line:#2a2f33;--accent:#2dd4bf;--soft:#2dd4bf1a;--code:#15191b}}
+:root[data-theme="dark"]{--bg:#111416;--ink:#eceae4;--muted:#9aa3aa;--line:#2a2f33;--accent:#2dd4bf;--soft:#2dd4bf1a;--code:#15191b}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:clamp(18px,2.6vw,30px)/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;max-width:1200px;margin:0 auto}
+.slide.on{display:flex}
+h1{font-size:clamp(36px,7vw,92px);line-height:1.05;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(30px,5vw,64px);line-height:1.1;margin:0 0 .5em;color:var(--accent)}
+p{margin:0 0 .6em;max-width:34ch}
+.muted{color:var(--muted)}
+ol{margin:0;padding-left:1.2em}
+ol li{margin:.15em 0}
+.words{display:grid;grid-template-columns:auto 1fr;gap:.4em 1em;align-items:baseline}
+.words b{color:var(--accent)}
+code{font:clamp(13px,1.6vw,20px)/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:.5em .7em;border-radius:10px;display:block;overflow-x:auto;white-space:nowrap;margin:.3em 0 .8em}
+.moment{border-left:6px solid var(--accent);background:var(--soft);padding:.8em 1em;border-radius:0 14px 14px 0}
+.say{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--bg);font-size:clamp(14px,1.8vw,20px);padding:12px 8vw;display:none}
+body.notes .say{display:block}
+nav{position:fixed;right:16px;bottom:12px;font-size:14px;color:var(--muted)}
+body.notes nav{bottom:auto;top:12px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<section class="slide" data-say="Say the line, then stop. Let it land. Everything after this is just these words, opened up.">
+<h1>Your AI, as files you own.</h1>
+</section>
+
+<section class="slide" data-say="Most people never see how AI works. This one you can read: each thing it can do is one short file.">
+<h2>Learn it in an hour.</h2>
+<p>It thinks the way you do, so you can see how it works.</p>
+</section>
+
+<section class="slide" data-say="It runs on the computer in front of you. Its memory is a folder you can open.">
+<h2>Run it on any computer.</h2>
+<p>Mac, Windows or Linux. Its memory stays in your own folder.</p>
+</section>
+
+<section class="slide" data-say="Because it is files, you can send it. A friend drags your agent onto their Brainstem and it works.">
+<h2>Hand it to anyone.</h2>
+<p>It is just files. One agent is one file.</p>
+</section>
+
+<section class="slide" data-say="Only three words to learn. Everything else is said in plain words.">
+<h2>Three words.</h2>
+<div class="words">
+<b>Brainstem</b><span>the small program on your computer that runs your AI</span>
+<b>agent</b><span>one file that does one job</span>
+<b>registry</b><span>where people share agents</span>
+</div>
+</section>
+
+<section class="slide" data-say="Six steps, about ten minutes each. No coding. The page at the end walks every step.">
+<h2>Your first hour.</h2>
+<ol>
+<li>Get your Brainstem.</li>
+<li>Talk to it.</li>
+<li>See what it can do.</li>
+<li>Read an agent.</li>
+<li>Make your own.</li>
+<li>Hand it on.</li>
+</ol>
+</section>
+
+<section class="slide" data-say="This is the moment. Ask the room to try it tonight and tell you tomorrow what it remembered.">
+<p class="moment">Tomorrow it is still there, on your computer, remembering.</p>
+<p class="muted">That is the moment people say: AI should have been like this all along.</p>
+</section>
+
+<section class="slide" data-say="It needs a GitHub account with Copilot. Point people at the page; it has the copy button and every step.">
+<h2>Start here.</h2>
+<p><a href="https://kody-w.github.io/rapp-seeds/">kody-w.github.io/rapp-seeds</a></p>
+<p class="muted">Mac, in Terminal:</p>
+<code>curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | bash</code>
+<p class="muted">Windows, in PowerShell:</p>
+<code>irm https://kody-w.github.io/rapp-installer/install.ps1 | iex</code>
+</section>
+
+<div class="say" id="say"></div>
+<nav id="nav"></nav>
+<script>
+const s=[...document.querySelectorAll('.slide')];let i=0;
+function show(n){i=Math.max(0,Math.min(s.length-1,n));s.forEach((e,k)=>e.classList.toggle('on',k===i));document.getElementById('say').textContent='Say: '+s[i].dataset.say;document.getElementById('nav').textContent=(i+1)+' / '+s.length+' · arrows to move · N for notes';try{location.hash=i+1}catch(e){}}
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();show(i+1)}else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(i-1)}else if(e.key==='n'||e.key==='N'){document.body.classList.toggle('notes')}});
+addEventListener('click',e=>{if(e.target.closest('a'))return;show(e.clientX>innerWidth/3?i+1:i-1)});
+show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

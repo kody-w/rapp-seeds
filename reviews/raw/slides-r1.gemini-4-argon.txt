@@ -1,0 +1,29 @@
+● Read RUBRIC.md
+  └ 29 lines read
+
+● Read MESSAGE.md
+  └ 41 lines read
+
+● Read index.html
+  │ seeds/slides/index.html
+  └ 100 lines read
+
+● Read words.py
+  │ tools/words.py
+  └ 63 lines read
+
+● Run words.py and check linked URLs (shell)
+  │ python3 tools/words.py seeds/slides/index.html && curl -I -s -L
+  │ https://kody-w.github.io/rapp-seeds/ | head -n 5 && curl -I -s -L
+  │ https://kody-w.github.io/rapp-installer/install.sh | head -n 5 && curl -I -s -L
+  │ https://kody-w.github.io/rapp-installer/install.ps1 | head -n 5
+  └ 16 lines…
+
+{"seed": "seeds/slides/index.html", "scores": {"1":10,"2":8,"3":9,"4":9,"5":7,"6":8,"7":9,"8":9,"9":9,"10":10}, "total": 88, "weakest": "Line 5 (One action): Slide 8 puts a web link and two raw shell pipelines (curl/bash and irm/iex) on screen at once instead of giving a non-technical viewer one clear next step with terminal commands tucked behind Details.", "fix": "On Slide 8, make the guide link the single primary action and move the Mac/Linux and Windows install commands inside a <details><summary>Details</summary>...</details> block: replace `<p class=\"muted\">Mac, in Terminal:</p>\\n<code>curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | bash</code>\\n<p class=\"muted\">Windows, in PowerShell:</p>\\n<code>irm https://kody-w.github.io/rapp-installer/install.ps1 | iex</code>` with `<p class=\"muted\">Open the one-hour guide to install and run your Brainstem.</p>\\n<details><summary class=\"muted\">Details (install commands)</summary><p class=\"muted\">Mac or Linux, in Terminal:</p><code>curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | bash</code><p class=\"muted\">Windows, in PowerShell:</p><code>irm https://kody-w.github.io/rapp-installer/install.ps1 | iex</code></details>`."}
+
+
+
+Changes    +0 -0
+AI Credits 30.82 (52s)
+Tokens     ↑ 400.5k (263.0k cached) • ↓ 678 (2.4k reasoning)
+Resume     copilot --resume=81a22ef0-e7ff-43fe-a6d9-d81002f252f3

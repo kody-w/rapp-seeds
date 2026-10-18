@@ -1,0 +1,23 @@
+{
+ "tag": "slides-pass1",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: Y gives one clear direct path to the hour guide, puts installation commands behind Details, and accurately discloses the required GitHub Copilot account while X exposes competing technical actions and adds an extra navigation step."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "clear: Y makes the final slide native to a presentation and friendly to non-technical viewers by featuring one clear, readable link up front, collapsing the raw shell commands behind a disclosure widget, and honestly stating the GitHub Copilot requirement on the slide rather than hiding it only in speaker notes."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: Slides 1\u20137 are identical, and every claim in both versions checks out against the live installers and hour page; Y's last slide offers one big link, states the Copilot requirement on the slide and tucks the curl/PowerShell lines behind a collapsible, while X leaves two raw install commands as the main content and mentions Copilot only in the notes."
+  ]
+ ]
+}

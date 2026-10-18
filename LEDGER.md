@@ -43,3 +43,6 @@ Note: the session moved from Claude Fable 5.1 to Claude Opus 5.5 at about 22:15 
 | slides | 8-slide deck for evangelists, same message, speaker notes on N | new | all 8 rendered at 1280x720 and the last at phone width, read by eye; words.py 0 |
 | badge | README badge + two lines for agent authors, same message | new | SVG rendered at 4x and read by eye; 'next message' matches load_agents on every /chat; words.py 0 |
 | llms 1 | llms.txt carries the three promises verbatim as a numbered list | side-by-side 3 of 3 prefer new | tools/compare.sh llms-pass1; words.py 0 |
+| short 1 | short 32-42: 'That memory is an agent', Export ManageMemory | side-by-side 0 of 3 | REVERTED (false: the memory is a file, the agent saves it) |
+| slides 0 | baseline slides | median 67 (67, 88, 66) | panel |
+| slides 1 | last slide: one big link, Copilot need visible, install lines behind Details | side-by-side 3 of 3 prefer new | tools/compare.sh slides-pass1; rendered closed and open; Details click does not change slide |
