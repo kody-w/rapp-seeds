@@ -1,0 +1,23 @@
+{
+ "tag": "paste-pass3",
+ "new_votes": 3,
+ "counted": 3,
+ "verdict": "KEEP",
+ "votes": [
+  [
+   "gpt-5.6-sol",
+   "new",
+   "clear: X gives a first-time reader a concrete, publicly verifiable memory test that directly delivers the core \u201ctomorrow it is still there\u201d promise, while Y substitutes a vague one-off question."
+  ],
+  [
+   "gemini-4-argon",
+   "new",
+   "slight: X's step 2 has the user save a concrete memory, which directly sets up reading the ManageMemory agent in step 4 and proves the closing promise that it remembers tomorrow."
+  ],
+  [
+   "claude-sonnet-5.5",
+   "new",
+   "clear: Y's step 2 has the user save one fact and check it tomorrow, which works today (ManageMemory writes to a local .brainstem_data file, ContextMemory injects it every turn, and re-running the installer keeps it) and gives the closing 'tomorrow it is still there, remembering' line something real to point to, while X's vague 'something real about my day' never exercises memory and hints at knowledge of the user's day that no bundled agent has."
+  ]
+ ]
+}
