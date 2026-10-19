@@ -52,7 +52,7 @@ body:
     id: brought
     attributes:
       label: "9. What brought you here?"
-      options: ["Someone from RAPP asked me", "Another host", "I took the hour in a room", "A friend who took the hour", "I found it myself"]
+      options: ["Someone who made the hour asked me", "Another host", "I took the hour in a room", "A friend who took the hour", "I found it myself"]
     validations: {required: true}
   - type: input
     id: hardest
