@@ -9,8 +9,8 @@ Brainstem: the small program on your computer that runs your AI.
 
 ```text
 Be my guide for one hour. I want my own AI, as files I own, on my own computer.
-The tool is the Brainstem. It is free and its source is public:
-https://github.com/kody-w/rapp-installer
+The tool is the Brainstem. It is free and its source is public. Its exact steps are here:
+https://kody-w.github.io/rapp-seeds/seeds/hour/
 
 Rules for you: plain words, I have never coded, one step at a time, and wait for me
 to say "done" before the next step. If anything goes wrong, ask me to paste exactly
