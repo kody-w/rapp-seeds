@@ -81,6 +81,6 @@ class FirstHourAgent(BasicAgent):
         title, text = STEPS[step - 1]
         after = (f" When you are ready, say next for step {step + 1} of {len(STEPS)}."
                  if step < len(STEPS) else
-                 " That is the hour. Tomorrow I am still here, on your computer, remembering. "
+                 " That is the hour. Tomorrow I am still here, on your computer, remembering (being tested this week). "
                  "Your AI, as files you own.")
         return f"Step {step} of {len(STEPS)}: {title} {text}{after}"

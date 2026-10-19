@@ -11,7 +11,7 @@ Everyone leaves with their own Brainstem and one agent they made.
 
 ## Before the room
 
-- Ask everyone to bring a laptop (Mac, Windows or Linux) and a GitHub account with Copilot.
+- Ask everyone to bring a laptop (Mac, Windows or Linux, all being tested) and a GitHub account with Copilot.
 - Put the page on the screen: https://kody-w.github.io/rapp-seeds/
 - Print the [one-sheet handout](../print/hour.pdf), one per person, so they can follow along.
 - Hand out the [pocket card](../card/) so the link leaves with them.

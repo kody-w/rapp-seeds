@@ -46,5 +46,5 @@ The six steps:
 6. Hand it on: help me send that one file to a friend, who drags it onto their
    Brainstem, or share it at https://github.com/kody-w/RAR.
 
-When we finish, remind me: tomorrow it is still there, on my computer, remembering.
+When we finish, remind me: tomorrow it is still there, on my computer, remembering (being tested this week).
 ```
