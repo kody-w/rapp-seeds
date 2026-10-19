@@ -44,8 +44,5 @@ Everyone leaves with their own Brainstem and one agent they made.
 - Ask each person to send you one agent they made, as the file, and share the ones the room likes in the registry:
   https://github.com/kody-w/RAR
 - Post the tally card's numbers the same day: https://github.com/kody-w/rapp-seeds/issues/new?template=room-tally.yml
-- Before people leave, ask the ones who finished for a way to text them once next week (or start a group chat).
-  Seven days later, send one text: "If you finished, are you still using it?" Add how many said yes as a comment on
-  your tally. No answer counts as no.
 
 The agents a room likes most become the next room's examples.
