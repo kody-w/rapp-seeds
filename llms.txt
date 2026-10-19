@@ -22,6 +22,6 @@ job), registry (where people share agents).
 - The paste (a prompt that walks anyone through the first hour): https://github.com/kody-w/rapp-seeds/blob/main/seeds/paste/README.md
 
 ## Sources
-- The Brainstem (source is public): https://github.com/kody-w/rapp-installer
+- The Brainstem (source is public): https://github.com/kody-w/rapp-installer/tree/main/rapp_brainstem
 - The registry of agents: https://github.com/kody-w/RAR
 - The open format and its test suite: https://github.com/kody-w/rapp-1
