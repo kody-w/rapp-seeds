@@ -5,4 +5,4 @@ The QR code opens the one-hour page.
 
 ![The pocket card](card.svg)
 
-Same message as every seed: **Your AI, as files you own.** Learn it in an hour. Run it on any computer (being tested). Hand it to anyone.
+Same message as every seed: **Your AI, as files you own.** Learn it in an hour (being tested). Run it on any computer (being tested). Hand it to anyone.

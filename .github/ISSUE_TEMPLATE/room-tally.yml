@@ -5,7 +5,7 @@ labels: ["room-tally"]
 body:
   - type: markdown
     attributes:
-      value: "Your AI, as files you own. Learn it in an hour. Run it on any computer (being tested). Hand it to anyone. This is everything we count. Please write numbers only, never anyone's name. This page is public."
+      value: "Your AI, as files you own. Learn it in an hour (being tested). Run it on any computer (being tested). Hand it to anyone. This is everything we count. Please write numbers only, never anyone's name. This page is public."
   - type: input
     id: date
     attributes: {label: Date, placeholder: "2026-12-05"}

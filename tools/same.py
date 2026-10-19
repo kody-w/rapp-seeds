@@ -9,14 +9,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LINE = "Your AI, as files you own."
-PROMISES = [("Learn it in an hour.", "It thinks the way you do, so you can see how it works."),
+PROMISES = [("Learn it in an hour (being tested).", "It thinks the way you do, so you can see how it works."),
             ("Run it on any computer.", "Mac, Windows or Linux (being tested). Its memory stays in your own folder."),
             ("Hand it to anyone.", "It is just files. One agent is one file.")]
 FULL = ["README.md", "llms.txt", "seeds/hour/index.html", "seeds/paste/README.md",
         "seeds/room/README.md", "seeds/slides/index.html",
         "seeds/agent/first_hour_agent.py"]
-MARKED = ["Learn it in an hour.", "Run it on any computer (being tested).", "Hand it to anyone."]
-SHORT = {"seeds/card/card.svg": ["Learn it", "in an hour", "Run it", "on any computer", "(being tested)", "Hand it", "to anyone"],
+MARKED = ["Learn it in an hour (being tested).", "Run it on any computer (being tested).", "Hand it to anyone."]
+SHORT = {"seeds/card/card.svg": ["Learn it", "in an hour", "(being tested)", "Run it", "on any computer", "(being tested)", "Hand it", "to anyone"],
          "seeds/short/script.md": MARKED,
          "seeds/badge/README.md": MARKED}
 
@@ -39,4 +39,10 @@ for path, parts in SHORT.items():
     missing = [LINE] * (LINE not in t) + [p for p in parts if p not in t]
     print(("ok   " if not missing else "MISS ") + path + "".join(f"\n       missing: {m}" for m in missing))
     bad += bool(missing)
+MOMENT = "You hand a friend an agent file and it works for them too (being tested)."
+if MOMENT not in plain("MESSAGE.md"):
+    print("MISS MESSAGE.md\n       missing: " + MOMENT); bad += 1
+for path in ["MESSAGE.md", *FULL, *SHORT]:   # handing over the folder would hand over the learner's sign-in
+    if "copy the folder" in plain(path).lower():
+        print("MISS " + path + "\n       says: copy the folder"); bad += 1
 sys.exit(1 if bad else 0)

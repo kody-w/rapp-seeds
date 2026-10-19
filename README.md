@@ -1,6 +1,6 @@
 # Your AI, as files you own.
 
-1. **Learn it in an hour.** It thinks the way you do, so you can see how it works.
+1. **Learn it in an hour (being tested).** It thinks the way you do, so you can see how it works.
 2. **Run it on any computer.** Mac, Windows or Linux (being tested). Its memory stays in your own folder.
 3. **Hand it to anyone.** It is just files. One agent is one file.
 

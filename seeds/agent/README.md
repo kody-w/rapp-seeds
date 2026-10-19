@@ -8,4 +8,4 @@ It is also in the [registry](https://github.com/kody-w/RAR/blob/main/agents/@kod
 It walks you through the same six steps as the [hour page](https://kody-w.github.io/rapp-seeds/), one at a time.
 Open the file: the six steps are written in plain words, and the rest is the short program around them. It is one file that does one job, like every agent.
 
-Your AI, as files you own. Learn it in an hour. Run it on any computer (being tested). Hand it to anyone.
+Your AI, as files you own. Learn it in an hour (being tested). Run it on any computer (being tested). Hand it to anyone.

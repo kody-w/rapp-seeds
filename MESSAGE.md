@@ -8,14 +8,14 @@ Every seed says this, in these words, in its own medium. Nothing else.
 
 ## The three promises
 
-1. **Learn it in an hour.** It thinks the way you do, so you can see how it works.
+1. **Learn it in an hour (being tested).** It thinks the way you do, so you can see how it works.
 2. **Run it on any computer.** Mac, Windows or Linux (being tested). Its memory stays in your own folder.
 3. **Hand it to anyone.** It is just files. One agent is one file.
 
 ## The moment
 
 The first time you use it, you ask it to do something, it does it, and tomorrow it is still there (being tested this week),
-on your own computer, remembering. You copy the folder to a friend and it works for them too.
+on your own computer, remembering. You hand a friend an agent file and it works for them too (being tested).
 That is when people say: *AI should have been like this all along.*
 
 ## The words (and only these)
