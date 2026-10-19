@@ -1,24 +1,18 @@
 name: Room tally
-description: Numbers from one room, or from your own hour. Numbers only, never names.
+description: Numbers from one room you hosted. Numbers only, never names.
 title: "Room tally"
 labels: ["room-tally"]
 body:
   - type: markdown
     attributes:
-      value: "Your AI, as files you own. Learn it in an hour. Run it on any computer. Hand it to anyone. This is everything we count. Please write numbers only, never anyone's name. This page is public."
-  - type: dropdown
-    id: kind
-    attributes:
-      label: What are you counting?
-      options: ["A room I hosted", "My own hour, alone"]
-    validations: {required: true}
+      value: "Your AI, as files you own. Learn it in an hour. Run it on any computer (being tested). Hand it to anyone. This is everything we count. Please write numbers only, never anyone's name. This page is public."
   - type: input
     id: date
     attributes: {label: Date, placeholder: "2026-12-05"}
     validations: {required: true}
   - type: input
     id: arrived
-    attributes: {label: "1. How many arrived (1 if alone)"}
+    attributes: {label: "1. How many arrived"}
     validations: {required: true}
   - type: input
     id: first_time
@@ -46,25 +40,20 @@ body:
     validations: {required: true}
   - type: input
     id: want_host
-    attributes: {label: "7. How many said they want to host a room (send them this page and the room guide)"}
+    attributes: {label: "7. How many said they want to host a room (give them this page and the room guide to take home)"}
     validations: {required: true}
   - type: dropdown
     id: first_room
     attributes:
-      label: "8. Hosts only: is this the first room you have hosted?"
-      options: ["Yes", "No", "I did the hour alone"]
+      label: "8. Is this the first room you have hosted?"
+      options: ["Yes", "No"]
     validations: {required: true}
   - type: dropdown
     id: brought
     attributes:
       label: "9. What brought you here?"
-      options: ["Someone from RAPP asked me", "Another host", "I took the hour in a room", "I found it myself"]
+      options: ["Someone from RAPP asked me", "Another host", "I took the hour in a room", "A friend who took the hour", "I found it myself"]
     validations: {required: true}
   - type: input
     id: hardest
     attributes: {label: "The hardest step (one or two words)"}
-  - type: textarea
-    id: week_later
-    attributes:
-      label: "A week later (add as a comment): text the finishers once: \"If you finished, are you still using it?\" Write how many said yes. Anyone who does not answer counts as no."
-      placeholder: "Leave empty now. Come back in seven days and add a comment with the number."
