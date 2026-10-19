@@ -10,7 +10,7 @@ Vertical, 9:16, about 60 seconds. Real screen recordings only. Same message as e
 | 22-32 | The Terminal window closes. The line is pasted again. Typing: *What do you remember about me?* The answer names the flat white. | "Close it. Open it again. It remembers, because the memory is a file on your computer." |
 | 32-42 | The agents panel opens. Export is clicked on one agent. A short file is shown. | "Each job it can do for you is an agent. One file, one job. You can read it." |
 | 42-52 | A file is dragged onto a second person's Brainstem. It answers using that agent. | "Hand that file to a friend, and it works for them too." |
-| 52-60 | Big text: **Learn it in an hour. Run it on any computer. Hand it to anyone.** Then the page address. | "Learn it in an hour. AI should have been like this all along." |
+| 52-60 | Big text: **Learn it in an hour. Run it on any computer (being tested). Hand it to anyone.** Then the page address. | "Learn it in an hour. AI should have been like this all along." |
 
 On-screen address at the end: kody-w.github.io/rapp-seeds
 

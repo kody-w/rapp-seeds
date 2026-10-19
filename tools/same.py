@@ -15,9 +15,10 @@ PROMISES = [("Learn it in an hour.", "It thinks the way you do, so you can see h
 FULL = ["README.md", "llms.txt", "seeds/hour/index.html", "seeds/paste/README.md",
         "seeds/room/README.md", "seeds/slides/index.html",
         "seeds/agent/first_hour_agent.py"]
-SHORT = {"seeds/card/card.svg": ["Learn it", "in an hour", "Run it", "on any computer", "Hand it", "to anyone"],
-         "seeds/short/script.md": [p for p, _ in PROMISES],
-         "seeds/badge/README.md": [p for p, _ in PROMISES]}
+MARKED = ["Learn it in an hour.", "Run it on any computer (being tested).", "Hand it to anyone."]
+SHORT = {"seeds/card/card.svg": ["Learn it", "in an hour", "Run it", "on any computer", "(being tested)", "Hand it", "to anyone"],
+         "seeds/short/script.md": MARKED,
+         "seeds/badge/README.md": MARKED}
 
 
 def plain(path):
